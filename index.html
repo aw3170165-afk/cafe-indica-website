@@ -3,51 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cafe Indica - Order Online</title>
+    <title>Cafe Indica - Premium Menu</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        :root { --primary-bg: #f8f9fa; --accent-green: #1a4d2e; --white: #ffffff; }
+        :root { --primary-bg: #fff9fa; --accent-green: #1a4d2e; --white: #ffffff; }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
-        body { background-color: var(--primary-bg); padding-bottom: 100px; }
+        body { background-color: var(--primary-bg); padding-bottom: 110px; }
         
-        header { background: var(--white); padding: 20px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
-        .logo { width: 75px; height: 75px; border-radius: 50%; object-fit: cover; margin-bottom: 5px; border: 2px solid var(--accent-green); }
+        header { background: var(--white); padding: 15px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+        .logo { width: 65px; height: 65px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent-green); }
         
         .container { max-width: 500px; margin: auto; padding: 15px; }
         
-        /* Category Images */
-        .cat-img { width: 100%; height: 140px; border-radius: 15px; object-fit: cover; margin-bottom: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        .category-title { margin: 25px 0 15px; font-size: 1.1rem; color: var(--accent-green); font-weight: 600; border-bottom: 2px solid #e0e0e0; padding-bottom: 5px; text-transform: uppercase; }
+        
+        .menu-card { background: var(--white); border-radius: 18px; overflow: hidden; margin-bottom: 18px; display: flex; box-shadow: 0 4px 12px rgba(0,0,0,0.06); transition: 0.3s; }
+        .item-img { width: 110px; height: 110px; object-fit: cover; }
+        .item-details { padding: 12px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+        .item-details h3 { font-size: 0.9rem; color: #333; margin-bottom: 4px; line-height: 1.2; }
+        .item-details p { font-size: 0.95rem; color: var(--accent-green); font-weight: 600; }
+        
+        .action-area { display: flex; flex-direction: column; align-items: flex-end; justify-content: space-between; padding: 12px 12px 12px 0; }
+        select { padding: 4px; border-radius: 6px; border: 1px solid #ddd; font-size: 0.75rem; margin-bottom: 8px; width: 85px; }
+        .add-btn { background: var(--accent-green); color: white; border: none; padding: 7px 18px; border-radius: 12px; cursor: pointer; font-size: 0.8rem; font-weight: 600; }
 
-        .category-title { margin: 25px 0 15px; font-size: 1.2rem; color: var(--accent-green); font-weight: 600; border-left: 5px solid var(--accent-green); padding-left: 12px; text-transform: uppercase; }
-        
-        .menu-item { background: var(--white); border-radius: 15px; padding: 15px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 5px rgba(0,0,0,0.03); }
-        .item-info h3 { font-size: 0.95rem; color: #333; margin-bottom: 4px; }
-        .item-info p { font-size: 0.9rem; color: #1a4d2e; font-weight: 600; }
-        
-        .price-select { display: flex; flex-direction: column; align-items: flex-end; }
-        select { padding: 6px; border-radius: 8px; border: 1px solid #ddd; margin-bottom: 8px; font-size: 0.8rem; outline: none; background: #fff; }
-        
-        .add-btn { background: var(--accent-green); color: white; border: none; padding: 8px 20px; border-radius: 20px; cursor: pointer; font-size: 0.85rem; font-weight: 600; transition: 0.2s; box-shadow: 0 3px 6px rgba(26, 77, 46, 0.2); }
-        .add-btn:active { transform: scale(0.95); }
-
-        .cart-bar { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 450px; background: #1a4d2e; color: white; padding: 16px 25px; border-radius: 50px; display: none; justify-content: space-between; align-items: center; box-shadow: 0 10px 25px rgba(0,0,0,0.3); z-index: 2000; cursor: pointer; }
+        .cart-bar { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); width: 92%; max-width: 460px; background: #1a4d2e; color: white; padding: 16px 25px; border-radius: 15px; display: none; justify-content: space-between; align-items: center; box-shadow: 0 10px 30px rgba(0,0,0,0.3); z-index: 2000; cursor: pointer; }
     </style>
 </head>
 <body>
 
 <header>
     <img src="https://i.imgur.com/8Yv9p7G.png" alt="Cafe Indica Logo" class="logo">
-    <h1>Cafe Indica</h1>
-    <p style="font-size: 0.8rem; color: #666; font-style: italic;">Fresh & Delicious Food</p>
+    <h1 style="font-size: 1.2rem; color: var(--accent-green);">Cafe Indica</h1>
 </header>
 
-<div class="container">
-    <div id="menu-container"></div>
-</div>
+<div class="container" id="menu-container"></div>
 
 <div class="cart-bar" id="cart-bar" onclick="sendToWhatsApp()">
     <span id="cart-count">0 Items</span>
-    <span style="font-weight: 600;">Order on WhatsApp →</span>
+    <span style="font-weight: 600;">Checkout on WhatsApp →</span>
 </div>
 
 <script>
@@ -55,53 +49,41 @@
 
     const menuData = [
         { 
-            category: "Tea & Coffee", 
-            image: "https://images.unsplash.com/photo-1544787210-2211d74fc596?w=500",
+            category: "Combos", 
             items: [
-                { name: "Milk Tea", variants: [{size: "Small", price: 19}, {size: "Large", price: 29}] },
-                { name: "Elaichi Tea", price: 29 },
-                { name: "Cold Coffee", price: 69 },
-                { name: "Hot Coffee", price: 49 }
+                { name: "Combo 1: Fries(M)+Burger+Drink", price: 149, img: "https://images.unsplash.com/photo-1594179047519-f347310d3322?w=300" },
+                { name: "Combo 2: Fries(M)+Veg Burger+Sandwich", price: 167, img: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=300" },
+                { name: "Combo 3: 2 Chk Sandwich+5 Fish Finger", price: 269, img: "https://images.unsplash.com/photo-1529003600303-bd51f39627fb?w=300" }
+            ]
+        },
+        { 
+            category: "Tea & Coffee", 
+            items: [
+                { name: "Milk Tea", img: "https://images.unsplash.com/photo-1544787210-2211d74fc596?w=300", variants: [{size: "Small", price: 19}, {size: "Large", price: 29}] },
+                { name: "Elaichi Tea", price: 29, img: "https://images.unsplash.com/photo-1594631252845-29fc458695d6?w=300" },
+                { name: "Cold Coffee", price: 69, img: "https://images.unsplash.com/photo-1517701604599-bb29b565090c?w=300" }
             ]
         },
         { 
             category: "Maggie", 
-            image: "https://images.unsplash.com/photo-1612927601601-6638404737ce?w=500",
             items: [
-                { name: "Plain Maggie", price: 39 },
-                { name: "Veg Maggie", price: 49 },
-                { name: "Corn Maggie", price: 59 },
-                { name: "Egg Maggie", price: 69 },
-                { name: "Chicken Maggie", price: 79 }
+                { name: "Veg Maggie", price: 49, img: "https://images.unsplash.com/photo-1612927601601-6638404737ce?w=300" },
+                { name: "Egg Maggie", price: 69, img: "https://images.unsplash.com/photo-1526318896980-cf78c088247c?w=300" },
+                { name: "Chicken Maggie", price: 79, img: "https://images.unsplash.com/photo-1585032226651-759b368d7246?w=300" }
             ]
         },
         { 
             category: "Burgers & Sandwiches", 
-            image: "https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=500",
             items: [
-                { name: "Veg Burger", price: 59 },
-                { name: "Chicken Burger", price: 79 },
-                { name: "Chicken Cheese Sandwich", price: 109 },
-                { name: "Extra Cheese", price: 20 }
+                { name: "Veg Burger", price: 59, img: "https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=300" },
+                { name: "Chicken Cheese Sandwich", price: 109, img: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=300" }
             ]
         },
         { 
-            category: "Salads & Snacks", 
-            image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=500",
+            category: "Soups", 
             items: [
-                { name: "High Protein Veg Salad", price: 65 },
-                { name: "High Protein Chicken Salad", price: 129 },
-                { name: "French Fries", variants: [{size: "Medium", price: 59}, {size: "Large", price: 79}] },
-                { name: "Peri Peri Fries", variants: [{size: "Medium", price: 69}, {size: "Large", price: 89}] }
-            ]
-        },
-        { 
-            category: "Combos", 
-            image: "https://i.imgur.com/rS7z9qZ.jpeg",
-            items: [
-                { name: "Combo 1: Fries(M)+Burger+Drink", price: 149 },
-                { name: "Combo 2: Fries(M)+Veg Burger+Sandwich", price: 167 },
-                { name: "Combo 3: 2 Chk Sandwich+5 Fish Finger", price: 269 }
+                { name: "Veg Soup + Garlic Bread", price: 99, img: "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=300" },
+                { name: "Chicken Soup + Garlic Bread", price: 139, img: "https://images.unsplash.com/photo-1603105076183-01bd9027878d?w=300" }
             ]
         }
     ];
@@ -110,22 +92,19 @@
 
     function renderMenu() {
         const container = document.getElementById('menu-container');
-        let menuHTML = '';
+        let html = '';
         menuData.forEach(cat => {
-            menuHTML += `
-                <div class="category-block">
-                    <h2 class="category-title">${cat.category}</h2>
-                    <img src="${cat.image}" class="cat-img" alt="${cat.category}">
-                </div>`;
+            html += `<h2 class="category-title">${cat.category}</h2>`;
             cat.items.forEach(item => {
                 const itemId = item.name.replace(/[^a-zA-Z0-9]/g, '');
-                menuHTML += `
-                <div class="menu-item">
-                    <div class="item-info">
+                html += `
+                <div class="menu-card">
+                    <img src="${item.img}" class="item-img" alt="${item.name}">
+                    <div class="item-details">
                         <h3>${item.name}</h3>
                         <p>₹${item.price || item.variants[0].price}</p>
                     </div>
-                    <div class="price-select">
+                    <div class="action-area">
                         ${item.variants ? `
                         <select id="sel-${itemId}">
                             ${item.variants.map(v => `<option value="${v.price}">${v.size} - ₹${v.price}</option>`).join('')}
@@ -135,19 +114,17 @@
                 </div>`;
             });
         });
-        container.innerHTML = menuHTML;
+        container.innerHTML = html;
     }
 
     window.addToCart = function(name, price, hasVariants) {
         let finalPrice = price;
         let finalSize = "";
-        
         if(hasVariants) {
             const sel = document.getElementById(`sel-${name.replace(/[^a-zA-Z0-9]/g, '')}`);
             finalPrice = parseInt(sel.value);
             finalSize = sel.options[sel.selectedIndex].text.split(' - ')[0];
         }
-        
         cart.push({ name, price: finalPrice, size: finalSize });
         updateCart();
     }
@@ -157,7 +134,7 @@
         if(cart.length > 0) {
             bar.style.display = 'flex';
             const total = cart.reduce((sum, item) => sum + item.price, 0);
-            document.getElementById('cart-count').innerText = `${cart.length} Items | ₹${total}`;
+            document.getElementById('cart-count').innerText = `${cart.length} Items | Total ₹${total}`;
         }
     }
 
