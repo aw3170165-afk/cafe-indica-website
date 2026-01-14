@@ -3,38 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cafe Indica - Premium Menu</title>
+    <title>Cafe Indica - Complete Menu</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root { --primary-bg: #fff9fa; --accent-green: #1a4d2e; --white: #ffffff; }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
-        body { background-color: var(--primary-bg); padding-bottom: 110px; }
-        
+        body { background-color: var(--primary-bg); padding-bottom: 120px; }
         header { background: var(--white); padding: 20px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
         .logo { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent-green); margin-bottom: 5px; }
-        header h1 { font-size: 1.3rem; color: var(--accent-green); font-weight: 600; }
-
         .container { max-width: 500px; margin: auto; padding: 15px; }
-        
         .category-title { margin: 25px 0 15px; font-size: 1.1rem; color: var(--accent-green); font-weight: 600; border-left: 5px solid var(--accent-green); padding-left: 12px; text-transform: uppercase; }
-        
-        .menu-card { background: var(--white); border-radius: 18px; overflow: hidden; margin-bottom: 15px; display: flex; box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
-        .item-img { width: 100px; height: 100px; object-fit: cover; }
+        .menu-card { background: var(--white); border-radius: 18px; overflow: hidden; margin-bottom: 15px; display: flex; box-shadow: 0 4px 12px rgba(0,0,0,0.06); min-height: 100px; }
+        .item-img { width: 100px; height: 100px; object-fit: cover; background: #eee; }
         .item-details { padding: 12px; flex: 1; display: flex; flex-direction: column; justify-content: center; }
-        .item-details h3 { font-size: 0.95rem; color: #333; margin-bottom: 4px; }
+        .item-details h3 { font-size: 0.9rem; color: #333; margin-bottom: 4px; line-height: 1.2; }
         .item-details p { font-size: 1rem; color: var(--accent-green); font-weight: 600; }
-        
         .action-area { display: flex; flex-direction: column; align-items: flex-end; justify-content: center; padding: 10px; }
-        select { padding: 5px; border-radius: 8px; border: 1px solid #ddd; font-size: 0.8rem; margin-bottom: 8px; width: 90px; outline: none; }
+        select { padding: 4px; border-radius: 6px; border: 1px solid #ddd; font-size: 0.75rem; margin-bottom: 8px; width: 85px; }
         .add-btn { background: var(--accent-green); color: white; border: none; padding: 8px 18px; border-radius: 12px; cursor: pointer; font-size: 0.8rem; font-weight: 600; }
-
-        .cart-bar { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); width: 92%; max-width: 460px; background: #1a4d2e; color: white; padding: 16px 25px; border-radius: 15px; display: none; justify-content: space-between; align-items: center; box-shadow: 0 10px 30px rgba(0,0,0,0.3); z-index: 2000; cursor: pointer; }
+        .cart-bar { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); width: 92%; max-width: 460px; background: #1a4d2e; color: white; padding: 16px 25px; border-radius: 15px; display: none; justify-content: space-between; align-items: center; box-shadow: 0 10px 30px rgba(0,0,0,0.3); z-index: 2000; }
     </style>
 </head>
 <body>
 
 <header>
-    <img src="https://i.imgur.com/8Yv9p7G.png" alt="Cafe Indica Logo" class="logo">
+    <img src="https://i.imgur.com/8Yv9p7G.png" alt="Logo" class="logo">
     <h1>Cafe Indica</h1>
     <p style="font-size: 0.8rem; color: #888;">Fresh & Delicious Food</p>
 </header>
@@ -43,37 +36,38 @@
 
 <div class="cart-bar" id="cart-bar" onclick="sendToWhatsApp()">
     <span id="cart-count">0 Items</span>
-    <span style="font-weight: 600;">Order on WhatsApp →</span>
+    <span style="font-weight: 600;">Checkout on WhatsApp →</span>
 </div>
 
 <script>
     const WHATSAPP_NUMBER = "918697781622"; 
-
     const menuData = [
-        { 
-            category: "Combos & Specials", 
-            items: [
-                { name: "Combo 1: Fries(M)+Burger+Drink", price: 149, img: "https://i.imgur.com/rS7z9qZ.jpeg" }, // Cafe Interior Image
-                { name: "Combo 3: 2 Chk Sandwich+5 Fish Finger", price: 269, img: "https://images.unsplash.com/photo-1529003600303-bd51f39627fb?w=300" }
-            ]
-        },
-        { 
-            category: "Tea & Coffee", 
-            items: [
-                { name: "Milk Tea", img: "https://images.unsplash.com/photo-1544787210-2211d74fc596?w=300", variants: [{size: "Small", price: 19}, {size: "Large", price: 29}] },
-                { name: "Cold Coffee", price: 69, img: "https://images.unsplash.com/photo-1517701604599-bb29b565090c?w=300" }
-            ]
-        },
-        { 
-            category: "Maggie", 
-            items: [
-                { name: "Egg Maggie", price: 69, img: "https://images.unsplash.com/photo-1526318896980-cf78c088247c?w=300" },
-                { name: "Chicken Maggie", price: 79, img: "https://images.unsplash.com/photo-1585032226651-759b368d7246?w=300" }
-            ]
-        }
+        { category: "Combos & Specials", items: [
+            { name: "Combo 1: Fries(M)+Burger+Drink", price: 149, img: "https://i.imgur.com/rS7z9qZ.jpeg" },
+            { name: "Combo 2: Fries(M)+Veg Burger+Sandwich", price: 167, img: "https://images.unsplash.com/photo-1594179047519-f347310d3322?w=300" },
+            { name: "Combo 3: 2 Chk Sandwich+5 Fish Finger", price: 269, img: "https://images.unsplash.com/photo-1529003600303-bd51f39627fb?w=300" }
+        ]},
+        { category: "Tea & Coffee", items: [
+            { name: "Milk Tea", img: "https://images.unsplash.com/photo-1544787210-2211d74fc596?w=300", variants: [{size: "Small", price: 19}, {size: "Large", price: 29}] },
+            { name: "Elaichi Tea", price: 29, img: "https://images.unsplash.com/photo-1594631252845-29fc458695d6?w=300" },
+            { name: "Cold Coffee", price: 69, img: "https://images.unsplash.com/photo-1517701604599-bb29b565090c?w=300" }
+        ]},
+        { category: "Maggie", items: [
+            { name: "Plain Maggie", price: 39, img: "https://images.unsplash.com/photo-1612927601601-6638404737ce?w=300" },
+            { name: "Egg Maggie", price: 69, img: "https://images.unsplash.com/photo-1526318896980-cf78c088247c?w=300" },
+            { name: "Chicken Maggie", price: 79, img: "https://images.unsplash.com/photo-1585032226651-759b368d7244?w=300" }
+        ]},
+        { category: "Burgers & Snacks", items: [
+            { name: "Veg Burger", price: 59, img: "https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=300" },
+            { name: "Chicken Cheese Sandwich", price: 109, img: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=300" },
+            { name: "French Fries", variants: [{size: "M", price: 59}, {size: "L", price: 79}], img: "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=300" }
+        ]},
+        { category: "Soups & Salads", items: [
+            { name: "Veg Soup + Garlic Bread", price: 99, img: "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=300" },
+            { name: "Chicken Soup + Garlic Bread", price: 139, img: "https://images.unsplash.com/photo-1603105076183-01bd9027878d?w=300" },
+            { name: "High Protein Veg Salad", price: 65, img: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=300" }
+        ]}
     ];
-
-    let cart = [];
 
     function renderMenu() {
         const container = document.getElementById('menu-container');
@@ -84,16 +78,13 @@
                 const itemId = item.name.replace(/[^a-zA-Z0-9]/g, '');
                 html += `
                 <div class="menu-card">
-                    <img src="${item.img}" class="item-img" alt="${item.name}">
+                    <img src="${item.img}" class="item-img" onerror="this.src='https://via.placeholder.com/100?text=Food'">
                     <div class="item-details">
                         <h3>${item.name}</h3>
                         <p>₹${item.price || item.variants[0].price}</p>
                     </div>
                     <div class="action-area">
-                        ${item.variants ? `
-                        <select id="sel-${itemId}">
-                            ${item.variants.map(v => `<option value="${v.price}">${v.size} - ₹${v.price}</option>`).join('')}
-                        </select>` : ''}
+                        ${item.variants ? `<select id="sel-${itemId}">${item.variants.map(v => `<option value="${v.price}">${v.size} - ₹${v.price}</option>`).join('')}</select>` : ''}
                         <button class="add-btn" onclick="addToCart('${item.name}', ${item.price || 0}, ${!!item.variants})">ADD</button>
                     </div>
                 </div>`;
@@ -102,37 +93,27 @@
         container.innerHTML = html;
     }
 
+    let cart = [];
     window.addToCart = function(name, price, hasVariants) {
-        let finalPrice = price;
-        let finalSize = "";
+        let fPrice = price; let fSize = "";
         if(hasVariants) {
             const sel = document.getElementById(`sel-${name.replace(/[^a-zA-Z0-9]/g, '')}`);
-            finalPrice = parseInt(sel.value);
-            finalSize = sel.options[sel.selectedIndex].text.split(' - ')[0];
+            fPrice = parseInt(sel.value);
+            fSize = sel.options[sel.selectedIndex].text.split(' - ')[0];
         }
-        cart.push({ name, price: finalPrice, size: finalSize });
-        updateCart();
-    }
-
-    function updateCart() {
-        const bar = document.getElementById('cart-bar');
-        if(cart.length > 0) {
-            bar.style.display = 'flex';
-            const total = cart.reduce((sum, item) => sum + item.price, 0);
-            document.getElementById('cart-count').innerText = `${cart.length} Items | ₹${total}`;
-        }
+        cart.push({ name, price: fPrice, size: fSize });
+        document.getElementById('cart-bar').style.display = 'flex';
+        const total = cart.reduce((s, i) => s + i.price, 0);
+        document.getElementById('cart-count').innerText = `${cart.length} Items | ₹${total}`;
     }
 
     window.sendToWhatsApp = function() {
-        let text = "*New Order - Cafe Indica*%0A%0A";
-        cart.forEach((item, index) => {
-            text += `${index+1}. ${item.name} ${item.size ? '('+item.size+')' : ''}: ₹${item.price}%0A`;
-        });
-        const total = cart.reduce((sum, item) => sum + item.price, 0);
-        text += `%0A*Grand Total: ₹${total}*`;
-        window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${text}`);
+        let msg = "*New Order - Cafe Indica*%0A%0A";
+        cart.forEach((i, idx) => { msg += `${idx+1}. ${i.name} ${i.size ? '('+i.size+')' : ''}: ₹${i.price}%0A`; });
+        const total = cart.reduce((s, i) => s + i.price, 0);
+        msg += `%0A*Grand Total: ₹${total}*`;
+        window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`);
     }
-
     renderMenu();
 </script>
 </body>
