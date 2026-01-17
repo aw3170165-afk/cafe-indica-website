@@ -10,14 +10,21 @@
     
     <style>
         :root { --accent: #ff0000; }
-        body { font-family: 'Inter', sans-serif; background: #000; color: #fff; overflow-x: hidden; scroll-behavior: smooth; cursor: none; }
+        body { font-family: 'Inter', sans-serif; background: #000; color: #fff; overflow-x: hidden; scroll-behavior: smooth; }
+        
+        /* Cursor logic for Desktop only */
+        @media (min-width: 1024px) {
+            body { cursor: none; }
+            .cursor-dot { width: 8px; height: 8px; background: var(--accent); position: fixed; border-radius: 50%; pointer-events: none; z-index: 10000; }
+            .cursor-outline { width: 35px; height: 35px; border: 1px solid rgba(255,255,255,0.5); position: fixed; border-radius: 50%; pointer-events: none; z-index: 9999; transition: transform 0.15s ease-out; }
+        }
+        
+        @media (max-width: 1023px) {
+            .cursor-dot, .cursor-outline { display: none; }
+        }
+
         .heading-font { font-family: 'Syncopate', sans-serif; text-transform: uppercase; }
         
-        /* Premium Cursor */
-        .cursor-dot { width: 8px; height: 8px; background: var(--accent); position: fixed; border-radius: 50%; pointer-events: none; z-index: 10000; }
-        .cursor-outline { width: 35px; height: 35px; border: 1px solid rgba(255,255,255,0.5); position: fixed; border-radius: 50%; pointer-events: none; z-index: 9999; transition: transform 0.15s ease-out; }
-
-        /* Full-Screen Background Styling */
         .section-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; z-index: -1; }
         .section-bg img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.35) contrast(1.1); }
         .overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.9)); }
@@ -26,14 +33,17 @@
             background: rgba(255, 255, 255, 0.05); 
             backdrop-filter: blur(20px); 
             border: 1px solid rgba(255, 255, 255, 0.1); 
-            padding: 25px; 
+            padding: clamp(15px, 5vw, 25px); 
             border-radius: 20px; 
-            max-width: 480px;
+            max-width: 100%;
+            width: 100%;
             transition: 0.5s;
         }
+        @media (min-width: 768px) { .teacher-card { max-width: 480px; } }
         .teacher-card:hover { border-color: var(--accent); transform: translateY(-5px); background: rgba(255, 255, 255, 0.08); }
         
-        @media (max-width: 768px) { body { cursor: auto; } .cursor-dot, .cursor-outline { display: none; } }
+        /* Smooth Entrance for Titles */
+        .animate-title { font-size: clamp(2.5rem, 10vw, 8rem); line-height: 0.9; }
     </style>
 </head>
 <body>
@@ -41,40 +51,37 @@
     <div class="cursor-dot"></div>
     <div class="cursor-outline"></div>
 
-    <nav class="fixed w-full z-50 p-8 flex justify-between items-center mix-blend-difference text-white">
-        <div class="heading-font text-2xl font-bold tracking-tighter">B-STREET<span class="text-red-600">.</span></div>
-        <div class="hidden md:flex gap-8 text-[9px] uppercase tracking-[0.4em] font-bold">
+    <nav class="fixed w-full z-50 px-6 py-6 md:px-12 md:py-8 flex justify-between items-center mix-blend-difference text-white">
+        <div class="heading-font text-lg md:text-2xl font-bold tracking-tighter">B-STREET<span class="text-red-600">.</span></div>
+        <div class="hidden lg:flex gap-8 text-[9px] uppercase tracking-[0.4em] font-bold">
             <a href="#dance" class="hover:text-red-600 transition">Dance</a>
             <a href="#arts" class="hover:text-red-600 transition">Arts</a>
             <a href="#zumba" class="hover:text-red-600 transition">Zumba</a>
             <a href="#guitar" class="hover:text-red-600 transition">Guitar</a>
             <a href="#admission" class="bg-red-600 px-5 py-2 hover:bg-white hover:text-black transition">Apply Now</a>
         </div>
+        <a href="#admission" class="lg:hidden text-[10px] heading-font bg-red-600 px-4 py-2">Apply</a>
     </nav>
 
-    <section id="home" class="relative h-screen flex items-center px-10 md:px-24">
-        <div class="section-bg">
-            <img src="https://images.unsplash.com/photo-1514525253361-bee8718a340b?q=80&w=2000" alt="Academy Main">
-            <div class="overlay"></div>
-        </div>
-        <div class="max-w-4xl">
-            <h1 class="heading-font text-6xl md:text-9xl leading-none mb-8 animate-title text-white">THE ART <br> <span class="text-transparent" style="-webkit-text-stroke: 1px white;">COLLECTIVE.</span></h1>
-            <p class="text-gray-400 text-xs tracking-[0.6em] uppercase mb-10">Kalyani's Premier Multidisciplinary Academy.</p>
-            <a href="#admission" class="bg-red-600 text-white px-12 py-5 heading-font text-[10px] tracking-[0.4em] hover:bg-white hover:text-black transition">Start Your Journey</a>
+    <section id="home" class="relative min-h-screen flex items-center px-6 md:px-24">
+        <div class="section-bg"><img src="https://images.unsplash.com/photo-1514525253361-bee8718a340b?q=80&w=2000" alt="Hero"></div>
+        <div class="overlay"></div>
+        <div class="max-w-5xl z-10">
+            <h1 class="heading-font animate-title mb-6 md:mb-8 text-white">THE ART <br> <span class="text-transparent" style="-webkit-text-stroke: 1px white;">COLLECTIVE.</span></h1>
+            <p class="text-gray-400 text-[8px] md:text-xs tracking-[0.4em] md:tracking-[0.6em] uppercase mb-10">Kalyani's Premier Multidisciplinary Academy.</p>
+            <a href="#admission" class="bg-red-600 text-white px-8 py-4 md:px-12 md:py-5 heading-font text-[9px] md:text-[10px] tracking-[0.4em] hover:bg-white hover:text-black transition inline-block">Start Your Journey</a>
         </div>
     </section>
 
-    <section id="dance" class="relative min-h-screen flex items-center px-10 md:px-24 py-20">
-        <div class="section-bg">
-            <img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?q=80&w=2000" alt="Dance Background">
-            <div class="overlay"></div>
-        </div>
-        <div class="w-full">
-            <span class="text-red-600 heading-font text-[10px] tracking-[0.5em]">Dept. 01</span>
-            <h2 class="heading-font text-5xl md:text-8xl mt-6 mb-12 text-white">DANCE</h2>
-            <div class="teacher-card flex flex-col sm:flex-row gap-6 items-center">
-                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=200" class="w-24 h-24 rounded-full border-2 border-red-600 object-cover shadow-2xl">
-                <div>
+    <section id="dance" class="relative min-h-screen flex items-center px-6 md:px-24 py-20">
+        <div class="section-bg"><img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?q=80&w=2000" alt="Dance"></div>
+        <div class="overlay"></div>
+        <div class="w-full z-10">
+            <span class="text-red-600 heading-font text-[9px] md:text-[10px] tracking-[0.5em]">Dept. 01</span>
+            <h2 class="heading-font text-4xl md:text-8xl mt-4 md:mt-6 mb-12 text-white">DANCE</h2>
+            <div class="teacher-card flex flex-col md:flex-row gap-6 items-center md:items-start">
+                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=200" class="w-20 h-20 md:w-24 md:h-24 rounded-full border-2 border-red-600 object-cover">
+                <div class="text-center md:text-left">
                     <h4 class="heading-font text-sm text-white">Abhay Basfore</h4>
                     <p class="text-[9px] text-red-600 font-bold uppercase tracking-widest mb-3">Lead Choreographer</p>
                     <p class="text-[11px] text-gray-400 leading-relaxed italic">8+ years of stage experience. Master of Urban Hip-Hop & Freestyle Soul.</p>
@@ -83,117 +90,55 @@
         </div>
     </section>
 
-    <section id="arts" class="relative min-h-screen flex items-center px-10 md:px-24 py-20">
-        <div class="section-bg">
-            <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?q=80&w=2000" alt="Arts Background">
-            <div class="overlay"></div>
-        </div>
-        <div class="w-full text-right flex flex-col items-end">
-            <span class="text-red-600 heading-font text-[10px] tracking-[0.5em]">Dept. 02</span>
-            <h2 class="heading-font text-5xl md:text-8xl mt-6 mb-12 text-white">FINE ARTS</h2>
-            <div class="teacher-card flex flex-col sm:flex-row-reverse gap-6 items-center text-right">
-                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200" class="w-24 h-24 rounded-full border-2 border-red-600 object-cover shadow-2xl">
-                <div>
-                    <h4 class="heading-font text-sm text-white">Arpita Das</h4>
-                    <p class="text-[9px] text-red-600 font-bold uppercase tracking-widest mb-3">Senior Art Mentor</p>
-                    <p class="text-[11px] text-gray-400 leading-relaxed italic">Gold Medalist Artist specializing in Oil Painting & Charcoal portraits.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="zumba" class="relative min-h-screen flex items-center px-10 md:px-24 py-20">
-        <div class="section-bg">
-            <img src="https://images.unsplash.com/photo-1524594152303-9fd13543fe6e?q=80&w=2000" alt="Zumba Background">
-            <div class="overlay"></div>
-        </div>
-        <div class="w-full">
-            <span class="text-red-600 heading-font text-[10px] tracking-[0.5em]">Dept. 03</span>
-            <h2 class="heading-font text-5xl md:text-8xl mt-6 mb-12 text-white">ZUMBA</h2>
-            <div class="teacher-card flex flex-col sm:flex-row gap-6 items-center">
-                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200" class="w-24 h-24 rounded-full border-2 border-red-600 object-cover shadow-2xl">
-                <div>
-                    <h4 class="heading-font text-sm text-white">Ritu Roy</h4>
-                    <p class="text-[9px] text-red-600 font-bold uppercase tracking-widest mb-3">Zumba Expert</p>
-                    <p class="text-[11px] text-gray-400 leading-relaxed italic">High-energy Zumba sessions for weight loss and holistic health.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="guitar" class="relative min-h-screen flex items-center px-10 md:px-24 py-20">
-        <div class="section-bg">
-            <img src="https://images.unsplash.com/photo-1510915361894-db8b60106cb1?q=80&w=2000" alt="Guitar Background">
-            <div class="overlay"></div>
-        </div>
-        <div class="w-full text-right flex flex-col items-end">
-            <span class="text-red-600 heading-font text-[10px] tracking-[0.5em]">Dept. 04</span>
-            <h2 class="heading-font text-5xl md:text-8xl mt-6 mb-12 text-white">GUITAR</h2>
-            <div class="teacher-card flex flex-col sm:flex-row-reverse gap-6 items-center text-right">
-                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200" class="w-24 h-24 rounded-full border-2 border-red-600 object-cover shadow-2xl">
-                <div>
-                    <h4 class="heading-font text-sm text-white">Rahul Sen</h4>
-                    <p class="text-[9px] text-red-600 font-bold uppercase tracking-widest mb-3">Music Lead</p>
-                    <p class="text-[11px] text-gray-400 leading-relaxed italic">Mastering the strings. Learn the art of guitar from a professional musician.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="admission" class="py-40 bg-black flex flex-col items-center px-6">
+    <section id="admission" class="py-20 md:py-40 bg-black flex flex-col items-center px-6">
         <div class="w-full max-w-3xl text-center">
-            <h2 class="heading-font text-5xl md:text-7xl mb-16 italic font-bold text-white">ADMISSION <br> PORTAL.</h2>
+            <h2 class="heading-font text-4xl md:text-7xl mb-10 md:mb-16 italic font-bold text-white">ADMISSION <br> PORTAL.</h2>
             
-            <form id="detailedForm" class="space-y-10 text-left bg-zinc-900/50 p-10 rounded-[40px] border border-zinc-800 backdrop-blur-xl">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <input type="text" id="name" placeholder="STUDENT FULL NAME" class="w-full bg-transparent border-b border-zinc-800 py-4 outline-none focus:border-red-600 text-white text-[10px] tracking-widest uppercase" required>
-                    <input type="tel" id="phone" placeholder="STUDENT/WHATSAPP NO." class="w-full bg-transparent border-b border-zinc-800 py-4 outline-none focus:border-red-600 text-white text-[10px] tracking-widest uppercase" required>
+            <form id="detailedForm" class="space-y-6 md:space-y-10 text-left bg-zinc-900/50 p-6 md:p-10 rounded-[30px] md:rounded-[40px] border border-zinc-800 backdrop-blur-xl">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+                    <input type="text" id="name" placeholder="STUDENT FULL NAME" class="w-full bg-transparent border-b border-zinc-800 py-3 md:py-4 outline-none focus:border-red-600 text-white text-[10px] tracking-widest uppercase">
+                    <input type="tel" id="phone" placeholder="STUDENT/WHATSAPP NO." class="w-full bg-transparent border-b border-zinc-800 py-3 md:py-4 outline-none focus:border-red-600 text-white text-[10px] tracking-widest uppercase">
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <input type="text" id="parentName" placeholder="FATHER'S / MOTHER'S NAME" class="w-full bg-transparent border-b border-zinc-800 py-4 outline-none focus:border-red-600 text-white text-[10px] tracking-widest uppercase">
-                    <input type="text" id="address" placeholder="FULL RESIDENTIAL ADDRESS" class="w-full bg-transparent border-b border-zinc-800 py-4 outline-none focus:border-red-600 text-white text-[10px] tracking-widest uppercase">
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <select id="course" class="w-full bg-transparent border-b border-zinc-800 py-4 outline-none focus:border-red-600 text-zinc-500 text-[10px] tracking-widest uppercase">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+                    <select id="course" class="w-full bg-transparent border-b border-zinc-800 py-3 md:py-4 outline-none focus:border-red-600 text-zinc-500 text-[10px] tracking-widest uppercase">
                         <option value="">SELECT COURSE</option>
                         <option value="Dance">Dance</option>
                         <option value="Arts">Fine Arts</option>
                         <option value="Zumba">Zumba</option>
                         <option value="Guitar">Guitar</option>
                     </select>
-                    <div class="relative">
-                        <label class="text-[9px] text-zinc-500 block mb-2 tracking-widest uppercase">Identity Proof (Aadhar/PAN)</label>
-                        <input type="file" id="document" class="w-full text-[10px] text-zinc-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-[10px] file:font-semibold file:bg-zinc-800 file:text-white hover:file:bg-red-600 cursor-pointer">
-                    </div>
+                    <input type="text" id="address" placeholder="FULL RESIDENTIAL ADDRESS" class="w-full bg-transparent border-b border-zinc-800 py-3 md:py-4 outline-none focus:border-red-600 text-white text-[10px] tracking-widest uppercase">
                 </div>
-                <button type="button" onclick="sendDetailedInquiry()" class="w-full bg-white text-black py-8 heading-font font-bold text-[10px] tracking-[0.5em] hover:bg-red-600 hover:text-white transition shadow-2xl">Confirm Enrollment</button>
+                <button type="button" onclick="sendDetailedInquiry()" class="w-full bg-white text-black py-6 md:py-8 heading-font font-bold text-[9px] md:text-[10px] tracking-[0.5em] hover:bg-red-600 hover:text-white transition">Confirm Enrollment</button>
             </form>
         </div>
     </section>
 
-    <footer class="p-20 text-center border-t border-zinc-900 bg-black">
-        <p class="text-zinc-700 text-[10px] uppercase tracking-[0.8em] mb-4">&copy; 2026 BEATSTREET ARTS COLLECTIVE. KALYANI.</p>
-        <p class="text-[9px] tracking-[0.3em] text-zinc-500 uppercase">Architected & Developed by <span class="text-white font-bold">Abhay Basfore</span></p>
+    <footer class="p-10 md:p-20 text-center border-t border-zinc-900 bg-black">
+        <p class="text-zinc-700 text-[8px] md:text-[10px] uppercase tracking-[0.4em] md:tracking-[0.8em] mb-4">&copy; 2026 BEATSTREET ARTS COLLECTIVE.</p>
+        <p class="text-[8px] tracking-[0.2em] text-zinc-500 uppercase">Architected & Developed by <span class="text-white font-bold">Abhay Basfore</span></p>
     </footer>
 
     <script>
-        const dot = document.querySelector(".cursor-dot");
-        const outline = document.querySelector(".cursor-outline");
-        window.addEventListener("mousemove", (e) => {
-            gsap.to(dot, {x: e.clientX, y: e.clientY, duration: 0.1});
-            gsap.to(outline, {x: e.clientX - 17, y: e.clientY - 17, duration: 0.3});
-        });
-        gsap.from(".animate-title", { duration: 2, opacity: 0, y: 100, ease: "power4.out" });
+        // Desktop-only Cursor Script
+        if (window.innerWidth >= 1024) {
+            const dot = document.querySelector(".cursor-dot");
+            const outline = document.querySelector(".cursor-outline");
+            window.addEventListener("mousemove", (e) => {
+                gsap.to(dot, {x: e.clientX, y: e.clientY, duration: 0.1});
+                gsap.to(outline, {x: e.clientX - 17, y: e.clientY - 17, duration: 0.3});
+            });
+        }
+
+        gsap.from(".animate-title", { duration: 1.5, opacity: 0, y: 50, ease: "power4.out" });
 
         function sendDetailedInquiry() {
             const name = document.getElementById('name').value;
             const phone = document.getElementById('phone').value;
-            const parent = document.getElementById('parentName').value;
-            const addr = document.getElementById('address').value;
             const course = document.getElementById('course').value;
             const whatsappNumber = "919123740880";
             if(!name || !phone) { alert("Please fill mandatory fields."); return; }
-            const text = `*New Admission Form*%0A*Name:* ${name}%0A*Phone:* ${phone}%0A*Parent:* ${parent}%0A*Address:* ${addr}%0A*Course:* ${course}`;
+            const text = `*New Admission Form*%0A*Name:* ${name}%0A*Phone:* ${phone}%0A*Course:* ${course}`;
             window.open(`https://wa.me/${whatsappNumber}?text=${text}`, '_blank');
         }
     </script>
