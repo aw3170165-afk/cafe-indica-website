@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beatstreet Arts Academy | Premium Creative School</title>
+    <title>Beatstreet Arts Academy | Kalyani</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
@@ -11,6 +11,7 @@
     <style>
         :root { --accent: #ff0000; }
         body { font-family: 'Inter', sans-serif; background: #000; color: #fff; overflow-x: hidden; scroll-behavior: smooth; }
+        .heading-font { font-family: 'Syncopate', sans-serif; text-transform: uppercase; }
         
         /* Cursor logic for Desktop only */
         @media (min-width: 1024px) {
@@ -18,32 +19,28 @@
             .cursor-dot { width: 8px; height: 8px; background: var(--accent); position: fixed; border-radius: 50%; pointer-events: none; z-index: 10000; }
             .cursor-outline { width: 35px; height: 35px; border: 1px solid rgba(255,255,255,0.5); position: fixed; border-radius: 50%; pointer-events: none; z-index: 9999; transition: transform 0.15s ease-out; }
         }
-        
-        @media (max-width: 1023px) {
-            .cursor-dot, .cursor-outline { display: none; }
-        }
 
-        .heading-font { font-family: 'Syncopate', sans-serif; text-transform: uppercase; }
-        
+        /* Video Styling */
         .section-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; z-index: -1; }
-        .section-bg img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.35) contrast(1.1); }
-        .overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.9)); }
+        .section-bg video { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.4) contrast(1.1); }
+        .overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.8)); }
 
+        /* Teacher Card Blur Effect */
         .teacher-card { 
-            background: rgba(255, 255, 255, 0.05); 
-            backdrop-filter: blur(20px); 
+            background: rgba(255, 255, 255, 0.03); 
+            backdrop-filter: blur(15px); 
             border: 1px solid rgba(255, 255, 255, 0.1); 
-            padding: clamp(15px, 5vw, 25px); 
-            border-radius: 20px; 
+            padding: 20px; 
+            border-radius: 24px; 
             max-width: 100%;
-            width: 100%;
-            transition: 0.5s;
+            transition: 0.4s ease;
         }
-        @media (min-width: 768px) { .teacher-card { max-width: 480px; } }
-        .teacher-card:hover { border-color: var(--accent); transform: translateY(-5px); background: rgba(255, 255, 255, 0.08); }
+        .teacher-card:hover { border-color: var(--accent); background: rgba(255, 255, 255, 0.07); }
+
+        /* Custom Mobile Scrollbar for Nav */
+        .mobile-nav::-webkit-scrollbar { display: none; }
         
-        /* Smooth Entrance for Titles */
-        .animate-title { font-size: clamp(2.5rem, 10vw, 8rem); line-height: 0.9; }
+        .animate-title { font-size: clamp(2.5rem, 8vw, 7rem); line-height: 1; }
     </style>
 </head>
 <body>
@@ -51,76 +48,169 @@
     <div class="cursor-dot"></div>
     <div class="cursor-outline"></div>
 
-    <nav class="fixed w-full z-50 px-6 py-6 md:px-12 md:py-8 flex justify-between items-center mix-blend-difference text-white">
-        <div class="heading-font text-lg md:text-2xl font-bold tracking-tighter">B-STREET<span class="text-red-600">.</span></div>
-        <div class="hidden lg:flex gap-8 text-[9px] uppercase tracking-[0.4em] font-bold">
-            <a href="#dance" class="hover:text-red-600 transition">Dance</a>
-            <a href="#arts" class="hover:text-red-600 transition">Arts</a>
-            <a href="#zumba" class="hover:text-red-600 transition">Zumba</a>
-            <a href="#guitar" class="hover:text-red-600 transition">Guitar</a>
-            <a href="#admission" class="bg-red-600 px-5 py-2 hover:bg-white hover:text-black transition">Apply Now</a>
+    <nav class="fixed w-full z-[100] bg-black/50 backdrop-blur-md lg:bg-transparent lg:backdrop-blur-none">
+        <div class="px-6 py-4 lg:px-12 lg:py-8 flex flex-col lg:flex-row justify-between items-center gap-4">
+            <div class="heading-font text-xl md:text-2xl font-bold tracking-tighter mix-blend-difference">
+                B-STREET<span class="text-red-600">.</span>
+            </div>
+            
+            <div class="mobile-nav flex overflow-x-auto w-full lg:w-auto gap-6 pb-2 lg:pb-0 text-[10px] uppercase tracking-[0.3em] font-bold no-scrollbar justify-start lg:justify-end">
+                <a href="#dance" class="whitespace-nowrap hover:text-red-600 transition">Dance</a>
+                <a href="#arts" class="whitespace-nowrap hover:text-red-600 transition">Arts</a>
+                <a href="#zumba" class="whitespace-nowrap hover:text-red-600 transition">Zumba</a>
+                <a href="#yoga" class="whitespace-nowrap hover:text-red-600 transition">Yoga</a>
+                <a href="#guitar" class="whitespace-nowrap hover:text-red-600 transition">Guitar</a>
+                <a href="#admission" class="whitespace-nowrap text-red-600 lg:bg-red-600 lg:text-white lg:px-4 lg:py-1">Join Now</a>
+            </div>
         </div>
-        <a href="#admission" class="lg:hidden text-[10px] heading-font bg-red-600 px-4 py-2">Apply</a>
     </nav>
 
-    <section id="home" class="relative min-h-screen flex items-center px-6 md:px-24">
-        <div class="section-bg"><img src="https://images.unsplash.com/photo-1514525253361-bee8718a340b?q=80&w=2000" alt="Hero"></div>
+    <section id="home" class="relative h-screen flex items-center px-6 md:px-24">
+        <div class="section-bg">
+            <video autoplay loop muted playsinline>
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-fast-motion-light-trails-background-34533-large.mp4" type="video/mp4">
+            </video>
+        </div>
         <div class="overlay"></div>
-        <div class="max-w-5xl z-10">
-            <h1 class="heading-font animate-title mb-6 md:mb-8 text-white">THE ART <br> <span class="text-transparent" style="-webkit-text-stroke: 1px white;">COLLECTIVE.</span></h1>
-            <p class="text-gray-400 text-[8px] md:text-xs tracking-[0.4em] md:tracking-[0.6em] uppercase mb-10">Kalyani's Premier Multidisciplinary Academy.</p>
-            <a href="#admission" class="bg-red-600 text-white px-8 py-4 md:px-12 md:py-5 heading-font text-[9px] md:text-[10px] tracking-[0.4em] hover:bg-white hover:text-black transition inline-block">Start Your Journey</a>
+        <div class="z-10 mt-20">
+            <h1 class="heading-font animate-title mb-6">THE ART <br> <span class="text-transparent" style="-webkit-text-stroke: 1px white;">COLLECTIVE.</span></h1>
+            <p class="text-gray-400 text-[10px] tracking-[0.5em] uppercase mb-8">Kalyani's Premier Multidisciplinary Academy</p>
+            <a href="#admission" class="bg-red-600 px-10 py-4 heading-font text-[10px] tracking-[0.3em] hover:bg-white hover:text-black transition inline-block">Start Journey</a>
         </div>
     </section>
 
-    <section id="dance" class="relative min-h-screen flex items-center px-6 md:px-24 py-20">
-        <div class="section-bg"><img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?q=80&w=2000" alt="Dance"></div>
+    <section id="dance" class="relative min-h-screen flex items-center px-6 md:px-24 py-32">
+        <div class="section-bg">
+            <video autoplay loop muted playsinline>
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-man-dancing-breakdance-on-the-street-at-night-42283-large.mp4" type="video/mp4">
+            </video>
+        </div>
         <div class="overlay"></div>
         <div class="w-full z-10">
-            <span class="text-red-600 heading-font text-[9px] md:text-[10px] tracking-[0.5em]">Dept. 01</span>
-            <h2 class="heading-font text-4xl md:text-8xl mt-4 md:mt-6 mb-12 text-white">DANCE</h2>
-            <div class="teacher-card flex flex-col md:flex-row gap-6 items-center md:items-start">
-                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=200" class="w-20 h-20 md:w-24 md:h-24 rounded-full border-2 border-red-600 object-cover">
-                <div class="text-center md:text-left">
-                    <h4 class="heading-font text-sm text-white">Abhay Basfore</h4>
-                    <p class="text-[9px] text-red-600 font-bold uppercase tracking-widest mb-3">Lead Choreographer</p>
-                    <p class="text-[11px] text-gray-400 leading-relaxed italic">8+ years of stage experience. Master of Urban Hip-Hop & Freestyle Soul.</p>
+            <span class="text-red-600 heading-font text-[10px] tracking-[0.5em]">Dept. 01</span>
+            <h2 class="heading-font text-4xl md:text-7xl mt-4 mb-10">DANCE</h2>
+            <div class="teacher-card flex flex-col md:flex-row gap-6 items-center md:max-w-md">
+                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=200" class="w-20 h-20 rounded-full border-2 border-red-600 object-cover">
+                <div>
+                    <h4 class="heading-font text-sm">Abhay Basfore</h4>
+                    <p class="text-[9px] text-red-600 font-bold mb-2">Lead Choreographer</p>
+                    <p class="text-[11px] text-gray-300 italic">Urban Hip-Hop & Freestyle Specialist.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="admission" class="py-20 md:py-40 bg-black flex flex-col items-center px-6">
-        <div class="w-full max-w-3xl text-center">
-            <h2 class="heading-font text-4xl md:text-7xl mb-10 md:mb-16 italic font-bold text-white">ADMISSION <br> PORTAL.</h2>
-            
-            <form id="detailedForm" class="space-y-6 md:space-y-10 text-left bg-zinc-900/50 p-6 md:p-10 rounded-[30px] md:rounded-[40px] border border-zinc-800 backdrop-blur-xl">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-                    <input type="text" id="name" placeholder="STUDENT FULL NAME" class="w-full bg-transparent border-b border-zinc-800 py-3 md:py-4 outline-none focus:border-red-600 text-white text-[10px] tracking-widest uppercase">
-                    <input type="tel" id="phone" placeholder="STUDENT/WHATSAPP NO." class="w-full bg-transparent border-b border-zinc-800 py-3 md:py-4 outline-none focus:border-red-600 text-white text-[10px] tracking-widest uppercase">
+    <section id="arts" class="relative min-h-screen flex items-center px-6 md:px-24 py-32">
+        <div class="section-bg">
+            <video autoplay loop muted playsinline>
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-artist-painting-on-a-canvas-with-a-brush-41551-large.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="overlay"></div>
+        <div class="w-full z-10 lg:text-right flex flex-col lg:items-end">
+            <span class="text-red-600 heading-font text-[10px] tracking-[0.5em]">Dept. 02</span>
+            <h2 class="heading-font text-4xl md:text-7xl mt-4 mb-10">FINE ARTS</h2>
+            <div class="teacher-card flex flex-col md:flex-row-reverse gap-6 items-center md:max-w-md">
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200" class="w-20 h-20 rounded-full border-2 border-red-600 object-cover">
+                <div>
+                    <h4 class="heading-font text-sm">Arpita Das</h4>
+                    <p class="text-[9px] text-red-600 font-bold mb-2">Senior Art Mentor</p>
+                    <p class="text-[11px] text-gray-300 italic">Oil Painting & Charcoal Master.</p>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-                    <select id="course" class="w-full bg-transparent border-b border-zinc-800 py-3 md:py-4 outline-none focus:border-red-600 text-zinc-500 text-[10px] tracking-widest uppercase">
-                        <option value="">SELECT COURSE</option>
-                        <option value="Dance">Dance</option>
-                        <option value="Arts">Fine Arts</option>
-                        <option value="Zumba">Zumba</option>
-                        <option value="Guitar">Guitar</option>
-                    </select>
-                    <input type="text" id="address" placeholder="FULL RESIDENTIAL ADDRESS" class="w-full bg-transparent border-b border-zinc-800 py-3 md:py-4 outline-none focus:border-red-600 text-white text-[10px] tracking-widest uppercase">
+            </div>
+        </div>
+    </section>
+
+    <section id="zumba" class="relative min-h-screen flex items-center px-6 md:px-24 py-32">
+        <div class="section-bg">
+            <video autoplay loop muted playsinline>
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-group-of-friends-dancing-at-a-party-40356-large.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="overlay"></div>
+        <div class="w-full z-10">
+            <span class="text-red-600 heading-font text-[10px] tracking-[0.5em]">Dept. 03</span>
+            <h2 class="heading-font text-4xl md:text-7xl mt-4 mb-10">ZUMBA</h2>
+            <div class="teacher-card flex flex-col md:flex-row gap-6 items-center md:max-w-md">
+                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200" class="w-20 h-20 rounded-full border-2 border-red-600 object-cover">
+                <div>
+                    <h4 class="heading-font text-sm">Ritu Roy</h4>
+                    <p class="text-[9px] text-red-600 font-bold mb-2">Zumba Expert</p>
+                    <p class="text-[11px] text-gray-300 italic">High Energy Cardio & Dance Fitness.</p>
                 </div>
-                <button type="button" onclick="sendDetailedInquiry()" class="w-full bg-white text-black py-6 md:py-8 heading-font font-bold text-[9px] md:text-[10px] tracking-[0.5em] hover:bg-red-600 hover:text-white transition">Confirm Enrollment</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="yoga" class="relative min-h-screen flex items-center px-6 md:px-24 py-32">
+        <div class="section-bg">
+            <video autoplay loop muted playsinline>
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-woman-doing-yoga-on-a-wooden-floor-41604-large.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="overlay"></div>
+        <div class="w-full z-10 lg:text-right flex flex-col lg:items-end">
+            <span class="text-red-600 heading-font text-[10px] tracking-[0.5em]">Dept. 04</span>
+            <h2 class="heading-font text-4xl md:text-7xl mt-4 mb-10">YOGA</h2>
+            <div class="teacher-card flex flex-col md:flex-row-reverse gap-6 items-center md:max-w-md">
+                <img src="https://images.unsplash.com/photo-1594381898411-846e7d193883?auto=format&fit=crop&w=200" class="w-20 h-20 rounded-full border-2 border-red-600 object-cover">
+                <div>
+                    <h4 class="heading-font text-sm">Sneha Kapoor</h4>
+                    <p class="text-[9px] text-red-600 font-bold mb-2">Yoga Specialist</p>
+                    <p class="text-[11px] text-gray-300 italic">Meditation & Hatha Yoga Coach.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="guitar" class="relative min-h-screen flex items-center px-6 md:px-24 py-32">
+        <div class="section-bg">
+            <video autoplay loop muted playsinline>
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-rock-musician-playing-electric-guitar-41589-large.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="overlay"></div>
+        <div class="w-full z-10">
+            <span class="text-red-600 heading-font text-[10px] tracking-[0.5em]">Dept. 05</span>
+            <h2 class="heading-font text-4xl md:text-7xl mt-4 mb-10">GUITAR</h2>
+            <div class="teacher-card flex flex-col md:flex-row gap-6 items-center md:max-w-md">
+                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200" class="w-20 h-20 rounded-full border-2 border-red-600 object-cover">
+                <div>
+                    <h4 class="heading-font text-sm">Rahul Sen</h4>
+                    <p class="text-[9px] text-red-600 font-bold mb-2">Music Lead</p>
+                    <p class="text-[11px] text-gray-300 italic">Acoustic & Electric Guitar Mentor.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="admission" class="py-24 md:py-40 bg-black px-6">
+        <div class="max-w-3xl mx-auto text-center">
+            <h2 class="heading-font text-4xl md:text-6xl mb-12 italic font-bold">ADMISSION</h2>
+            <form class="space-y-6 text-left bg-zinc-900/40 p-8 rounded-[30px] border border-white/10">
+                <div class="grid md:grid-cols-2 gap-6">
+                    <input type="text" id="name" placeholder="NAME" class="w-full bg-transparent border-b border-white/20 py-3 outline-none focus:border-red-600 text-[10px] uppercase tracking-widest">
+                    <input type="tel" id="phone" placeholder="PHONE" class="w-full bg-transparent border-b border-white/20 py-3 outline-none focus:border-red-600 text-[10px] uppercase tracking-widest">
+                </div>
+                <select id="course" class="w-full bg-transparent border-b border-white/20 py-3 outline-none focus:border-red-600 text-[10px] text-zinc-500 uppercase tracking-widest">
+                    <option value="">SELECT COURSE</option>
+                    <option value="Dance">Dance</option>
+                    <option value="Arts">Fine Arts</option>
+                    <option value="Zumba">Zumba</option>
+                    <option value="Yoga">Yoga</option>
+                    <option value="Guitar">Guitar</option>
+                </select>
+                <button type="button" onclick="sendInquiry()" class="w-full bg-white text-black py-6 heading-font font-bold text-[10px] tracking-[0.4em] hover:bg-red-600 hover:text-white transition">Enroll Now</button>
             </form>
         </div>
     </section>
 
-    <footer class="p-10 md:p-20 text-center border-t border-zinc-900 bg-black">
-        <p class="text-zinc-700 text-[8px] md:text-[10px] uppercase tracking-[0.4em] md:tracking-[0.8em] mb-4">&copy; 2026 BEATSTREET ARTS COLLECTIVE.</p>
-        <p class="text-[8px] tracking-[0.2em] text-zinc-500 uppercase">Architected & Developed by <span class="text-white font-bold">Abhay Basfore</span></p>
+    <footer class="py-12 text-center bg-black border-t border-white/5">
+        <p class="text-zinc-600 text-[8px] uppercase tracking-[0.5em]">&copy; 2026 BEATSTREET KALYANI | BY ABHAY BASFORE</p>
     </footer>
 
     <script>
-        // Desktop-only Cursor Script
+        // Custom Cursor Logic
         if (window.innerWidth >= 1024) {
             const dot = document.querySelector(".cursor-dot");
             const outline = document.querySelector(".cursor-outline");
@@ -130,17 +220,17 @@
             });
         }
 
-        gsap.from(".animate-title", { duration: 1.5, opacity: 0, y: 50, ease: "power4.out" });
-
-        function sendDetailedInquiry() {
-            const name = document.getElementById('name').value;
-            const phone = document.getElementById('phone').value;
-            const course = document.getElementById('course').value;
-            const whatsappNumber = "919123740880";
-            if(!name || !phone) { alert("Please fill mandatory fields."); return; }
-            const text = `*New Admission Form*%0A*Name:* ${name}%0A*Phone:* ${phone}%0A*Course:* ${course}`;
-            window.open(`https://wa.me/${whatsappNumber}?text=${text}`, '_blank');
+        // WhatsApp Logic
+        function sendInquiry() {
+            const n = document.getElementById('name').value;
+            const p = document.getElementById('phone').value;
+            const c = document.getElementById('course').value;
+            if(!n || !p) { alert("Please fill fields"); return; }
+            window.open(`https://wa.me/919123740880?text=*New Admission*%0A*Name:* ${n}%0A*Course:* ${c}`);
         }
+
+        // Scroll Animation
+        gsap.from(".animate-title", { duration: 1.5, opacity: 0, y: 100, ease: "power4.out" });
     </script>
 </body>
 </html>
