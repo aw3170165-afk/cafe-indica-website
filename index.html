@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beatstreet Arts Academy | Premium Creative School</title>
+    <title>Beatstreet Arts Academy | Premium School</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
@@ -13,23 +13,15 @@
         body { font-family: 'Inter', sans-serif; background: #000; color: #fff; overflow-x: hidden; scroll-behavior: smooth; cursor: none; }
         .heading-font { font-family: 'Syncopate', sans-serif; text-transform: uppercase; }
         
-        /* Custom Cursor */
         .cursor-dot { width: 8px; height: 8px; background: var(--accent); position: fixed; border-radius: 50%; pointer-events: none; z-index: 10000; }
         .cursor-outline { width: 35px; height: 35px; border: 1px solid rgba(255,255,255,0.5); position: fixed; border-radius: 50%; pointer-events: none; z-index: 9999; transition: transform 0.15s ease-out; }
 
-        /* Full Screen Video Styling */
-        .video-wrapper { position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; z-index: -1; }
-        .video-wrapper video { min-width: 100%; min-height: 100%; object-fit: cover; filter: brightness(0.5) contrast(1.2); }
-        .video-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.8)); }
+        .video-wrapper { position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; z-index: -1; background-color: #111; }
+        .video-wrapper video, .video-wrapper img { min-width: 100%; min-height: 100%; object-fit: cover; filter: brightness(0.4) contrast(1.1); }
+        .video-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.9)); }
 
-        .teacher-card { background: rgba(255, 255, 255, 0.07); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.15); padding: 25px; border-radius: 15px; display: flex; align-items: center; gap: 20px; transition: 0.4s; }
-        .teacher-card:hover { transform: translateY(-5px); border-color: var(--accent); }
-
-        .social-float { position: fixed; right: 40px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 40px; z-index: 100; }
-        .social-link { writing-mode: vertical-rl; text-orientation: mixed; font-size: 11px; letter-spacing: 5px; color: #888; transition: 0.3s; font-weight: 700; }
-        .social-link:hover { color: var(--accent); }
-
-        @media (max-width: 768px) { body { cursor: auto; } .cursor-dot, .cursor-outline, .social-float { display: none; } }
+        .teacher-card { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.1); padding: 30px; border-radius: 20px; transition: 0.4s; }
+        .teacher-card:hover { border-color: var(--accent); transform: translateY(-5px); }
     </style>
 </head>
 <body>
@@ -37,139 +29,64 @@
     <div class="cursor-dot"></div>
     <div class="cursor-outline"></div>
 
-    <div class="social-float">
-        <a href="#" class="social-link">INSTAGRAM</a>
-        <a href="#" class="social-link">YOUTUBE</a>
-        <a href="#" class="social-link">WHATSAPP</a>
-    </div>
-
     <nav class="fixed w-full z-50 p-10 flex justify-between items-center mix-blend-difference">
-        <div class="heading-font text-2xl font-bold tracking-tighter">B-STREET<span class="text-red-600">.</span></div>
-        <div class="flex gap-12 text-[10px] uppercase tracking-[0.4em] font-bold">
-            <a href="#home" class="hover:text-red-500 transition">Main</a>
-            <a href="#dance" class="hover:text-red-500 transition">Dance</a>
-            <a href="#arts" class="hover:text-red-500 transition">Arts</a>
-            <a href="#fitness" class="hover:text-red-500 transition">Yoga</a>
-            <a href="#admission" class="border border-white px-5 py-2 hover:bg-white hover:text-black transition text-red-600">Apply Now</a>
+        <div class="heading-font text-2xl font-bold tracking-tighter text-white">B-STREET<span class="text-red-600">.</span></div>
+        <div class="flex gap-10 text-[10px] uppercase tracking-[0.4em] font-bold text-white">
+            <a href="#dance" class="hover:text-red-500">Dance</a>
+            <a href="#arts" class="hover:text-red-500">Arts</a>
+            <a href="#admission" class="border border-red-600 px-4 py-1 text-red-600 hover:bg-red-600 hover:text-white transition">Apply</a>
         </div>
     </nav>
 
     <section id="home" class="relative h-screen flex items-center px-10 md:px-24">
         <div class="video-wrapper">
-            <video autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&w=1500">
-                <source src="https://assets.mixkit.co/videos/preview/mixkit-ballerina-performing-in-a-dark-studio-4512-large.mp4" type="video/mp4">
-            </video>
+            <img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?q=80&w=2069&auto=format&fit=crop" alt="Hero Background">
             <div class="video-overlay"></div>
         </div>
         <div class="max-w-5xl">
-            <h1 class="heading-font text-6xl md:text-9xl leading-[0.9] mb-8 animate-title">
-                ELITE <br> <span class="text-transparent" style="-webkit-text-stroke: 1px white;">CREATIVES.</span>
-            </h1>
-            <p class="text-gray-300 text-xs md:text-sm mb-12 tracking-[0.5em] uppercase max-w-xl leading-relaxed">
-                Kalyani’s Premier Academy for Professional Dance, Fine Arts, and Wellness.
-            </p>
-            <a href="#admission" class="bg-red-600 text-white px-14 py-6 heading-font text-[11px] tracking-[0.4em] hover:bg-white hover:text-black transition">Start Journey</a>
+            <h1 class="heading-font text-6xl md:text-9xl mb-8 animate-title">ELITE <br> <span class="text-transparent" style="-webkit-text-stroke: 1px white;">ARTS.</span></h1>
+            <p class="text-gray-400 text-xs tracking-[0.5em] uppercase mb-10">Kalyani's Premier Arts School.</p>
+            <a href="#admission" class="bg-red-600 text-white px-12 py-5 heading-font text-[10px] tracking-[0.4em] hover:bg-white hover:text-black transition">Enroll Now</a>
         </div>
     </section>
 
     <section id="dance" class="relative min-h-screen flex items-center px-10 md:px-24 py-20">
         <div class="video-wrapper">
-            <video autoplay muted loop playsinline>
-                <source src="https://assets.mixkit.co/videos/preview/mixkit-break-dancer-performing-under-neon-lights-41221-large.mp4" type="video/mp4">
-            </video>
+            <img src="https://images.unsplash.com/photo-1547153760-18fc86324498?q=80&w=1974&auto=format&fit=crop" alt="Dance Background">
             <div class="video-overlay"></div>
         </div>
-        <div class="w-full flex flex-col md:flex-row justify-between items-center">
-            <div class="animate-on-scroll">
-                <span class="text-red-600 heading-font text-[10px] tracking-[0.6em]">Department 01</span>
-                <h2 class="heading-font text-5xl md:text-8xl mt-6 mb-10">MASTER <br> DANCE</h2>
-                <div class="teacher-card">
-                    <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=150" class="w-20 h-20 rounded-full border-2 border-red-600 object-cover">
-                    <div>
-                        <h4 class="heading-font text-sm">Abhay Basfore</h4>
-                        <p class="text-[10px] text-gray-400 uppercase tracking-widest mt-1">Lead Choreographer</p>
-                    </div>
+        <div>
+            <span class="text-red-600 heading-font text-[10px] tracking-[0.5em]">Dept. 01</span>
+            <h2 class="heading-font text-5xl md:text-8xl mt-6 mb-12">DANCE</h2>
+            <div class="teacher-card flex gap-6 items-center">
+                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=150" class="w-20 h-20 rounded-full border-2 border-red-600">
+                <div>
+                    <h4 class="heading-font text-sm">Abhay Basfore</h4>
+                    <p class="text-[10px] text-gray-400 uppercase tracking-widest italic">The soul of movement. Master Choreographer with 8+ years experience.</p>
                 </div>
             </div>
-            <div class="max-w-sm text-right hidden md:block">
-                <p class="text-gray-400 text-[11px] tracking-[0.4em] uppercase leading-loose italic font-light">
-                    Transforming movement into poetry. From basic rhythm to professional stage performance.
-                </p>
-            </div>
         </div>
     </section>
 
-    <section id="arts" class="relative min-h-screen flex items-center px-10 md:px-24 py-20">
-        <div class="video-wrapper">
-            <img src="https://images.unsplash.com/photo-1547891319-184a7df15620?auto=format&fit=crop&w=1600" alt="Arts Background">
-            <div class="video-overlay" style="background: rgba(0,0,0,0.7);"></div>
-        </div>
-        <div class="w-full flex flex-col md:flex-row-reverse justify-between items-center">
-            <div class="text-right">
-                <span class="text-red-600 heading-font text-[10px] tracking-[0.6em]">Department 02</span>
-                <h2 class="heading-font text-5xl md:text-8xl mt-6 mb-10">FINE <br> ARTS</h2>
-                <div class="teacher-card flex-row-reverse">
-                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150" class="w-20 h-20 rounded-full border-2 border-red-600 object-cover">
-                    <div class="text-right">
-                        <h4 class="heading-font text-sm">Master Artist</h4>
-                        <p class="text-[10px] text-gray-400 uppercase tracking-widest mt-1">Senior Art Mentor</p>
-                    </div>
-                </div>
-            </div>
-            <div class="max-w-sm text-left hidden md:block text-gray-400 text-[11px] tracking-[0.4em] uppercase leading-loose italic font-light">
-                Discover your soul on canvas. Specialized training in Oil Painting and Modern Illustration.
-            </div>
-        </div>
+    <section id="admission" class="py-40 bg-black flex flex-col items-center px-6">
+        <h2 class="heading-font text-5xl md:text-7xl mb-16 italic font-bold">JOIN US.</h2>
+        <form class="w-full max-w-xl space-y-10">
+            <input type="text" id="name" placeholder="NAME" class="w-full bg-transparent border-b border-zinc-800 py-4 outline-none focus:border-red-600 text-white text-xs tracking-widest uppercase">
+            <input type="tel" id="phone" placeholder="PHONE" class="w-full bg-transparent border-b border-zinc-800 py-4 outline-none focus:border-red-600 text-white text-xs tracking-widest uppercase">
+            <button type="button" onclick="sendInquiry()" class="w-full bg-white text-black py-6 heading-font font-bold text-xs tracking-[0.5em] hover:bg-red-600 hover:text-white transition">Submit</button>
+        </form>
     </section>
 
-    <section id="fitness" class="relative min-h-screen flex items-center px-10 md:px-24 py-20">
-        <div class="video-wrapper">
-            <video autoplay muted loop playsinline>
-                <source src="https://assets.mixkit.co/videos/preview/mixkit-woman-doing-yoga-on-a-beach-at-sunset-41444-large.mp4" type="video/mp4">
-            </video>
-            <div class="video-overlay"></div>
-        </div>
-        <div class="w-full flex flex-col md:flex-row justify-between items-center">
-            <div>
-                <span class="text-red-600 heading-font text-[10px] tracking-[0.6em]">Department 03</span>
-                <h2 class="heading-font text-5xl md:text-8xl mt-6 mb-10">CORE <br> FLOW</h2>
-                <div class="teacher-card">
-                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150" class="w-20 h-20 rounded-full border-2 border-red-600 object-cover">
-                    <div>
-                        <h4 class="heading-font text-sm">Fitness Guru</h4>
-                        <p class="text-[10px] text-gray-400 uppercase tracking-widest mt-1">Holistic Wellness Expert</p>
-                    </div>
-                </div>
-            </div>
-            <div class="max-w-sm text-right hidden md:block text-gray-400 text-[11px] tracking-[0.4em] uppercase leading-loose italic font-light">
-                Balance. Strength. Serenity. High-energy fitness combined with ancient yoga practices.
-            </div>
-        </div>
-    </section>
-
-    <section id="admission" class="py-40 bg-black flex justify-center px-6">
-        <div class="w-full max-w-2xl text-center">
-            <h2 class="heading-font text-5xl md:text-7xl mb-16 italic font-bold">JOIN THE <br> TRIBE.</h2>
-            <form class="space-y-12 text-left">
-                <input type="text" id="name" placeholder="YOUR NAME" class="w-full bg-transparent border-b border-zinc-800 py-6 outline-none focus:border-red-600 transition text-white text-xs tracking-[0.3em] uppercase">
-                <input type="tel" id="phone" placeholder="PHONE" class="w-full bg-transparent border-b border-zinc-800 py-6 outline-none focus:border-red-600 transition text-white text-xs tracking-[0.3em] uppercase">
-                <select id="course" class="w-full bg-transparent border-b border-zinc-800 py-6 outline-none focus:border-red-600 transition text-zinc-600 text-[10px] tracking-[0.3em] uppercase">
-                    <option value="">SELECT COURSE</option>
-                    <option value="Dance">Dance Studio</option>
-                    <option value="Arts">Fine Arts Gallery</option>
-                    <option value="Yoga">Yoga & Fitness</option>
-                </select>
-                <button type="button" onclick="sendInquiry()" class="w-full bg-white text-black py-8 heading-font font-bold text-xs tracking-[0.6em] hover:bg-red-600 hover:text-white transition shadow-2xl">Submit Enrollment</button>
-            </form>
-        </div>
-    </section>
-
-    <footer class="p-24 text-center text-zinc-800 text-[10px] uppercase tracking-[1em] border-t border-zinc-900">
-        &copy; 2026 BEATSTREET ARTS COLLECTIVE.
+    <footer class="p-20 text-center border-t border-zinc-900 bg-black">
+        <p class="text-zinc-700 text-[10px] uppercase tracking-[0.8em] mb-4">
+            &copy; 2026 BEATSTREET ARTS ACADEMY.
+        </p>
+        <p class="text-[9px] tracking-[0.3em] text-zinc-500 uppercase">
+            Architected & Developed by <span class="text-white font-bold hover:text-red-600 transition">Abhay Basfore</span>
+        </p>
     </footer>
 
     <script>
-        // Custom Cursor Logic
         const dot = document.querySelector(".cursor-dot");
         const outline = document.querySelector(".cursor-outline");
         window.addEventListener("mousemove", (e) => {
@@ -177,22 +94,16 @@
             gsap.to(outline, {x: e.clientX - 17, y: e.clientY - 17, duration: 0.3});
         });
 
-        // Intro GSAP Animation
-        gsap.from(".animate-title", { duration: 2.5, opacity: 0, y: 120, ease: "power4.out", skewY: 7 });
+        gsap.from(".animate-title", { duration: 2, opacity: 0, y: 100, ease: "power4.out" });
 
         function sendInquiry() {
             const name = document.getElementById('name').value;
             const phone = document.getElementById('phone').value;
-            const course = document.getElementById('course').value;
             const whatsappNumber = "919123740880";
-            if(!name || !phone) { alert("Please enter details."); return; }
-            const text = `Elite Inquiry%0AName: ${name}%0APhone: ${phone}%0ACourse: ${course}`;
+            if(!name || !phone) { alert("Details please."); return; }
+            const text = `Beatstreet Inquiry%0AName: ${name}%0APhone: ${phone}`;
             window.open(`https://wa.me/${whatsappNumber}?text=${text}`, '_blank');
         }
     </script>
 </body>
-</html> <video autoplay muted loop playsinline style="width:100%; height:100vh; object-fit:cover;">
-    <source src="https://v1.mixkit.co/videos/preview/mixkit-ballerina-performing-in-a-dark-studio-4512-large.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-</video>
-
+</html>
