@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beatstreet Kalakriti | Kalyani's Premium Arts Academy</title>
+    <title>Beatstreet x Kalakriti | Kalyani</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
@@ -13,28 +13,37 @@
         body { font-family: 'Inter', sans-serif; background: #000; color: #fff; overflow-x: hidden; scroll-behavior: smooth; }
         .heading-font { font-family: 'Syncopate', sans-serif; text-transform: uppercase; }
         
+        /* Cursor logic */
         @media (min-width: 1024px) {
             body { cursor: none; }
             .cursor-dot { width: 8px; height: 8px; background: var(--accent); position: fixed; border-radius: 50%; pointer-events: none; z-index: 10000; }
             .cursor-outline { width: 35px; height: 35px; border: 1px solid rgba(255,255,255,0.5); position: fixed; border-radius: 50%; pointer-events: none; z-index: 9999; transition: transform 0.15s ease-out; }
         }
 
+        /* High Visibility Background Styling */
         .section-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; z-index: -1; }
-        .section-bg img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.4) contrast(1.1); }
-        .overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.9)); }
+        .section-bg video, .section-bg img { 
+            width: 100%; height: 100%; object-fit: cover; 
+            filter: brightness(0.7) contrast(1.1); /* Brighter for better visibility */
+            opacity: 0.9; 
+        }
+        .overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.6)); }
 
+        /* Modern Glassmorphism Card */
         .teacher-card { 
             background: rgba(255, 255, 255, 0.05); 
-            backdrop-filter: blur(15px); 
-            border: 1px solid rgba(255, 255, 255, 0.1); 
-            padding: 25px; 
-            border-radius: 28px; 
-            transition: all 0.4s ease;
+            backdrop-filter: blur(10px); 
+            border: 1px solid rgba(255, 255, 255, 0.15); 
+            padding: 30px; 
+            border-radius: 20px; 
+            transition: 0.4s ease;
         }
-        .teacher-card:hover { border-color: var(--accent); transform: translateY(-10px); }
 
-        .animate-title { font-size: clamp(2.2rem, 9vw, 7.5rem); line-height: 0.9; }
-        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .animate-title { font-size: clamp(2rem, 7vw, 6rem); line-height: 1.1; }
+        
+        /* Marquee Animation */
+        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .animate-marquee { animation: marquee 25s linear infinite; display: flex; width: max-content; }
     </style>
 </head>
 <body>
@@ -42,156 +51,102 @@
     <div class="cursor-dot"></div>
     <div class="cursor-outline"></div>
 
-    <nav class="fixed w-full z-[100] bg-black/60 backdrop-blur-xl lg:bg-transparent lg:backdrop-blur-none transition-all">
-        <div class="px-6 py-4 lg:px-12 lg:py-8 flex flex-col lg:flex-row justify-between items-center gap-4">
-            <div class="heading-font text-lg md:text-2xl font-bold tracking-tighter">
-                BEATSTREET <span class="text-red-600">KALAKRITI.</span>
+    <nav class="fixed w-full z-[100] bg-black/40 backdrop-blur-md">
+        <div class="px-6 py-4 lg:px-12 flex justify-between items-center">
+            <div class="heading-font text-xl font-bold tracking-tighter">
+                B-STREET<span class="text-red-600">.</span>
             </div>
-            
-            <div class="mobile-nav flex items-center overflow-x-auto w-full lg:w-auto gap-6 pb-2 lg:pb-0 text-[9px] uppercase tracking-[0.4em] font-bold no-scrollbar">
-                <a href="#dance" class="hover:text-red-600 shrink-0">Dance</a>
-                <a href="#arts" class="hover:text-red-600 shrink-0">Arts</a>
-                <a href="#zumba" class="hover:text-red-600 shrink-0">Zumba</a>
-                <a href="#yoga" class="hover:text-red-600 shrink-0">Yoga</a>
-                <a href="#guitar" class="hover:text-red-600 shrink-0">Guitar</a>
-                <a href="https://wa.me/916291188043?text=Hi, I need support regarding Beatstreet Kalakriti" target="_blank" class="bg-red-600 text-white px-5 py-2 shrink-0 rounded-full hover:bg-white hover:text-black transition flex items-center gap-2">
-                    Contact Support
-                </a>
+            <div class="hidden lg:flex gap-8 text-[10px] uppercase tracking-[0.3em] font-bold">
+                <a href="#dance" class="hover:text-red-600 transition">Dance</a>
+                <a href="#admission" class="hover:text-red-600 transition">Admission</a>
+                <a href="#" class="text-red-600 border border-red-600 px-4 py-1">Contact</a>
             </div>
         </div>
     </nav>
 
     <section id="home" class="relative h-screen flex items-center px-6 md:px-24">
         <div class="section-bg">
-            <img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?q=80&w=2000" alt="Home">
+            <video autoplay loop muted playsinline>
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-fast-motion-light-trails-background-34533-large.mp4" type="video/mp4">
+            </video>
         </div>
         <div class="overlay"></div>
-        <div class="z-10 mt-12">
-            <h1 class="heading-font animate-title mb-8">ART IN <br> <span class="text-transparent" style="-webkit-text-stroke: 1px white;">MOTION.</span></h1>
-            <p class="text-gray-400 text-[9px] md:text-xs tracking-[0.6em] uppercase mb-10">Kalyani's Premier Center for Creative Excellence.</p>
-            <a href="#admission" class="bg-red-600 text-white px-10 py-5 heading-font text-[10px] tracking-[0.4em] hover:bg-white hover:text-black transition inline-block">Explore Classes</a>
+        <div class="z-10">
+            <h1 class="heading-font animate-title mb-6">
+                BEATSTREET <br> 
+                <span class="text-red-600">x KALAKRITI</span>
+            </h1>
+            <p class="text-gray-200 text-[10px] tracking-[0.5em] uppercase mb-8 bg-black/30 inline-block p-2">Kalyani's Premier Art School</p>
+            <br>
+            <a href="#admission" class="bg-red-600 px-10 py-4 heading-font text-[10px] tracking-[0.3em] hover:bg-white hover:text-black transition inline-block">Join the Academy</a>
         </div>
     </section>
 
-    <section id="dance" class="relative min-h-screen flex items-center px-6 md:px-24 py-32">
-        <div class="section-bg"><img src="https://images.unsplash.com/photo-1535525153412-5a42439a210d?q=80&w=2000"></div>
-        <div class="overlay"></div>
-        <div class="w-full z-10">
-            <span class="text-red-600 heading-font text-[10px] tracking-[0.5em]">Dept. 01</span>
-            <h2 class="heading-font text-5xl md:text-8xl mt-4 mb-12">DANCE</h2>
-            <div class="teacher-card flex flex-col md:flex-row gap-6 items-center md:max-w-md">
-                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=200" class="w-20 h-20 rounded-full border-2 border-red-600 object-cover">
-                <div>
-                    <h4 class="heading-font text-sm">Abhay Basfore</h4>
-                    <p class="text-[11px] text-gray-300 italic">Hip-Hop & Urban Specialist.</p>
+    <div class="py-8 bg-red-600 overflow-hidden border-y border-white/10 my-10">
+        <div class="flex whitespace-nowrap animate-marquee">
+            <span class="heading-font text-3xl mx-10 text-black">DANCE • YOGA • ZUMBA • GUITAR • FINE ARTS • </span>
+            <span class="heading-font text-3xl mx-10 text-black">DANCE • YOGA • ZUMBA • GUITAR • FINE ARTS • </span>
+        </div>
+    </div>
+
+    <section id="admission" class="relative min-h-screen py-24 px-6 md:px-24 flex items-center justify-center bg-black">
+        <div class="teacher-card w-full max-w-3xl z-10">
+            <div class="text-center mb-10">
+                <h2 class="heading-font text-3xl mb-2 tracking-widest">Enrollment Form</h2>
+                <p class="text-gray-400 text-[10px] uppercase tracking-widest">Start your creative journey with us</p>
+            </div>
+            
+            <form class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="flex flex-col gap-2">
+                    <label class="text-[10px] uppercase tracking-widest text-red-600 font-bold">Student Name</label>
+                    <input type="text" placeholder="Enter full name" class="bg-white/5 border-b border-white/20 p-3 outline-none focus:border-red-600 transition">
                 </div>
-            </div>
-        </div>
-    </section>
 
-    <section id="arts" class="relative min-h-screen flex items-center px-6 md:px-24 py-32">
-        <div class="section-bg"><img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?q=80&w=2000"></div>
-        <div class="overlay"></div>
-        <div class="w-full z-10 lg:text-right flex flex-col lg:items-end">
-            <span class="text-red-600 heading-font text-[10px] tracking-[0.5em]">Dept. 02</span>
-            <h2 class="heading-font text-5xl md:text-8xl mt-4 mb-12">FINE ARTS</h2>
-            <div class="teacher-card flex flex-col md:flex-row-reverse gap-6 items-center md:max-w-md">
-                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200" class="w-20 h-20 rounded-full border-2 border-red-600 object-cover">
-                <div>
-                    <h4 class="heading-font text-sm">Arpita Das</h4>
-                    <p class="text-[11px] text-gray-300 italic">Oil Painting & Sketching Master.</p>
+                <div class="flex flex-col gap-2">
+                    <label class="text-[10px] uppercase tracking-widest text-red-600 font-bold">Parents/Guardian Name</label>
+                    <input type="text" placeholder="Enter parents name" class="bg-white/5 border-b border-white/20 p-3 outline-none focus:border-red-600 transition">
                 </div>
-            </div>
-        </div>
-    </section>
 
-    <section id="zumba" class="relative min-h-screen flex items-center px-6 md:px-24 py-32">
-        <div class="section-bg"><img src="https://images.unsplash.com/photo-1524594152303-9fd13543fe6e?q=80&w=2000"></div>
-        <div class="overlay"></div>
-        <div class="w-full z-10">
-            <h2 class="heading-font text-5xl md:text-8xl mt-4 mb-12">ZUMBA</h2>
-            <div class="teacher-card flex flex-col md:flex-row gap-6 items-center md:max-w-md">
-                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200" class="w-20 h-20 rounded-full border-2 border-red-600 object-cover">
-                <div><h4 class="heading-font text-sm">Ritu Roy</h4></div>
-            </div>
-        </div>
-    </section>
-
-    <section id="yoga" class="relative min-h-screen flex items-center px-6 md:px-24 py-32">
-        <div class="section-bg"><img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=2000"></div>
-        <div class="overlay"></div>
-        <div class="w-full z-10 lg:text-right flex flex-col lg:items-end">
-            <h2 class="heading-font text-5xl md:text-8xl mt-4 mb-12">YOGA</h2>
-            <div class="teacher-card flex flex-col md:flex-row-reverse gap-6 items-center md:max-w-md">
-                <img src="https://images.unsplash.com/photo-1594381898411-846e7d193883?auto=format&fit=crop&w=200" class="w-20 h-20 rounded-full border-2 border-red-600 object-cover">
-                <div><h4 class="heading-font text-sm">Sneha Kapoor</h4></div>
-            </div>
-        </div>
-    </section>
-
-    <section id="guitar" class="relative min-h-screen flex items-center px-6 md:px-24 py-32">
-        <div class="section-bg"><img src="https://images.unsplash.com/photo-1510915361894-db8b60106cb1?q=80&w=2000"></div>
-        <div class="overlay"></div>
-        <div class="w-full z-10">
-            <h2 class="heading-font text-5xl md:text-8xl mt-4 mb-12">GUITAR</h2>
-            <div class="teacher-card flex flex-col md:flex-row gap-6 items-center md:max-w-md">
-                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200" class="w-20 h-20 rounded-full border-2 border-red-600 object-cover">
-                <div><h4 class="heading-font text-sm">Rahul Sen</h4></div>
-            </div>
-        </div>
-    </section>
-
-    <section id="admission" class="py-32 md:py-48 bg-black px-6">
-        <div class="max-w-4xl mx-auto text-center">
-            <h2 class="heading-font text-4xl md:text-8xl mb-16 italic font-bold">ADMISSION.</h2>
-            <form class="space-y-8 text-left bg-zinc-900/30 p-10 rounded-[40px] border border-white/5 backdrop-blur-3xl shadow-2xl">
-                <div class="grid md:grid-cols-2 gap-10">
-                    <input type="text" id="stuName" placeholder="Full Student Name" class="w-full bg-transparent border-b border-white/10 py-4 outline-none focus:border-red-600 text-[11px] uppercase tracking-widest">
-                    <input type="tel" id="stuPhone" placeholder="WhatsApp Number" class="w-full bg-transparent border-b border-white/10 py-4 outline-none focus:border-red-600 text-[11px] uppercase tracking-widest">
+                <div class="flex flex-col gap-2">
+                    <label class="text-[10px] uppercase tracking-widest text-red-600 font-bold">Phone Number</label>
+                    <input type="tel" placeholder="+91 00000 00000" class="bg-white/5 border-b border-white/20 p-3 outline-none focus:border-red-600 transition">
                 </div>
-                <select id="stuCourse" class="w-full bg-transparent border-b border-white/10 py-4 outline-none focus:border-red-600 text-[11px] text-zinc-500 uppercase tracking-widest appearance-none">
-                    <option value="">Choose Your Path</option>
-                    <option value="Dance">Dance</option>
-                    <option value="Arts">Fine Arts</option>
-                    <option value="Zumba">Zumba</option>
-                    <option value="Yoga">Yoga</option>
-                    <option value="Guitar">Guitar</option>
-                </select>
-                <button type="button" onclick="launchWhatsApp()" class="w-full bg-white text-black py-8 heading-font font-bold text-[11px] tracking-[0.5em] hover:bg-red-600 hover:text-white transition">Confirm Enrollment</button>
+
+                <div class="flex flex-col gap-2">
+                    <label class="text-[10px] uppercase tracking-widest text-red-600 font-bold">Identity Document (Aadhar/ID)</label>
+                    <input type="file" class="bg-white/5 border-b border-white/20 p-2 text-[10px] file:bg-red-600 file:border-none file:text-white file:px-3 file:py-1 file:rounded-full file:mr-4 file:cursor-pointer">
+                </div>
+
+                <div class="flex flex-col gap-2 md:col-span-2">
+                    <label class="text-[10px] uppercase tracking-widest text-red-600 font-bold">Select Course</label>
+                    <select class="bg-black border border-white/20 p-3 outline-none focus:border-red-600 transition">
+                        <option>Dance (Hip-Hop/Contemporary)</option>
+                        <option>Yoga & Zumba</option>
+                        <option>Guitar Lessons</option>
+                        <option>Fine Arts & Drawing</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="md:col-span-2 bg-red-600 hover:bg-white hover:text-black transition p-5 heading-font text-[12px] tracking-[0.5em] mt-6">
+                    Submit Application
+                </button>
             </form>
         </div>
     </section>
 
-    <footer class="py-16 text-center bg-black border-t border-white/5">
-        <p class="text-zinc-700 text-[9px] uppercase tracking-[0.6em] mb-4">&copy; 2026 BEATSTREET KALAKRITI | KALYANI</p>
-        <p class="text-zinc-500 text-[8px] uppercase tracking-[0.2em]">Architected by <span class="text-white">Abhay Basfore</span></p>
+    <footer class="py-10 text-center border-t border-white/10">
+        <p class="text-[10px] tracking-[0.3em] text-gray-500 uppercase">© 2026 Beatstreet x Kalakriti Kalyani. All Rights Reserved.</p>
     </footer>
 
     <script>
-        if (window.innerWidth >= 1024) {
-            const dot = document.querySelector(".cursor-dot");
-            const outline = document.querySelector(".cursor-outline");
-            window.addEventListener("mousemove", (e) => {
-                gsap.to(dot, {x: e.clientX, y: e.clientY, duration: 0.1});
-                gsap.to(outline, {x: e.clientX - 17, y: e.clientY - 17, duration: 0.3});
-            });
-        }
+        // Cursor movement script
+        const dot = document.querySelector('.cursor-dot');
+        const outline = document.querySelector('.cursor-outline');
 
-        // Updated Logic with 6291188043
-        function launchWhatsApp() {
-            const n = document.getElementById('stuName').value;
-            const p = document.getElementById('stuPhone').value;
-            const c = document.getElementById('stuCourse').value;
-            const officialNumber = "916291188043"; // Main Number
-            
-            if(!n || !p) { alert("Please fill fields."); return; }
-
-            const message = `*NEW ENROLLMENT: BEATSTREET KALAKRITI*%0A%0A*Student:* ${n}%0A*WhatsApp:* ${p}%0A*Course:* ${c}`;
-            window.open(`https://wa.me/${officialNumber}?text=${message}`);
-            alert("Sent! Also available at 8100565299 if needed.");
-        }
-
-        gsap.from(".animate-title", { duration: 1.8, opacity: 0, y: 120, ease: "expo.out" });
+        window.addEventListener('mousemove', (e) => {
+            gsap.to(dot, { x: e.clientX, y: e.clientY, duration: 0 });
+            gsap.to(outline, { x: e.clientX - 14, y: e.clientY - 14, duration: 0.15 });
+        });
     </script>
 </body>
 </html>
