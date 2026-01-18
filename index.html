@@ -12,25 +12,28 @@
         :root { --accent: #ff0000; }
         body { font-family: 'Inter', sans-serif; background: #000; color: #fff; overflow-x: hidden; scroll-behavior: smooth; }
         .heading-font { font-family: 'Syncopate', sans-serif; text-transform: uppercase; }
-        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(25px); border: 1px solid rgba(255, 255, 255, 0.1); }
         
-        nav .nav-container { display: flex; flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
-        nav .nav-container::-webkit-scrollbar { display: none; }
-
+        /* Cursor logic - Desktop Only */
         @media (min-width: 1024px) {
             body { cursor: none; }
             .cursor-dot { width: 8px; height: 8px; background: var(--accent); position: fixed; border-radius: 50%; pointer-events: none; z-index: 10000; }
             .cursor-outline { width: 35px; height: 35px; border: 1px solid rgba(255,255,255,0.5); position: fixed; border-radius: 50%; pointer-events: none; z-index: 9999; transition: transform 0.15s ease-out; }
         }
 
+        /* High Visibility Backgrounds */
         .section-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; z-index: -1; }
-        .section-bg img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.4) contrast(1.1); }
-        .overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.8)); }
+        .section-bg img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.6) contrast(1.1); }
+        .overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.9)); }
 
-        .teacher-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(25px); border: 1px solid rgba(255, 255, 255, 0.1); padding: 30px; border-radius: 24px; transition: all 0.4s ease; }
-        .animate-title { font-size: clamp(1.8rem, 8vw, 6.5rem); line-height: 1.1; }
+        /* Responsive Cards */
+        .teacher-card { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1); padding: 25px; border-radius: 24px; }
+        .animate-title { font-size: clamp(2.2rem, 10vw, 6.5rem); line-height: 1.1; }
+        
+        /* Smooth Marquee */
         @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
         .animate-marquee { animation: marquee 20s linear infinite; display: flex; width: max-content; }
+
+        #success-msg { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 200; background: #ff0000; padding: 40px; border-radius: 20px; text-align: center; box-shadow: 0 0 50px rgba(255, 0, 0, 0.5); }
     </style>
 </head>
 <body>
@@ -38,171 +41,129 @@
     <div class="cursor-dot"></div>
     <div class="cursor-outline"></div>
 
-    <nav class="fixed w-full z-[100] bg-black/80 backdrop-blur-xl border-b border-white/5">
-        <div class="px-4 py-4 lg:px-12 flex justify-between items-center gap-4">
-            <div class="heading-font text-sm md:text-2xl font-bold tracking-tighter shrink-0">
+    <div id="success-msg">
+        <h3 class="heading-font text-2xl font-bold mb-2 text-white">Application Sent!</h3>
+        <p class="text-sm tracking-widest uppercase text-white font-bold">Connecting to WhatsApp...</p>
+    </div>
+
+    <nav class="fixed w-full z-[100] bg-black/40 backdrop-blur-lg border-b border-white/5">
+        <div class="px-5 py-4 lg:px-16 flex justify-between items-center w-full">
+            <div class="heading-font text-lg md:text-2xl font-bold tracking-tighter shrink-0">
                 B-STREET<span class="text-red-600">.</span>
             </div>
             
-            <div class="nav-container flex items-center gap-4 md:gap-8 text-[9px] md:text-[10px] uppercase tracking-[0.15em] font-bold">
-                <a href="#dance" class="hover:text-red-600 transition whitespace-nowrap">Dance</a>
-                <a href="#guitar" class="hover:text-red-600 transition whitespace-nowrap">Guitar</a>
-                <a href="#yoga" class="hover:text-red-600 transition whitespace-nowrap">Yoga</a>
-                <a href="#zumba" class="hover:text-red-600 transition whitespace-nowrap">Zumba</a>
-                <a href="#art" class="hover:text-red-600 transition whitespace-nowrap">Art</a>
-                <button onclick="toggleAuth()" id="loginBtn" class="hover:text-red-600 transition whitespace-nowrap">Login</button>
-                <button id="adminBtn" onclick="openAdmin()" class="hidden text-red-600 border border-red-600 px-2 py-1 font-bold">ADMIN</button>
+            <div class="flex items-center gap-3 md:gap-10 text-[7px] md:text-[10px] uppercase tracking-[0.1em] md:tracking-[0.2em] font-bold">
+                <a href="#dance" class="hover:text-red-600 transition hidden md:inline-block">Dance</a>
+                <a href="#fitness" class="hover:text-red-600 transition hidden md:inline-block">Yoga</a>
+                <a href="#music" class="hover:text-red-600 transition hidden md:inline-block">Music</a>
+                <a href="#arts" class="hover:text-red-600 transition hidden md:inline-block">Arts</a>
+                <a href="#admission" class="bg-red-600 px-3 py-2 md:px-6 md:py-3 text-white hover:bg-white hover:text-black transition-all">Enroll Now</a>
             </div>
         </div>
     </nav>
 
-    <div id="authModal" class="hidden fixed inset-0 z-[200] flex items-center justify-center bg-black/95 p-4">
-        <div class="glass w-full max-w-md p-8 rounded-3xl relative">
-            <button onclick="toggleAuth()" class="absolute top-4 right-6 text-2xl">&times;</button>
-            <h2 class="heading-font text-xl mb-6 text-red-600 text-center">User Access</h2>
-            <form class="space-y-4">
-                <input type="email" id="authEmail" placeholder="Email (admin@bstreet.com for admin)" class="w-full bg-white/5 border border-white/10 p-4 rounded-xl outline-none focus:border-red-600">
-                <input type="password" id="authPass" placeholder="Password" class="w-full bg-white/5 border border-white/10 p-4 rounded-xl outline-none focus:border-red-600">
-                <button type="button" onclick="handleAuth()" class="w-full bg-red-600 py-4 rounded-xl heading-font text-[10px] font-bold">Login / Register</button>
-            </form>
-        </div>
-    </div>
-
     <section id="home" class="relative h-[100svh] flex items-center px-6 md:px-24">
-        <div class="section-bg"><img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&q=80&w=2000" alt="Hero Image"></div>
+        <div class="section-bg"><img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&q=80&w=2000" alt="Home"></div>
         <div class="overlay"></div>
         <div class="z-10 mt-10">
-            <h1 class="heading-font animate-title mb-4">BEATSTREET <br> <span class="text-transparent" style="-webkit-text-stroke: 1.2px white;">x KALAKRITI</span></h1>
-            <p id="welcomeMsg" class="text-red-600 text-[10px] md:text-[12px] tracking-[0.4em] uppercase mb-8 font-bold">Kalyani's Ultimate Creative Destination</p>
-            <a href="#admission" class="bg-red-600 px-8 py-4 heading-font text-[9px] tracking-[0.3em] font-bold">Get Started</a>
+            <h1 class="heading-font animate-title mb-4">BEATSTREET <br> <span class="text-transparent" style="-webkit-text-stroke: 1px white;">x KALAKRITI</span></h1>
+            <p class="text-red-600 text-[10px] md:text-[12px] tracking-[0.4em] md:tracking-[0.6em] uppercase mb-8 font-bold">Kalyani's Creative Powerhouse</p>
+            <a href="#admission" class="bg-red-600 px-8 py-4 heading-font text-[10px] tracking-[0.3em] hover:bg-white hover:text-black transition inline-block border border-red-600">Start Journey</a>
         </div>
     </section>
 
-    <div class="py-5 bg-red-600 overflow-hidden border-y border-white/10">
-        <div class="flex whitespace-nowrap animate-marquee">
-            <span class="heading-font text-xl mx-10 text-black font-bold">Dance • Yoga • Zumba • Guitar • Fine Arts • </span>
-            <span class="heading-font text-xl mx-10 text-black font-bold">Dance • Yoga • Zumba • Guitar • Fine Arts • </span>
-        </div>
-    </div>
-
-    <section id="dance" class="relative min-h-screen flex items-center px-6 md:px-24">
-        <div class="section-bg"><img src="https://images.unsplash.com/photo-1547153760-18fc86324498?auto=format&fit=crop&q=80&w=2000" alt="Dance"></div>
+    <section id="dance" class="relative h-screen flex items-center px-6 md:px-24 border-t border-white/5">
+        <div class="section-bg"><img src="https://images.unsplash.com/photo-1535525153412-5a42439a210d?auto=format&q=80&w=2000" alt="Dance"></div>
         <div class="overlay"></div>
-        <div class="z-10 teacher-card max-w-lg">
-            <h2 class="heading-font text-3xl mb-4 text-red-600">Dance Academy</h2>
-            <p class="text-sm text-gray-300">Hip-hop, Contemporary, and Bollywood. Experience the rhythm.</p>
+        <div class="z-10">
+            <h2 class="heading-font text-3xl md:text-6xl mb-4">Dance <span class="text-red-600">Academy</span></h2>
+            <p class="max-w-md text-gray-300 text-xs md:text-sm leading-relaxed mb-8 uppercase tracking-widest font-semibold">Street, Hip-Hop & Contemporary. Express yourself through movement.</p>
         </div>
     </section>
 
-    <section id="guitar" class="relative min-h-screen flex items-center px-6 md:px-24">
-        <div class="section-bg"><img src="https://images.unsplash.com/photo-1510915228340-29c85a43dcfe?auto=format&fit=crop&q=80&w=2000" alt="Guitar"></div>
+    <section id="fitness" class="relative h-screen flex items-center px-6 md:px-24 border-t border-white/5">
+        <div class="section-bg"><img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&q=80&w=2000" alt="Yoga Fitness"></div>
         <div class="overlay"></div>
-        <div class="z-10 teacher-card max-w-lg ml-auto">
-            <h2 class="heading-font text-3xl mb-4 text-red-600">Music & Guitar</h2>
-            <p class="text-sm text-gray-300">Learn Acoustic and Electric guitar from the masters.</p>
+        <div class="z-10">
+            <h2 class="heading-font text-3xl md:text-6xl mb-4">Yoga & <span class="text-red-600">Zumba</span></h2>
+            <p class="max-w-md text-gray-300 text-xs md:text-sm leading-relaxed mb-8 uppercase tracking-widest font-semibold">Fitness redefined. Find your peace and energy with us.</p>
         </div>
     </section>
 
-    <section id="yoga" class="relative min-h-screen flex items-center px-6 md:px-24">
-        <div class="section-bg"><img src="https://images.unsplash.com/photo-1552196564-972d46380271?auto=format&fit=crop&q=80&w=2000" alt="Yoga"></div>
+    <section id="music" class="relative h-screen flex items-center px-6 md:px-24 border-t border-white/5">
+        <div class="section-bg"><img src="https://images.unsplash.com/photo-1510915228340-29c85a43dcfe?auto=format&q=80&w=2000" alt="Guitar"></div>
         <div class="overlay"></div>
-        <div class="z-10 teacher-card max-w-lg">
-            <h2 class="heading-font text-3xl mb-4 text-red-600">Yoga Wellness</h2>
-            <p class="text-sm text-gray-300">Peace of mind and physical flexibility. Morning batches available.</p>
+        <div class="z-10">
+            <h2 class="heading-font text-3xl md:text-6xl mb-4">Music <span class="text-red-600">& Guitar</span></h2>
+            <p class="max-w-md text-gray-300 text-xs md:text-sm leading-relaxed mb-8 uppercase tracking-widest font-semibold">Master the rhythm. Acoustic and Electric guitar classes available.</p>
         </div>
     </section>
 
-    <section id="zumba" class="relative min-h-screen flex items-center px-6 md:px-24">
-        <div class="section-bg"><img src="https://images.unsplash.com/photo-1518611012118-2969c63700b7?auto=format&fit=crop&q=80&w=2000" alt="Zumba"></div>
+    <section id="arts" class="relative h-screen flex items-center px-6 md:px-24 border-t border-white/5">
+        <div class="section-bg"><img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&q=80&w=2000" alt="Arts"></div>
         <div class="overlay"></div>
-        <div class="z-10 teacher-card max-w-lg ml-auto">
-            <h2 class="heading-font text-3xl mb-4 text-red-600">Zumba Fitness</h2>
-            <p class="text-sm text-gray-300">High energy, high fun. Keep yourself fit with dance.</p>
+        <div class="z-10">
+            <h2 class="heading-font text-3xl md:text-6xl mb-4">Fine <span class="text-red-600">Arts</span></h2>
+            <p class="max-w-md text-gray-300 text-xs md:text-sm leading-relaxed mb-8 uppercase tracking-widest font-semibold">Sketching, Painting & Creative Design. Bring imagination to life.</p>
         </div>
     </section>
 
-    <section id="art" class="relative min-h-screen flex items-center px-6 md:px-24 border-b border-white/10">
-        <div class="section-bg"><img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&q=80&w=2000" alt="Art"></div>
-        <div class="overlay"></div>
-        <div class="z-10 teacher-card max-w-lg">
-            <h2 class="heading-font text-3xl mb-4 text-red-600">Fine Arts</h2>
-            <p class="text-sm text-gray-300">Unleash your creativity. Drawing, Sketching, and Painting.</p>
-        </div>
-    </section>
-
-    <section id="admission" class="relative min-h-screen py-24 px-4 flex items-center justify-center bg-[#050505]">
-        <div class="teacher-card w-full max-w-3xl z-10 border-red-600/30">
-            <h2 class="heading-font text-center text-2xl mb-10 text-white tracking-widest">Admission Request</h2>
-            <form class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                <input type="text" id="adm_name" placeholder="Student Full Name" class="bg-white/5 border border-white/10 p-4 rounded-xl outline-none focus:border-red-600 text-sm">
-                <input type="tel" id="adm_phone" placeholder="Contact Number" class="bg-white/5 border border-white/10 p-4 rounded-xl outline-none focus:border-red-600 text-sm">
-                <select id="adm_course" class="bg-black border border-white/10 p-4 rounded-xl outline-none focus:border-red-600 text-sm">
-                    <option>Dance Academy</option><option>Guitar Class</option><option>Yoga</option><option>Zumba</option><option>Fine Arts</option>
+    <section id="admission" class="relative min-h-screen py-24 px-4 md:px-24 flex items-center justify-center bg-[#050505]">
+        <div class="teacher-card w-full max-w-3xl z-10">
+            <h2 class="heading-font text-xl md:text-3xl tracking-widest text-center mb-10 text-white">Enrollment Form</h2>
+            <form class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8">
+                <input type="text" id="stu_name" placeholder="Student Name" class="bg-white/5 border border-white/10 p-4 rounded-xl outline-none focus:border-red-600 text-sm transition-all">
+                <input type="text" id="parent_name" placeholder="Parent Name" class="bg-white/5 border border-white/10 p-4 rounded-xl outline-none focus:border-red-600 text-sm transition-all">
+                <input type="tel" id="mobile" placeholder="WhatsApp Number" class="bg-white/5 border border-white/10 p-4 rounded-xl outline-none focus:border-red-600 text-sm transition-all">
+                <select id="course_select" class="bg-black border border-white/10 p-4 rounded-xl outline-none focus:border-red-600 text-sm transition-all">
+                    <option>Dance Academy</option>
+                    <option>Yoga & Zumba</option>
+                    <option>Music/Guitar</option>
+                    <option>Fine Arts</option>
                 </select>
-                <select id="id_doc" class="bg-black border border-white/10 p-4 rounded-xl outline-none focus:border-red-600 text-sm">
-                    <option>Aadhar Card</option><option>Voter ID</option><option>School ID</option>
-                </select>
-                <button type="button" onclick="submitAdmission()" class="md:col-span-2 bg-red-600 py-5 rounded-xl heading-font text-[10px] font-bold tracking-widest">Confirm Admission</button>
+                <button type="button" onclick="sendWhatsApp()" class="md:col-span-2 bg-red-600 hover:bg-white hover:text-black transition-all py-5 rounded-xl heading-font text-[10px] md:text-[11px] tracking-[0.4em] font-bold">Submit via WhatsApp</button>
             </form>
         </div>
     </section>
 
-    <div id="adminPanel" class="hidden fixed inset-0 z-[300] bg-black p-6 md:p-20 overflow-y-auto">
-        <div class="flex justify-between items-center mb-10"><h1 class="heading-font text-3xl">Admin Records</h1><button onclick="closeAdmin()" class="bg-red-600 px-6 py-2 rounded-lg text-xs font-bold">Close</button></div>
-        <div class="glass p-6 rounded-2xl overflow-x-auto">
-            <table class="w-full text-left">
-                <thead class="text-red-500 text-[10px] uppercase border-b border-white/10">
-                    <tr><th class="pb-4 px-2">Name</th><th class="pb-4 px-2">Phone</th><th class="pb-4 px-2">Course</th><th class="pb-4 px-2">Document</th><th class="pb-4 px-2">Date</th></tr>
-                </thead>
-                <tbody id="adminTable" class="text-sm"></tbody>
-            </table>
-        </div>
-    </div>
+    <footer class="bg-black py-16 px-6 md:px-24 border-t border-white/10 text-center">
+        <h3 class="heading-font text-xl mb-4 italic text-red-600">Beatstreet x Kalakriti</h3>
+        <p class="text-[9px] md:text-[10px] text-gray-600 uppercase tracking-widest mb-4 font-bold">© 2026 All Rights Reserved</p>
+        <p class="text-[8px] md:text-[10px] text-gray-500 tracking-widest uppercase italic">Developed by <span class="text-white">Abhay Basfore</span></p>
+    </footer>
 
     <script>
-        function toggleAuth() { document.getElementById('authModal').classList.toggle('hidden'); }
-        
-        function handleAuth() {
-            const email = document.getElementById('authEmail').value;
-            if(!email) { alert("Please enter email!"); return; }
-            localStorage.setItem('user', email);
-            if(email === 'admin@bstreet.com') document.getElementById('adminBtn').classList.remove('hidden');
-            document.getElementById('welcomeMsg').innerText = `Welcome, ${email.split('@')[0]}!`;
-            toggleAuth();
-            alert("Login Successful!");
-        }
+        function sendWhatsApp() {
+            const name = document.getElementById('stu_name').value;
+            const parent = document.getElementById('parent_name').value;
+            const phone = document.getElementById('mobile').value;
+            const course = document.getElementById('course_select').value;
+            const targetNumber = "918100565299"; 
 
-        function submitAdmission() {
-            if(!localStorage.getItem('user')) { alert("Login required!"); toggleAuth(); return; }
-            const name = document.getElementById('adm_name').value;
-            const phone = document.getElementById('adm_phone').value;
-            const course = document.getElementById('adm_course').value;
-            const doc = document.getElementById('id_doc').value;
-
-            if(name && phone) {
-                const leads = JSON.parse(localStorage.getItem('leads') || '[]');
-                leads.push({name, phone, course, doc, date: new Date().toLocaleDateString()});
-                localStorage.setItem('leads', JSON.stringify(leads));
-                alert("Data saved to Admin Dashboard!");
-                window.open(`https://wa.me/918100565299?text=New Admission: ${name}, ${course}`, '_blank');
+            if(name && parent && phone) {
+                const popup = document.getElementById('success-msg');
+                popup.style.display = 'block';
+                gsap.from(popup, { scale: 0, opacity: 0, duration: 0.5, ease: "back.out(1.7)" });
+                
+                const message = `*New Admission Request*%0A%0A*Name:* ${name}%0A*Parent:* ${parent}%0A*Phone:* ${phone}%0A*Course:* ${course}`;
+                
+                setTimeout(() => {
+                    window.open(`https://wa.me/${targetNumber}?text=${message}`, '_blank');
+                    gsap.to(popup, { scale: 0, opacity: 0, duration: 0.5, onComplete: () => popup.style.display = 'none' });
+                }, 1500);
+            } else { 
+                alert("Kripya sabhi details bharein!"); 
             }
         }
 
-        function openAdmin() {
-            const leads = JSON.parse(localStorage.getItem('leads') || '[]');
-            document.getElementById('adminTable').innerHTML = leads.map(l => `
-                <tr class="border-b border-white/5"><td class="py-4 px-2">${l.name}</td><td class="px-2">${l.phone}</td><td class="px-2">${l.course}</td><td class="px-2">${l.doc}</td><td class="px-2">${l.date}</td></tr>
-            `).join('');
-            document.getElementById('adminPanel').classList.remove('hidden');
-        }
-        function closeAdmin() { document.getElementById('adminPanel').classList.add('hidden'); }
-
         const dot = document.querySelector('.cursor-dot');
         const outline = document.querySelector('.cursor-outline');
-        window.addEventListener('mousemove', (e) => {
-            gsap.to(dot, { x: e.clientX, y: e.clientY, duration: 0 });
-            gsap.to(outline, { x: e.clientX - 14, y: e.clientY - 14, duration: 0.15 });
-        });
+        if(window.innerWidth > 1024) {
+            window.addEventListener('mousemove', (e) => {
+                gsap.to(dot, { x: e.clientX, y: e.clientY, duration: 0 });
+                gsap.to(outline, { x: e.clientX - 14, y: e.clientY - 14, duration: 0.15 });
+            });
+        }
     </script>
 </body>
 </html>
