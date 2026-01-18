@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>B-STREET x KALAKRITI | Login & Admissions</title>
+    <title>Beatstreet x Kalakriti | Kalyani</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
@@ -12,16 +12,25 @@
         :root { --accent: #ff0000; }
         body { font-family: 'Inter', sans-serif; background: #000; color: #fff; overflow-x: hidden; scroll-behavior: smooth; }
         .heading-font { font-family: 'Syncopate', sans-serif; text-transform: uppercase; }
-        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(25px); border: 1px solid rgba(255, 255, 255, 0.1); }
         
+        nav .nav-container { display: flex; flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+        nav .nav-container::-webkit-scrollbar { display: none; }
+
         @media (min-width: 1024px) {
             body { cursor: none; }
             .cursor-dot { width: 8px; height: 8px; background: var(--accent); position: fixed; border-radius: 50%; pointer-events: none; z-index: 10000; }
             .cursor-outline { width: 35px; height: 35px; border: 1px solid rgba(255,255,255,0.5); position: fixed; border-radius: 50%; pointer-events: none; z-index: 9999; transition: transform 0.15s ease-out; }
         }
 
-        .section-bg img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.4); position: absolute; z-index: -1; }
-        .hidden-section { display: none; }
+        .section-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; z-index: -1; }
+        .section-bg img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.4) contrast(1.1); }
+        .overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.8)); }
+
+        .teacher-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(25px); border: 1px solid rgba(255, 255, 255, 0.1); padding: 30px; border-radius: 24px; transition: all 0.4s ease; }
+        .animate-title { font-size: clamp(1.8rem, 8vw, 6.5rem); line-height: 1.1; }
+        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .animate-marquee { animation: marquee 20s linear infinite; display: flex; width: max-content; }
     </style>
 </head>
 <body>
@@ -30,143 +39,164 @@
     <div class="cursor-outline"></div>
 
     <nav class="fixed w-full z-[100] bg-black/80 backdrop-blur-xl border-b border-white/5">
-        <div class="px-6 py-4 flex justify-between items-center">
-            <div class="heading-font text-lg font-bold">B-STREET<span class="text-red-600">.</span></div>
-            <div class="flex items-center gap-6">
-                <button onclick="toggleAuth('login')" class="text-[10px] uppercase font-bold tracking-widest hover:text-red-600">Login</button>
-                <button onclick="toggleAuth('register')" class="bg-red-600 px-4 py-2 text-[10px] uppercase font-bold tracking-widest hover:bg-white hover:text-black transition">Register</button>
-                <button id="adminBtn" onclick="openAdmin()" class="hidden text-red-600 text-[10px] font-bold">DASHBOARD</button>
+        <div class="px-4 py-4 lg:px-12 flex justify-between items-center gap-4">
+            <div class="heading-font text-sm md:text-2xl font-bold tracking-tighter shrink-0">
+                B-STREET<span class="text-red-600">.</span>
+            </div>
+            
+            <div class="nav-container flex items-center gap-4 md:gap-8 text-[9px] md:text-[10px] uppercase tracking-[0.15em] font-bold">
+                <a href="#dance" class="hover:text-red-600 transition whitespace-nowrap">Dance</a>
+                <a href="#guitar" class="hover:text-red-600 transition whitespace-nowrap">Guitar</a>
+                <a href="#yoga" class="hover:text-red-600 transition whitespace-nowrap">Yoga</a>
+                <a href="#zumba" class="hover:text-red-600 transition whitespace-nowrap">Zumba</a>
+                <a href="#art" class="hover:text-red-600 transition whitespace-nowrap">Art</a>
+                <button onclick="toggleAuth()" id="loginBtn" class="hover:text-red-600 transition whitespace-nowrap">Login</button>
+                <button id="adminBtn" onclick="openAdmin()" class="hidden text-red-600 border border-red-600 px-2 py-1 font-bold">ADMIN</button>
             </div>
         </div>
     </nav>
 
-    <div id="authModal" class="hidden fixed inset-0 z-[200] flex items-center justify-center bg-black/90 p-4">
+    <div id="authModal" class="hidden fixed inset-0 z-[200] flex items-center justify-center bg-black/95 p-4">
         <div class="glass w-full max-w-md p-8 rounded-3xl relative">
-            <button onclick="closeAuth()" class="absolute top-4 right-6 text-2xl">&times;</button>
-            <h2 id="authTitle" class="heading-font text-2xl mb-6 text-red-600 text-center">Login</h2>
-            <form id="authForm" class="space-y-4">
-                <input type="email" id="authEmail" placeholder="Email Address" class="w-full bg-white/5 border border-white/10 p-4 rounded-xl outline-none focus:border-red-600">
+            <button onclick="toggleAuth()" class="absolute top-4 right-6 text-2xl">&times;</button>
+            <h2 class="heading-font text-xl mb-6 text-red-600 text-center">User Access</h2>
+            <form class="space-y-4">
+                <input type="email" id="authEmail" placeholder="Email (admin@bstreet.com for admin)" class="w-full bg-white/5 border border-white/10 p-4 rounded-xl outline-none focus:border-red-600">
                 <input type="password" id="authPass" placeholder="Password" class="w-full bg-white/5 border border-white/10 p-4 rounded-xl outline-none focus:border-red-600">
-                <button type="button" onclick="handleAuth()" id="authSubmit" class="w-full bg-red-600 py-4 rounded-xl heading-font text-[10px] font-bold tracking-widest">Submit</button>
+                <button type="button" onclick="handleAuth()" class="w-full bg-red-600 py-4 rounded-xl heading-font text-[10px] font-bold">Login / Register</button>
             </form>
         </div>
     </div>
 
-    <section class="relative h-[100svh] flex items-center px-6 md:px-24">
-        <div class="section-bg"><img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&q=80&w=2000" alt="Dance"></div>
-        <div class="z-10">
-            <h1 class="heading-font text-5xl md:text-8xl mb-4">DANCE <br> <span class="text-transparent" style="-webkit-text-stroke: 1px white;">x ART</span></h1>
-            <p id="userWelcome" class="text-red-600 text-[12px] tracking-[0.4em] uppercase font-bold mb-8">Kalyani's Premier Art Academy</p>
-            <a href="#admission" class="bg-red-600 px-10 py-4 heading-font text-[10px] tracking-widest inline-block font-bold">Start Admission</a>
+    <section id="home" class="relative h-[100svh] flex items-center px-6 md:px-24">
+        <div class="section-bg"><img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&q=80&w=2000" alt="Hero Image"></div>
+        <div class="overlay"></div>
+        <div class="z-10 mt-10">
+            <h1 class="heading-font animate-title mb-4">BEATSTREET <br> <span class="text-transparent" style="-webkit-text-stroke: 1.2px white;">x KALAKRITI</span></h1>
+            <p id="welcomeMsg" class="text-red-600 text-[10px] md:text-[12px] tracking-[0.4em] uppercase mb-8 font-bold">Kalyani's Ultimate Creative Destination</p>
+            <a href="#admission" class="bg-red-600 px-8 py-4 heading-font text-[9px] tracking-[0.3em] font-bold">Get Started</a>
         </div>
     </section>
 
-    <section id="admission" class="py-24 px-4 flex items-center justify-center bg-[#050505]">
-        <div class="glass w-full max-w-2xl p-10 rounded-3xl">
-            <div class="text-center mb-10">
-                <h2 class="heading-font text-2xl">Admission Form</h2>
-                <p class="text-[10px] text-red-600 mt-2 uppercase">Please login to submit</p>
-            </div>
-            <form class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <input type="text" id="adm_name" placeholder="Student Name" class="bg-white/5 border border-white/10 p-4 rounded-xl text-sm">
-                <input type="tel" id="adm_phone" placeholder="Mobile Number" class="bg-white/5 border border-white/10 p-4 rounded-xl text-sm">
-                <select id="adm_course" class="bg-black border border-white/10 p-4 rounded-xl text-sm md:col-span-2">
-                    <option>Dance Academy</option>
-                    <option>Music/Guitar</option>
-                    <option>Yoga & Zumba</option>
-                    <option>Fine Arts</option>
+    <div class="py-5 bg-red-600 overflow-hidden border-y border-white/10">
+        <div class="flex whitespace-nowrap animate-marquee">
+            <span class="heading-font text-xl mx-10 text-black font-bold">Dance • Yoga • Zumba • Guitar • Fine Arts • </span>
+            <span class="heading-font text-xl mx-10 text-black font-bold">Dance • Yoga • Zumba • Guitar • Fine Arts • </span>
+        </div>
+    </div>
+
+    <section id="dance" class="relative min-h-screen flex items-center px-6 md:px-24">
+        <div class="section-bg"><img src="https://images.unsplash.com/photo-1547153760-18fc86324498?auto=format&fit=crop&q=80&w=2000" alt="Dance"></div>
+        <div class="overlay"></div>
+        <div class="z-10 teacher-card max-w-lg">
+            <h2 class="heading-font text-3xl mb-4 text-red-600">Dance Academy</h2>
+            <p class="text-sm text-gray-300">Hip-hop, Contemporary, and Bollywood. Experience the rhythm.</p>
+        </div>
+    </section>
+
+    <section id="guitar" class="relative min-h-screen flex items-center px-6 md:px-24">
+        <div class="section-bg"><img src="https://images.unsplash.com/photo-1510915228340-29c85a43dcfe?auto=format&fit=crop&q=80&w=2000" alt="Guitar"></div>
+        <div class="overlay"></div>
+        <div class="z-10 teacher-card max-w-lg ml-auto">
+            <h2 class="heading-font text-3xl mb-4 text-red-600">Music & Guitar</h2>
+            <p class="text-sm text-gray-300">Learn Acoustic and Electric guitar from the masters.</p>
+        </div>
+    </section>
+
+    <section id="yoga" class="relative min-h-screen flex items-center px-6 md:px-24">
+        <div class="section-bg"><img src="https://images.unsplash.com/photo-1552196564-972d46380271?auto=format&fit=crop&q=80&w=2000" alt="Yoga"></div>
+        <div class="overlay"></div>
+        <div class="z-10 teacher-card max-w-lg">
+            <h2 class="heading-font text-3xl mb-4 text-red-600">Yoga Wellness</h2>
+            <p class="text-sm text-gray-300">Peace of mind and physical flexibility. Morning batches available.</p>
+        </div>
+    </section>
+
+    <section id="zumba" class="relative min-h-screen flex items-center px-6 md:px-24">
+        <div class="section-bg"><img src="https://images.unsplash.com/photo-1518611012118-2969c63700b7?auto=format&fit=crop&q=80&w=2000" alt="Zumba"></div>
+        <div class="overlay"></div>
+        <div class="z-10 teacher-card max-w-lg ml-auto">
+            <h2 class="heading-font text-3xl mb-4 text-red-600">Zumba Fitness</h2>
+            <p class="text-sm text-gray-300">High energy, high fun. Keep yourself fit with dance.</p>
+        </div>
+    </section>
+
+    <section id="art" class="relative min-h-screen flex items-center px-6 md:px-24 border-b border-white/10">
+        <div class="section-bg"><img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&q=80&w=2000" alt="Art"></div>
+        <div class="overlay"></div>
+        <div class="z-10 teacher-card max-w-lg">
+            <h2 class="heading-font text-3xl mb-4 text-red-600">Fine Arts</h2>
+            <p class="text-sm text-gray-300">Unleash your creativity. Drawing, Sketching, and Painting.</p>
+        </div>
+    </section>
+
+    <section id="admission" class="relative min-h-screen py-24 px-4 flex items-center justify-center bg-[#050505]">
+        <div class="teacher-card w-full max-w-3xl z-10 border-red-600/30">
+            <h2 class="heading-font text-center text-2xl mb-10 text-white tracking-widest">Admission Request</h2>
+            <form class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <input type="text" id="adm_name" placeholder="Student Full Name" class="bg-white/5 border border-white/10 p-4 rounded-xl outline-none focus:border-red-600 text-sm">
+                <input type="tel" id="adm_phone" placeholder="Contact Number" class="bg-white/5 border border-white/10 p-4 rounded-xl outline-none focus:border-red-600 text-sm">
+                <select id="adm_course" class="bg-black border border-white/10 p-4 rounded-xl outline-none focus:border-red-600 text-sm">
+                    <option>Dance Academy</option><option>Guitar Class</option><option>Yoga</option><option>Zumba</option><option>Fine Arts</option>
                 </select>
-                <button type="button" onclick="submitAdmission()" class="md:col-span-2 bg-red-600 py-4 rounded-xl heading-font text-[10px] font-bold tracking-widest">Confirm Admission</button>
+                <select id="id_doc" class="bg-black border border-white/10 p-4 rounded-xl outline-none focus:border-red-600 text-sm">
+                    <option>Aadhar Card</option><option>Voter ID</option><option>School ID</option>
+                </select>
+                <button type="button" onclick="submitAdmission()" class="md:col-span-2 bg-red-600 py-5 rounded-xl heading-font text-[10px] font-bold tracking-widest">Confirm Admission</button>
             </form>
         </div>
     </section>
 
     <div id="adminPanel" class="hidden fixed inset-0 z-[300] bg-black p-6 md:p-20 overflow-y-auto">
-        <div class="flex justify-between items-center mb-10">
-            <h1 class="heading-font text-3xl">Admin Console</h1>
-            <button onclick="closeAdmin()" class="bg-red-600 px-6 py-2 rounded-lg text-xs font-bold">Close</button>
-        </div>
-        <div class="glass p-6 rounded-2xl">
-            <h3 class="text-red-600 mb-6 uppercase text-xs font-bold tracking-widest">Recent Admissions</h3>
-            <div class="overflow-x-auto">
-                <table class="w-full text-left">
-                    <thead>
-                        <tr class="text-gray-500 text-[10px] uppercase border-b border-white/10">
-                            <th class="pb-4">Name</th><th class="pb-4">Phone</th><th class="pb-4">Course</th><th class="pb-4">Date</th>
-                        </tr>
-                    </thead>
-                    <tbody id="adminTableBody" class="text-sm">
-                        </tbody>
-                </table>
-            </div>
+        <div class="flex justify-between items-center mb-10"><h1 class="heading-font text-3xl">Admin Records</h1><button onclick="closeAdmin()" class="bg-red-600 px-6 py-2 rounded-lg text-xs font-bold">Close</button></div>
+        <div class="glass p-6 rounded-2xl overflow-x-auto">
+            <table class="w-full text-left">
+                <thead class="text-red-500 text-[10px] uppercase border-b border-white/10">
+                    <tr><th class="pb-4 px-2">Name</th><th class="pb-4 px-2">Phone</th><th class="pb-4 px-2">Course</th><th class="pb-4 px-2">Document</th><th class="pb-4 px-2">Date</th></tr>
+                </thead>
+                <tbody id="adminTable" class="text-sm"></tbody>
+            </table>
         </div>
     </div>
 
     <script>
-        let currentUser = null;
-        let mode = 'login';
-
-        // 1. Auth Management
-        function toggleAuth(m) {
-            mode = m;
-            document.getElementById('authTitle').innerText = mode === 'login' ? 'Login' : 'Register';
-            document.getElementById('authModal').classList.remove('hidden');
-        }
-
-        function closeAuth() { document.getElementById('authModal').classList.add('hidden'); }
-
+        function toggleAuth() { document.getElementById('authModal').classList.toggle('hidden'); }
+        
         function handleAuth() {
             const email = document.getElementById('authEmail').value;
-            const pass = document.getElementById('authPass').value;
-            
-            if(email && pass) {
-                currentUser = email;
-                localStorage.setItem('user', email);
-                document.getElementById('userWelcome').innerText = `Welcome, ${email.split('@')[0]}`;
-                if(email === 'admin@bstreet.com') document.getElementById('adminBtn').classList.remove('hidden');
-                closeAuth();
-                alert(`${mode === 'login' ? 'Logged In' : 'Registered'} Successfully!`);
-            }
+            if(!email) { alert("Please enter email!"); return; }
+            localStorage.setItem('user', email);
+            if(email === 'admin@bstreet.com') document.getElementById('adminBtn').classList.remove('hidden');
+            document.getElementById('welcomeMsg').innerText = `Welcome, ${email.split('@')[0]}!`;
+            toggleAuth();
+            alert("Login Successful!");
         }
 
-        // 2. Admission Logic
         function submitAdmission() {
-            if(!localStorage.getItem('user')) {
-                alert("Please Login first to submit admission!");
-                toggleAuth('login');
-                return;
-            }
-
+            if(!localStorage.getItem('user')) { alert("Login required!"); toggleAuth(); return; }
             const name = document.getElementById('adm_name').value;
             const phone = document.getElementById('adm_phone').value;
             const course = document.getElementById('adm_course').value;
+            const doc = document.getElementById('id_doc').value;
 
             if(name && phone) {
-                const lead = { name, phone, course, date: new Date().toLocaleDateString() };
-                let leads = JSON.parse(localStorage.getItem('leads')) || [];
-                leads.push(lead);
+                const leads = JSON.parse(localStorage.getItem('leads') || '[]');
+                leads.push({name, phone, course, doc, date: new Date().toLocaleDateString()});
                 localStorage.setItem('leads', JSON.stringify(leads));
-                
-                alert("Admission Submitted Locally! Redirecting to WhatsApp...");
-                window.open(`https://wa.me/918100565299?text=Admission Request: ${name}, ${course}`, '_blank');
+                alert("Data saved to Admin Dashboard!");
+                window.open(`https://wa.me/918100565299?text=New Admission: ${name}, ${course}`, '_blank');
             }
         }
 
-        // 3. Admin Panel
         function openAdmin() {
-            const leads = JSON.parse(localStorage.getItem('leads')) || [];
-            const tbody = document.getElementById('adminTableBody');
-            tbody.innerHTML = leads.map(l => `
-                <tr class="border-b border-white/5">
-                    <td class="py-4">${l.name}</td><td>${l.phone}</td><td>${l.course}</td><td>${l.date}</td>
-                </tr>
+            const leads = JSON.parse(localStorage.getItem('leads') || '[]');
+            document.getElementById('adminTable').innerHTML = leads.map(l => `
+                <tr class="border-b border-white/5"><td class="py-4 px-2">${l.name}</td><td class="px-2">${l.phone}</td><td class="px-2">${l.course}</td><td class="px-2">${l.doc}</td><td class="px-2">${l.date}</td></tr>
             `).join('');
             document.getElementById('adminPanel').classList.remove('hidden');
         }
-
         function closeAdmin() { document.getElementById('adminPanel').classList.add('hidden'); }
 
-        // Cursor Animation
         const dot = document.querySelector('.cursor-dot');
         const outline = document.querySelector('.cursor-outline');
         window.addEventListener('mousemove', (e) => {
