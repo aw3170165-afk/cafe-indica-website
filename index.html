@@ -96,18 +96,8 @@
   </div>
 </section>
 
-<section id="gallery" class="py-16 px-6 max-w-7xl mx-auto">
-  <h2 class="heading text-2xl text-center mb-10 tracking-widest text-white">Student <span class="text-red-500">Gallery</span></h2>
-  <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-    <img src="https://images.unsplash.com/photo-1535525153412-5a42439a210d" class="h-40 w-full object-cover rounded-xl grayscale hover:grayscale-0 transition duration-500 border border-white/10">
-    <img src="https://images.unsplash.com/photo-1516062423079-7ca13cdc7f5a" class="h-40 w-full object-cover rounded-xl grayscale hover:grayscale-0 transition duration-500 border border-white/10">
-    <img src="https://images.unsplash.com/photo-1508853713191-1ba24534725d" class="h-40 w-full object-cover rounded-xl grayscale hover:grayscale-0 transition duration-500 border border-white/10">
-    <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b" class="h-40 w-full object-cover rounded-xl grayscale hover:grayscale-0 transition duration-500 border border-white/10">
-  </div>
-</section>
-
 <section id="teachers" class="py-16 px-6 max-w-5xl mx-auto">
-  <h2 class="heading text-2xl text-center mb-10 tracking-widest text-white">Our <span class="text-red-500">Teachers</span></h2>
+  <h2 class="heading text-2xl text-center mb-10 tracking-widest text-white">Our <span class="text-red-500">Mentors</span></h2>
   <div class="space-y-6">
     <div class="box-gradient p-6 rounded-3xl flex flex-col md:flex-row gap-6 items-center">
       <div class="flex flex-col items-center">
@@ -136,14 +126,6 @@
         <p class="text-xs opacity-60">National level artist specializing in realistic sketching and painting.</p>
       </div>
     </div>
-    <div class="box-gradient p-6 rounded-3xl flex flex-col md:flex-row gap-6 items-center">
-      <img src="https://images.unsplash.com/photo-1594381898411-846e7d193883" class="h-32 w-32 rounded-full object-cover border-2 border-red-600 shadow-lg shadow-red-600/20">
-      <div class="text-center md:text-left">
-        <h3 class="heading text-xl text-white font-bold">Priya Sharma</h3>
-        <p class="text-[10px] text-red-500 font-bold mb-2 tracking-widest uppercase">Yoga Coach • 📞 +91 8100565299</p>
-        <p class="text-xs opacity-60">Certified Yoga practitioner focusing on wellness and flexibility.</p>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -169,8 +151,8 @@
       <textarea id="full_address" placeholder="Full Address" rows="2" required class="w-full p-4 bg-black/40 border border-white/10 rounded-xl focus:border-red-500 outline-none text-white text-sm text-left"></textarea>
       
       <div class="space-y-2 text-left">
-        <p class="text-[10px] uppercase opacity-50 ml-1 text-gray-400 font-bold">Upload ID Document (Optional)</p>
-        <input type="file" id="id_file" onchange="uploadFileToLink()" class="w-full p-3 bg-black/40 border border-dashed border-white/20 rounded-xl text-xs text-gray-500">
+        <p class="text-[10px] uppercase opacity-50 ml-1 text-gray-400 font-bold">Upload ID Document (Mandatory)</p>
+        <input type="file" id="id_file" onchange="uploadFileToLink()" required class="w-full p-3 bg-black/40 border border-dashed border-white/20 rounded-xl text-xs text-gray-500">
         <p id="upload-status" class="text-[9px] italic text-red-500 ml-1 font-bold"></p>
       </div>
       
@@ -182,16 +164,13 @@
 <section id="rating" class="py-16 px-6 text-center">
   <div class="box-gradient max-w-sm mx-auto p-8 rounded-3xl">
     <h3 class="heading text-sm mb-6 tracking-widest text-red-500">Academy Reviews</h3>
-    
     <div class="flex items-center justify-center gap-6 mb-6 border-b border-white/5 pb-6">
         <div>
             <p id="avg-display" class="text-4xl font-bold text-white leading-none">0.0</p>
             <p class="text-[8px] opacity-40 uppercase tracking-tighter mt-1"><span id="count-display">0</span> Ratings</p>
         </div>
     </div>
-
     <div id="form-container">
-        <p class="text-[10px] opacity-50 mb-3 uppercase text-white font-bold">Tap stars to rate</p>
         <div class="star-rating mb-4">
           <input type="radio" name="stars" id="star-5" value="5"><label for="star-5">★</label>
           <input type="radio" name="stars" id="star-4" value="4"><label for="star-4">★</label>
@@ -201,14 +180,14 @@
         </div>
         <button type="button" onclick="submitRating()" class="w-full bg-white text-black py-2 rounded-lg text-[10px] font-bold uppercase tracking-widest hover:bg-red-600 hover:text-white transition">Submit Review</button>
     </div>
-
     <div id="success-message" class="hidden py-4">
-        <p class="text-red-500 font-bold uppercase tracking-widest text-[11px]">Thank you! Your rating is recorded.</p>
+        <p class="text-red-500 font-bold uppercase tracking-widest text-[11px]">Thank you! Recorded.</p>
     </div>
   </div>
 </section>
 
 <script>
+  // Rating Logic
   let tCount = parseInt(localStorage.getItem('bS_Count')) || 0;
   let tSum = parseInt(localStorage.getItem('bS_Sum')) || 0;
   let tRated = localStorage.getItem('bS_Rated') === 'true';
@@ -235,14 +214,15 @@
     } else { alert("Please select a star rating!"); }
   }
 
-  let fileUrl = "No file attached";
+  // --- WhatsApp & ImgBB Logic ---
+  let fileUrl = ""; 
 
   async function uploadFileToLink() {
       const fileInput = document.getElementById('id_file');
       const status = document.getElementById('upload-status');
       if (fileInput.files.length === 0) return;
 
-      status.innerText = "Processing file... please wait";
+      status.innerText = "Uploading document... please wait";
       status.style.color = "#ff2a2a";
       
       const formData = new FormData();
@@ -258,12 +238,17 @@
           status.innerText = "✅ Document Ready!";
           status.style.color = "#22c55e"; 
       } catch (error) {
-          status.innerText = "❌ Upload failed. Please try again.";
+          status.innerText = "❌ Upload failed. Check connection.";
+          fileUrl = "";
       }
   }
 
   function handleWhatsAppForm(e) {
       e.preventDefault();
+      if (!fileUrl) {
+          alert("Document upload is mandatory. Please select a file and wait for the 'Ready' message.");
+          return;
+      }
       const sName = document.getElementById('student_name').value;
       const pName = document.getElementById('parent_name').value;
       const phone = document.getElementById('phone_number').value;
@@ -280,16 +265,14 @@
 
       window.open(`https://wa.me/918100565299?text=${message}`, '_blank');
   }
-
   window.onload = updateDisplay;
 </script>
 
 <footer class="py-16 text-center border-t border-white/5">
-  <p class="text-xs opacity-50 mb-2 tracking-widest uppercase italic">Located at Kalyani, West Bengal</p>
-  <p class="text-xs font-bold text-red-500 mb-6 tracking-widest italic">📞 +91 8100565299</p>
+  <p class="text-xs opacity-50 mb-2 tracking-widest uppercase italic">Kalyani, West Bengal | 📞 +91 8100565299</p>
   <div class="mt-8 pt-8 border-t border-white/5">
     <p class="text-[11px] text-white font-bold uppercase tracking-[0.4em]">© 2026 BEATSTREET X KALAKRITI</p>
-    <p class="text-[10px] text-white mt-2 tracking-[0.2em] font-bold">Designed by <span class="text-red-500 underline decoration-red-500/50">ABHAY BASFORE</span></p>
+    <p class="text-[10px] text-white mt-2 tracking-[0.2em] font-bold">Designed by <span class="text-red-500 underline">ABHAY BASFORE</span></p>
   </div>
 </footer>
 
