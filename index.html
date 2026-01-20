@@ -150,14 +150,14 @@
 <section id="admission" class="py-20 px-6">
   <div class="max-w-4xl mx-auto text-center">
     <h2 class="heading text-2xl mb-10 tracking-widest text-white">Registration <span class="text-red-500">Form</span></h2>
-    <form class="box-gradient p-8 rounded-3xl grid gap-6 max-w-4xl mx-auto">
+    <form onsubmit="handleWhatsAppForm(event)" class="box-gradient p-8 rounded-3xl grid gap-6 max-w-4xl mx-auto">
       <div class="grid md:grid-cols-2 gap-6 text-left">
-        <input type="text" placeholder="Student Name" required class="w-full p-4 bg-black/40 border border-white/10 rounded-xl focus:border-red-500 outline-none text-white text-sm">
-        <input type="text" placeholder="Parent Name" required class="w-full p-4 bg-black/40 border border-white/10 rounded-xl focus:border-red-500 outline-none text-white text-sm">
+        <input type="text" id="student_name" placeholder="Student Name" required class="w-full p-4 bg-black/40 border border-white/10 rounded-xl focus:border-red-500 outline-none text-white text-sm">
+        <input type="text" id="parent_name" placeholder="Parent Name" required class="w-full p-4 bg-black/40 border border-white/10 rounded-xl focus:border-red-500 outline-none text-white text-sm">
       </div>
       <div class="grid md:grid-cols-2 gap-6 text-left">
-        <input type="tel" placeholder="Phone Number" required class="w-full p-4 bg-black/40 border border-white/10 rounded-xl focus:border-red-500 outline-none text-white text-sm">
-        <select required class="w-full p-4 bg-black border border-white/10 rounded-xl focus:border-red-500 outline-none text-white text-sm appearance-none">
+        <input type="tel" id="phone_number" placeholder="Phone Number" required class="w-full p-4 bg-black/40 border border-white/10 rounded-xl focus:border-red-500 outline-none text-white text-sm">
+        <select id="course_select" required class="w-full p-4 bg-black border border-white/10 rounded-xl focus:border-red-500 outline-none text-white text-sm appearance-none">
           <option value="" disabled selected>Select Course / Purpose</option>
           <option value="Dance">Dance Admission</option>
           <option value="Music">Music Admission</option>
@@ -165,11 +165,14 @@
           <option value="Yoga">Yoga Admission</option>
         </select>
       </div>
-      <textarea placeholder="Full Address" rows="2" required class="w-full p-4 bg-black/40 border border-white/10 rounded-xl focus:border-red-500 outline-none text-white text-sm text-left"></textarea>
+      <textarea id="full_address" placeholder="Full Address" rows="2" required class="w-full p-4 bg-black/40 border border-white/10 rounded-xl focus:border-red-500 outline-none text-white text-sm text-left"></textarea>
+      
       <div class="space-y-2 text-left">
         <p class="text-[10px] uppercase opacity-50 ml-1 text-gray-400 font-bold">Upload ID Document (Optional)</p>
-        <input type="file" class="w-full p-3 bg-black/40 border border-dashed border-white/20 rounded-xl text-xs text-gray-500">
+        <input type="file" id="id_file" onchange="uploadFileToLink()" class="w-full p-3 bg-black/40 border border-dashed border-white/20 rounded-xl text-xs text-gray-500">
+        <p id="upload-status" class="text-[9px] italic text-red-500 ml-1 font-bold"></p>
       </div>
+      
       <button type="submit" class="w-full bg-red-600 hover:bg-red-700 py-4 font-bold rounded-xl transition-all uppercase tracking-widest text-xs mt-4 shadow-lg shadow-red-600/20 text-white">Submit Registration</button>
     </form>
   </div>
@@ -205,6 +208,7 @@
 </section>
 
 <script>
+  // Rating Logic
   let tCount = parseInt(localStorage.getItem('bS_Count')) || 0;
   let tSum = parseInt(localStorage.getItem('bS_Sum')) || 0;
   let tRated = localStorage.getItem('bS_Rated') === 'true';
@@ -230,6 +234,54 @@
         updateDisplay();
     } else { alert("Please select a star rating!"); }
   }
+
+  // --- WhatsApp & ImgBB Logic ---
+  let fileUrl = "No file uploaded";
+
+  async function uploadFileToLink() {
+      const fileInput = document.getElementById('id_file');
+      const status = document.getElementById('upload-status');
+      if (fileInput.files.length === 0) return;
+
+      status.innerText = "Processing file... please wait";
+      status.style.color = "#ff2a2a";
+      
+      const formData = new FormData();
+      formData.append("image", fileInput.files[0]);
+
+      try {
+          const response = await fetch("https://api.imgbb.com/1/upload?key=3445892f411cd85451c647ec98cde8d2", {
+              method: "POST",
+              body: formData
+          });
+          const data = await response.json();
+          fileUrl = data.data.url;
+          status.innerText = "✅ Document Ready!";
+          status.style.color = "#22c55e"; 
+      } catch (error) {
+          status.innerText = "❌ Upload failed. Try again.";
+      }
+  }
+
+  function handleWhatsAppForm(e) {
+      e.preventDefault();
+      const sName = document.getElementById('student_name').value;
+      const pName = document.getElementById('parent_name').value;
+      const phone = document.getElementById('phone_number').value;
+      const course = document.getElementById('course_select').value;
+      const address = document.getElementById('full_address').value;
+
+      const message = `*BEATSTREET X KALAKRITI ADMISSION*%0A%0A` +
+                      `*Student:* ${sName}%0A` +
+                      `*Parent:* ${pName}%0A` +
+                      `*Phone:* ${phone}%0A` +
+                      `*Course:* ${course}%0A` +
+                      `*Address:* ${address}%0A` +
+                      `*ID Link:* ${fileUrl}`;
+
+      window.open(`https://wa.me/918100565299?text=${message}`, '_blank');
+  }
+
   window.onload = updateDisplay;
 </script>
 
