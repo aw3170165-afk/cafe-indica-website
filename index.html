@@ -4,26 +4,41 @@
   <meta charset="UTF-8">
   <title>Beatstreet x Kalakriti | Kalyani Creative Academy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
+
   <style>
     html { scroll-behavior: smooth; }
     body { background: #0f0f0f; color: #fff; font-family: 'Inter', sans-serif; margin: 0; }
     .heading { font-family: 'Syncopate', sans-serif; text-transform: uppercase; }
-    .box-gradient { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.4s ease; }
+    
+    .box-gradient {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.4s ease;
+    }
     .box-gradient:hover { border-color: #ff2a2a; transform: translateY(-5px); }
+
     .star-rating { direction: rtl; display: inline-flex; }
     .star-rating input { display: none; }
     .star-rating label { color: #333; cursor: pointer; font-size: 32px; transition: 0.2s; padding: 0 4px; }
     .star-rating label:hover, .star-rating label:hover ~ label, .star-rating input:checked ~ label { color: #ff2a2a; }
+
     @keyframes pulse {
       0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
       70% { transform: scale(1.1); box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
       100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
     }
     .wa-float { animation: pulse 2s infinite; }
+    
+    input[type="file"]::file-selector-button {
+      background: #ff2a2a; border: none; padding: 8px 16px; border-radius: 8px; color: white; cursor: pointer; font-size: 10px; font-weight: bold;
+    }
   </style>
 </head>
+
 <body>
 
 <nav class="fixed top-0 left-0 w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/10 px-5 py-4">
@@ -51,11 +66,51 @@
   </div>
 </section>
 
+<section id="events" class="py-12 px-6 max-w-4xl mx-auto">
+  <div class="box-gradient p-6 rounded-3xl border-l-4 border-l-red-600">
+    <h3 class="heading text-sm mb-4 text-red-500 tracking-widest">Upcoming Events</h3>
+    <div class="space-y-4">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-white/5 pb-4 gap-4">
+        <div>
+          <p class="text-sm font-semibold text-white uppercase tracking-wider">Free Demo Class</p>
+          <p class="text-[10px] opacity-50 italic">Try Dance, Music, Art or Yoga for free!</p>
+        </div>
+        <a href="#admission" class="text-[9px] bg-white text-black px-4 py-2 rounded-full font-bold hover:bg-red-600 hover:text-white transition uppercase tracking-widest text-center">Book Free Slot</a>
+      </div>
+      <div class="flex justify-between items-center">
+        <p class="text-sm font-semibold text-white">Annual Academy Fest 2026</p>
+        <span class="text-[9px] bg-red-600 px-2 py-0.5 rounded text-white font-bold">FEB 15</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="courses" class="py-16 px-6 max-w-7xl mx-auto">
+  <h2 class="heading text-2xl text-center mb-10 tracking-widest text-white">Our <span class="text-red-500">Programs</span></h2>
+  <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+    <div class="box-gradient p-4 rounded-2xl text-center"><h3 class="text-xs font-bold uppercase">Dance</h3></div>
+    <div class="box-gradient p-4 rounded-2xl text-center"><h3 class="text-xs font-bold uppercase">Music</h3></div>
+    <div class="box-gradient p-4 rounded-2xl text-center"><h3 class="text-xs font-bold uppercase">Arts</h3></div>
+    <div class="box-gradient p-4 rounded-2xl text-center"><h3 class="text-xs font-bold uppercase">Yoga</h3></div>
+    <div class="box-gradient p-4 rounded-2xl text-center"><h3 class="text-xs font-bold uppercase">Zumba</h3></div>
+  </div>
+</section>
+
+<section id="gallery" class="py-16 px-6 max-w-7xl mx-auto">
+  <h2 class="heading text-2xl text-center mb-10 tracking-widest text-white">Student <span class="text-red-500">Gallery</span></h2>
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+    <img src="https://images.unsplash.com/photo-1535525153412-5a42439a210d" class="h-40 w-full object-cover rounded-xl grayscale hover:grayscale-0 transition duration-500 border border-white/10">
+    <img src="https://images.unsplash.com/photo-1516062423079-7ca13cdc7f5a" class="h-40 w-full object-cover rounded-xl grayscale hover:grayscale-0 transition duration-500 border border-white/10">
+    <img src="https://images.unsplash.com/photo-1508853713191-1ba24534725d" class="h-40 w-full object-cover rounded-xl grayscale hover:grayscale-0 transition duration-500 border border-white/10">
+    <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b" class="h-40 w-full object-cover rounded-xl grayscale hover:grayscale-0 transition duration-500 border border-white/10">
+  </div>
+</section>
+
 <section id="teachers" class="py-16 px-6 max-w-5xl mx-auto">
   <h2 class="heading text-2xl text-center mb-10 tracking-widest text-white">Our <span class="text-red-500">Mentors</span></h2>
   <div class="space-y-6">
     <div class="box-gradient p-6 rounded-3xl flex flex-col md:flex-row gap-6 items-center">
-      <img src="https://images2.imgbox.com/f9/55/mX7Yc6E8_o.jpg" class="h-32 w-32 rounded-full object-cover border-2 border-red-600 shadow-lg shadow-red-600/20" alt="Aniket Prasad">
+      <img src="https://i.ibb.co/XxwtJzMs/IMG-20260118-WA0005.jpg" class="h-32 w-32 rounded-full object-cover border-2 border-red-600 shadow-lg shadow-red-600/20">
       <div class="text-center md:text-left">
         <h3 class="heading text-xl text-white font-bold">Aniket Prasad</h3>
         <p class="text-[10px] text-red-500 font-bold mb-2 tracking-widest uppercase">Dance & Zumba Expert • 📞 +91 8100565299</p>
@@ -63,16 +118,84 @@
       </div>
     </div>
     <div class="box-gradient p-6 rounded-3xl flex flex-col md:flex-row gap-6 items-center">
-      <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d" class="h-32 w-32 rounded-full object-cover border-2 border-red-600">
-      <div class="text-center md:text-left"><h3 class="heading text-xl text-white font-bold">Amit Sen</h3><p class="text-[10px] text-red-500 font-bold mb-2 tracking-widest uppercase">Music Faculty</p></div>
+      <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d" class="h-32 w-32 rounded-full object-cover border-2 border-red-600 shadow-lg shadow-red-600/20">
+      <div class="text-center md:text-left">
+        <h3 class="heading text-xl text-white font-bold">Amit Sen</h3>
+        <p class="text-[10px] text-red-500 font-bold mb-2 tracking-widest uppercase">Music Faculty • 📞 +91 8100565299</p>
+        <p class="text-xs opacity-60">Expert mentor for Vocals, Guitar and Keyboard training.</p>
+      </div>
     </div>
+    <div class="box-gradient p-6 rounded-3xl flex flex-col md:flex-row gap-6 items-center">
+      <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee" class="h-32 w-32 rounded-full object-cover border-2 border-red-600 shadow-lg shadow-red-600/20">
+      <div class="text-center md:text-left">
+        <h3 class="heading text-xl text-white font-bold">Sneha Paul</h3>
+        <p class="text-[10px] text-red-500 font-bold mb-2 tracking-widest uppercase">Fine Arts Mentor • 📞 +91 8100565299</p>
+        <p class="text-xs opacity-60">National level artist specializing in realistic sketching and painting.</p>
+      </div>
+    </div>
+    <div class="box-gradient p-6 rounded-3xl flex flex-col md:flex-row gap-6 items-center">
+      <img src="https://images.unsplash.com/photo-1594381898411-846e7d193883" class="h-32 w-32 rounded-full object-cover border-2 border-red-600 shadow-lg shadow-red-600/20">
+      <div class="text-center md:text-left">
+        <h3 class="heading text-xl text-white font-bold">Priya Sharma</h3>
+        <p class="text-[10px] text-red-500 font-bold mb-2 tracking-widest uppercase">Yoga Coach • 📞 +91 8100565299</p>
+        <p class="text-xs opacity-60">Certified Yoga practitioner focusing on wellness and flexibility.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="admission" class="py-20 px-6">
+  <div class="max-w-4xl mx-auto">
+    <h2 class="heading text-2xl text-center mb-10 tracking-widest text-white">Registration <span class="text-red-500">Form</span></h2>
+    <form class="box-gradient p-8 rounded-3xl grid gap-6 max-w-4xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-6">
+        <input type="text" placeholder="Student Name" required class="w-full p-4 bg-black/40 border border-white/10 rounded-xl focus:border-red-500 outline-none text-white text-sm">
+        <input type="text" placeholder="Parent Name" required class="w-full p-4 bg-black/40 border border-white/10 rounded-xl focus:border-red-500 outline-none text-white text-sm">
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        <input type="tel" placeholder="Phone Number" required class="w-full p-4 bg-black/40 border border-white/10 rounded-xl focus:border-red-500 outline-none text-white text-sm">
+        <select required class="w-full p-4 bg-black border border-white/10 rounded-xl focus:border-red-500 outline-none text-white text-sm appearance-none">
+          <option value="" disabled selected>Select Course / Purpose</option>
+          <option value="Free Demo Class">Free Demo Class Request</option>
+          <option value="Dance">Dance Admission</option>
+          <option value="Music">Music Admission</option>
+          <option value="Fine Arts">Fine Arts Admission</option>
+          <option value="Yoga">Yoga Admission</option>
+          <option value="Zumba">Zumba Admission</option>
+        </select>
+      </div>
+      <textarea placeholder="Full Address" rows="2" required class="w-full p-4 bg-black/40 border border-white/10 rounded-xl focus:border-red-500 outline-none text-white text-sm"></textarea>
+      <div class="space-y-2">
+        <p class="text-[10px] uppercase opacity-50 ml-1 text-gray-400 font-bold">Upload ID Document (Optional)</p>
+        <input type="file" class="w-full p-3 bg-black/40 border border-dashed border-white/20 rounded-xl text-xs text-gray-500">
+      </div>
+      <button type="submit" class="w-full bg-red-600 hover:bg-red-700 py-4 font-bold rounded-xl transition-all uppercase tracking-widest text-xs mt-4 shadow-lg shadow-red-600/20 text-white">Submit Registration</button>
+    </form>
   </div>
 </section>
 
 <section id="rating" class="py-16 px-6 text-center">
   <div class="box-gradient max-w-sm mx-auto p-8 rounded-3xl">
     <h3 class="heading text-sm mb-6 tracking-widest text-red-500">Academy Reviews</h3>
-    <div id="rating-form">
+    
+    <div class="flex items-center justify-center gap-6 mb-6 border-b border-white/5 pb-6">
+        <div>
+            <p id="avg-rating" class="text-4xl font-bold text-white leading-none">4.9</p>
+            <p class="text-[8px] opacity-40 uppercase tracking-tighter mt-1">Average</p>
+        </div>
+        <div class="text-left flex-1 max-w-[120px] space-y-1">
+            <div class="flex items-center gap-2">
+                <span class="text-[7px] opacity-30">5★</span>
+                <div class="flex-1 h-1 bg-white/5 rounded-full"><div id="bar-5" class="bg-red-600 h-full w-[95%]"></div></div>
+            </div>
+            <div class="flex items-center gap-2">
+                <span class="text-[7px] opacity-30">4★</span>
+                <div class="flex-1 h-1 bg-white/5 rounded-full"><div id="bar-4" class="bg-red-600 h-full w-[5%]"></div></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="rating-form-area">
         <p class="text-[10px] opacity-50 mb-3 uppercase text-white font-bold">Tap stars to rate</p>
         <div class="star-rating mb-4">
           <input type="radio" name="stars" id="star-5" value="5"><label for="star-5">★</label>
@@ -81,30 +204,67 @@
           <input type="radio" name="stars" id="star-2" value="2"><label for="star-2">★</label>
           <input type="radio" name="stars" id="star-1" value="1"><label for="star-1">★</label>
         </div>
-        <button type="button" onclick="submitReview()" class="w-full bg-white text-black py-2 rounded-lg text-[10px] font-bold uppercase tracking-widest hover:bg-red-600 hover:text-white transition">Submit Review</button>
+        <button type="button" onclick="submitRating()" class="w-full bg-white text-black py-2 rounded-lg text-[10px] font-bold uppercase tracking-widest hover:bg-red-600 hover:text-white transition">Submit Review</button>
     </div>
-    <div id="success-msg" class="hidden py-4">
-        <p class="text-red-500 font-bold uppercase tracking-widest text-xs">Rating ho gaya hain!</p>
+
+    <div id="rating-success" class="hidden py-4">
+        <p class="text-red-500 font-bold uppercase tracking-widest text-[11px] leading-relaxed">
+            Thank you! <br> Your rating has been submitted successfully.
+        </p>
     </div>
+
     <p class="text-[9px] opacity-40 uppercase tracking-widest mt-4 italic text-white">Live Academy Ratings</p>
   </div>
 </section>
 
 <script>
-  function submitReview() {
+  let totalRatings = 100; // Base count
+  let sumRatings = 490;   // Base sum (4.9 * 100)
+
+  function submitRating() {
     const stars = document.getElementsByName('stars');
-    let hasVal = false;
-    for(let s of stars) { if(s.checked) { hasVal = true; break; } }
-    if(hasVal) {
-      document.getElementById('rating-form').style.display = 'none';
-      document.getElementById('success-msg').classList.remove('hidden');
-    } else { alert("Please select a rating!"); }
+    let selectedValue = 0;
+    for(let star of stars) {
+        if(star.checked) {
+            selectedValue = parseInt(star.value);
+            break;
+        }
+    }
+
+    if(selectedValue > 0) {
+        // Logic to update average
+        totalRatings++;
+        sumRatings += selectedValue;
+        let newAvg = (sumRatings / totalRatings).toFixed(1);
+        
+        // Update UI
+        document.getElementById('avg-rating').innerText = newAvg;
+        document.getElementById('rating-form-area').style.display = 'none';
+        document.getElementById('rating-success').classList.remove('hidden');
+        
+        // Minor visual bar adjustment
+        if(selectedValue === 5) {
+            document.getElementById('bar-5').style.width = "96%";
+        }
+    } else {
+        alert("Please select a star rating first!");
+    }
   }
 </script>
 
-<a href="https://wa.me/918100565299" target="_blank" class="fixed bottom-6 right-6 z-[100] bg-[#25D366] p-4 rounded-full wa-float">
+<a href="https://wa.me/918100565299" target="_blank" class="fixed bottom-6 right-6 z-[100] bg-[#25D366] p-4 rounded-full shadow-2xl wa-float flex items-center justify-center">
   <svg width="28" height="28" fill="white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.937 3.659 1.432 5.628 1.433h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
+
+<section id="contact" class="py-16 text-center border-t border-white/5">
+  <p class="text-xs opacity-50 mb-2 tracking-widest uppercase italic text-gray-400">Located at Kalyani, West Bengal</p>
+  <p class="text-xs font-bold text-red-500 mb-6 tracking-widest italic">📞 +91 8100565299</p>
+  
+  <div class="mt-8 pt-8 border-t border-white/5">
+    <p class="text-[11px] text-white font-bold uppercase tracking-[0.4em]">© 2026 BEATSTREET X KALAKRITI</p>
+    <p class="text-[10px] text-white mt-2 tracking-[0.2em] font-bold">Designed by <span class="text-red-500 underline decoration-red-500/50">ABHAY BASFORE</span></p>
+  </div>
+</section>
 
 </body>
 </html>
