@@ -21,13 +21,11 @@
     }
     .box-gradient:hover { border-color: #ff2a2a; transform: translateY(-5px); }
 
-    /* Rating Stars CSS */
     .star-rating { direction: rtl; display: inline-flex; }
     .star-rating input { display: none; }
     .star-rating label { color: #333; cursor: pointer; font-size: 32px; transition: 0.2s; padding: 0 4px; }
     .star-rating label:hover, .star-rating label:hover ~ label, .star-rating input:checked ~ label { color: #ff2a2a; }
 
-    /* WhatsApp Pulse Animation */
     @keyframes pulse {
       0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
       70% { transform: scale(1.1); box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
@@ -75,12 +73,15 @@
     <h3 class="heading text-sm mb-4 text-red-500 tracking-widest">Upcoming Events</h3>
     <div class="space-y-4">
       <div class="flex justify-between items-center border-b border-white/5 pb-2">
-        <p class="text-sm font-semibold text-white">Annual Academy Fest 2026</p>
-        <span class="text-[9px] bg-red-600 px-2 py-0.5 rounded text-white">FEB 15</span>
+        <div>
+          <p class="text-sm font-semibold text-white uppercase tracking-wider">Free Demo Class</p>
+          <p class="text-[10px] opacity-50">Join us for a trial session in Dance, Music or Art!</p>
+        </div>
+        <span class="text-[9px] bg-white text-black px-2 py-0.5 rounded font-bold">FREE</span>
       </div>
       <div class="flex justify-between items-center">
-        <p class="text-sm opacity-70">Zumba Masterclass with Rahul</p>
-        <span class="text-[9px] opacity-50 uppercase">Next Sunday</span>
+        <p class="text-sm font-semibold text-white">Annual Academy Fest 2026</p>
+        <span class="text-[9px] bg-red-600 px-2 py-0.5 rounded text-white">FEB 15</span>
       </div>
     </div>
   </div>
@@ -118,31 +119,28 @@
         <p class="text-xs opacity-60">8+ Years experience. Specialist in Hip-Hop, Contemporary, and High-energy Zumba fitness sessions.</p>
       </div>
     </div>
-    
     <div class="box-gradient p-6 rounded-3xl flex flex-col md:flex-row gap-6 items-center">
       <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d" class="h-32 w-32 rounded-full object-cover border-2 border-red-600 shadow-lg shadow-red-600/20">
       <div class="text-center md:text-left">
         <h3 class="heading text-xl text-white">Amit Sen</h3>
         <p class="text-[10px] text-red-500 font-bold mb-2 tracking-widest uppercase">Music Faculty • 📞 +91 8100565299</p>
-        <p class="text-xs opacity-60">Master of Vocals, Guitar and Keyboard. Helping students build a strong foundation in music theory and performance.</p>
+        <p class="text-xs opacity-60">Master of Vocals, Guitar and Keyboard. Helping students build a strong foundation.</p>
       </div>
     </div>
-
     <div class="box-gradient p-6 rounded-3xl flex flex-col md:flex-row gap-6 items-center">
       <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee" class="h-32 w-32 rounded-full object-cover border-2 border-red-600 shadow-lg shadow-red-600/20">
       <div class="text-center md:text-left">
         <h3 class="heading text-xl text-white">Sneha Paul</h3>
         <p class="text-[10px] text-red-500 font-bold mb-2 tracking-widest uppercase">Fine Arts Mentor • 📞 +91 8100565299</p>
-        <p class="text-xs opacity-60">National level artist. Specializes in realistic sketching, oil painting, and creative art workshops for kids.</p>
+        <p class="text-xs opacity-60">National level artist. Specializes in realistic sketching and creative art workshops.</p>
       </div>
     </div>
-
     <div class="box-gradient p-6 rounded-3xl flex flex-col md:flex-row gap-6 items-center">
       <img src="https://images.unsplash.com/photo-1594381898411-846e7d193883" class="h-32 w-32 rounded-full object-cover border-2 border-red-600 shadow-lg shadow-red-600/20">
       <div class="text-center md:text-left">
         <h3 class="heading text-xl text-white">Priya Sharma</h3>
         <p class="text-[10px] text-red-500 font-bold mb-2 tracking-widest uppercase">Yoga & Wellness Coach • 📞 +91 8100565299</p>
-        <p class="text-xs opacity-60">Certified Yoga practitioner. Focuses on mental peace, flexibility, and holistic body wellness.</p>
+        <p class="text-xs opacity-60">Certified Yoga practitioner focusing on mental peace and flexibility.</p>
       </div>
     </div>
   </div>
