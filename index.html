@@ -32,10 +32,6 @@
       100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
     }
     .wa-float { animation: pulse 2s infinite; }
-    
-    input[type="file"]::file-selector-button {
-      background: #ff2a2a; border: none; padding: 8px 16px; border-radius: 8px; color: white; cursor: pointer; font-size: 10px; font-weight: bold;
-    }
   </style>
 </head>
 
@@ -110,66 +106,21 @@
   <h2 class="heading text-2xl text-center mb-10 tracking-widest text-white">Our <span class="text-red-500">Mentors</span></h2>
   <div class="space-y-6">
     <div class="box-gradient p-6 rounded-3xl flex flex-col md:flex-row gap-6 items-center">
-      <img src="https://i.ibb.co/XxwtJzMs/IMG-20260118-WA0005.jpg" class="h-32 w-32 rounded-full object-cover border-2 border-red-600 shadow-lg shadow-red-600/20">
+      <img src="https://i.ibb.co/XxwtJzMs/IMG-20260118-WA0005.jpg" class="h-32 w-32 rounded-full object-cover border-2 border-red-600">
       <div class="text-center md:text-left">
         <h3 class="heading text-xl text-white font-bold">Aniket Prasad</h3>
         <p class="text-[10px] text-red-500 font-bold mb-2 tracking-widest uppercase">Dance & Zumba Expert • 📞 +91 8100565299</p>
         <p class="text-xs opacity-60">8+ Years experience in choreography and high-energy fitness sessions.</p>
       </div>
     </div>
-    <div class="box-gradient p-6 rounded-3xl flex flex-col md:flex-row gap-6 items-center">
-      <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d" class="h-32 w-32 rounded-full object-cover border-2 border-red-600 shadow-lg shadow-red-600/20">
-      <div class="text-center md:text-left">
-        <h3 class="heading text-xl text-white font-bold">Amit Sen</h3>
-        <p class="text-[10px] text-red-500 font-bold mb-2 tracking-widest uppercase">Music Faculty • 📞 +91 8100565299</p>
-        <p class="text-xs opacity-60">Expert mentor for Vocals, Guitar and Keyboard training.</p>
-      </div>
     </div>
-    <div class="box-gradient p-6 rounded-3xl flex flex-col md:flex-row gap-6 items-center">
-      <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee" class="h-32 w-32 rounded-full object-cover border-2 border-red-600 shadow-lg shadow-red-600/20">
-      <div class="text-center md:text-left">
-        <h3 class="heading text-xl text-white font-bold">Sneha Paul</h3>
-        <p class="text-[10px] text-red-500 font-bold mb-2 tracking-widest uppercase">Fine Arts Mentor • 📞 +91 8100565299</p>
-        <p class="text-xs opacity-60">National level artist specializing in realistic sketching and painting.</p>
-      </div>
-    </div>
-    <div class="box-gradient p-6 rounded-3xl flex flex-col md:flex-row gap-6 items-center">
-      <img src="https://images.unsplash.com/photo-1594381898411-846e7d193883" class="h-32 w-32 rounded-full object-cover border-2 border-red-600 shadow-lg shadow-red-600/20">
-      <div class="text-center md:text-left">
-        <h3 class="heading text-xl text-white font-bold">Priya Sharma</h3>
-        <p class="text-[10px] text-red-500 font-bold mb-2 tracking-widest uppercase">Yoga Coach • 📞 +91 8100565299</p>
-        <p class="text-xs opacity-60">Certified Yoga practitioner focusing on wellness and flexibility.</p>
-      </div>
-    </div>
-  </div>
 </section>
 
 <section id="admission" class="py-20 px-6">
   <div class="max-w-4xl mx-auto">
     <h2 class="heading text-2xl text-center mb-10 tracking-widest text-white">Registration <span class="text-red-500">Form</span></h2>
     <form class="box-gradient p-8 rounded-3xl grid gap-6 max-w-4xl mx-auto">
-      <div class="grid md:grid-cols-2 gap-6">
-        <input type="text" placeholder="Student Name" required class="w-full p-4 bg-black/40 border border-white/10 rounded-xl focus:border-red-500 outline-none text-white text-sm">
-        <input type="text" placeholder="Parent Name" required class="w-full p-4 bg-black/40 border border-white/10 rounded-xl focus:border-red-500 outline-none text-white text-sm">
-      </div>
-      <div class="grid md:grid-cols-2 gap-6">
-        <input type="tel" placeholder="Phone Number" required class="w-full p-4 bg-black/40 border border-white/10 rounded-xl focus:border-red-500 outline-none text-white text-sm">
-        <select required class="w-full p-4 bg-black border border-white/10 rounded-xl focus:border-red-500 outline-none text-white text-sm appearance-none">
-          <option value="" disabled selected>Select Course / Purpose</option>
-          <option value="Free Demo Class">Free Demo Class Request</option>
-          <option value="Dance">Dance Admission</option>
-          <option value="Music">Music Admission</option>
-          <option value="Fine Arts">Fine Arts Admission</option>
-          <option value="Yoga">Yoga Admission</option>
-          <option value="Zumba">Zumba Admission</option>
-        </select>
-      </div>
-      <textarea placeholder="Full Address" rows="2" required class="w-full p-4 bg-black/40 border border-white/10 rounded-xl focus:border-red-500 outline-none text-white text-sm"></textarea>
-      <div class="space-y-2">
-        <p class="text-[10px] uppercase opacity-50 ml-1 text-gray-400 font-bold">Upload ID Document (Optional)</p>
-        <input type="file" class="w-full p-3 bg-black/40 border border-dashed border-white/20 rounded-xl text-xs text-gray-500">
-      </div>
-      <button type="submit" class="w-full bg-red-600 hover:bg-red-700 py-4 font-bold rounded-xl transition-all uppercase tracking-widest text-xs mt-4 shadow-lg shadow-red-600/20 text-white">Submit Registration</button>
+        <button type="submit" class="w-full bg-red-600 hover:bg-red-700 py-4 font-bold rounded-xl transition-all uppercase tracking-widest text-xs mt-4 text-white">Submit Registration</button>
     </form>
   </div>
 </section>
@@ -180,22 +131,22 @@
     
     <div class="flex items-center justify-center gap-6 mb-6 border-b border-white/5 pb-6">
         <div>
-            <p id="avg-rating" class="text-4xl font-bold text-white leading-none">4.9</p>
-            <p class="text-[8px] opacity-40 uppercase tracking-tighter mt-1"><span id="rating-count">100</span> Ratings</p>
+            <p id="avg-display" class="text-4xl font-bold text-white leading-none">0.0</p>
+            <p class="text-[8px] opacity-40 uppercase tracking-tighter mt-1"><span id="count-display">0</span> Ratings</p>
         </div>
         <div class="text-left flex-1 max-w-[120px] space-y-1">
             <div class="flex items-center gap-2">
                 <span class="text-[7px] opacity-30">5★</span>
-                <div class="flex-1 h-1 bg-white/5 rounded-full"><div id="bar-5" class="bg-red-600 h-full w-[95%]"></div></div>
+                <div class="flex-1 h-1 bg-white/5 rounded-full"><div id="bar-5" class="bg-red-600 h-full w-0"></div></div>
             </div>
             <div class="flex items-center gap-2">
                 <span class="text-[7px] opacity-30">4★</span>
-                <div class="flex-1 h-1 bg-white/5 rounded-full"><div id="bar-4" class="bg-red-600 h-full w-[5%]"></div></div>
+                <div class="flex-1 h-1 bg-white/5 rounded-full"><div id="bar-4" class="bg-red-600 h-full w-0"></div></div>
             </div>
         </div>
     </div>
 
-    <div id="rating-form-area">
+    <div id="form-container">
         <p class="text-[10px] opacity-50 mb-3 uppercase text-white font-bold">Tap stars to rate</p>
         <div class="star-rating mb-4">
           <input type="radio" name="stars" id="star-5" value="5"><label for="star-5">★</label>
@@ -207,49 +158,51 @@
         <button type="button" onclick="submitRating()" class="w-full bg-white text-black py-2 rounded-lg text-[10px] font-bold uppercase tracking-widest hover:bg-red-600 hover:text-white transition">Submit Review</button>
     </div>
 
-    <div id="rating-success" class="hidden py-4">
-        <p class="text-red-500 font-bold uppercase tracking-widest text-[11px] leading-relaxed">
-            Thank you! <br> Your rating has been submitted successfully.
-        </p>
+    <div id="success-message" class="hidden py-4">
+        <p class="text-red-500 font-bold uppercase tracking-widest text-[11px]">Thank you! Your rating is recorded.</p>
     </div>
-
-    <p class="text-[9px] opacity-40 uppercase tracking-widest mt-4 italic text-white">Live Academy Ratings</p>
   </div>
 </section>
 
 <script>
-  let totalRatings = 100; // Base count
-  let sumRatings = 490;   // Base sum (4.9 * 100)
+  // Loading ratings from LocalStorage to keep them on refresh
+  let totalCount = parseInt(localStorage.getItem('bStreetCount')) || 0;
+  let totalSum = parseInt(localStorage.getItem('bStreetSum')) || 0;
+  let hasRated = localStorage.getItem('bStreetRated') === 'true';
 
-  function submitRating() {
-    const stars = document.getElementsByName('stars');
-    let selectedValue = 0;
-    for(let star of stars) {
-        if(star.checked) {
-            selectedValue = parseInt(star.value);
-            break;
-        }
-    }
-
-    if(selectedValue > 0) {
-        // Update data
-        totalRatings++;
-        sumRatings += selectedValue;
-        let newAvg = (sumRatings / totalRatings).toFixed(1);
-        
-        // Update UI
-        document.getElementById('avg-rating').innerText = newAvg;
-        document.getElementById('rating-count').innerText = totalRatings;
-        document.getElementById('rating-form-area').style.display = 'none';
-        document.getElementById('rating-success').classList.remove('hidden');
-        
-        if(selectedValue === 5) {
-            document.getElementById('bar-5').style.width = "96%";
-        }
-    } else {
-        alert("Please select a star rating first!");
+  function updateUI() {
+    document.getElementById('avg-display').innerText = totalCount > 0 ? (totalSum / totalCount).toFixed(1) : "0.0";
+    document.getElementById('count-display').innerText = totalCount;
+    if(hasRated) {
+        document.getElementById('form-container').style.display = 'none';
+        document.getElementById('success-message').classList.remove('hidden');
     }
   }
+
+  function submitRating() {
+    if(hasRated) return;
+
+    const stars = document.getElementsByName('stars');
+    let val = 0;
+    for(let s of stars) { if(s.checked) { val = parseInt(s.value); break; } }
+
+    if(val > 0) {
+        totalCount++;
+        totalSum += val;
+        hasRated = true;
+
+        localStorage.setItem('bStreetCount', totalCount);
+        localStorage.setItem('bStreetSum', totalSum);
+        localStorage.setItem('bStreetRated', 'true');
+
+        updateUI();
+    } else {
+        alert("Please select a star rating!");
+    }
+  }
+
+  // Initial UI update
+  window.onload = updateUI;
 </script>
 
 <a href="https://wa.me/918100565299" target="_blank" class="fixed bottom-6 right-6 z-[100] bg-[#25D366] p-4 rounded-full shadow-2xl wa-float flex items-center justify-center">
@@ -259,7 +212,6 @@
 <section id="contact" class="py-16 text-center border-t border-white/5">
   <p class="text-xs opacity-50 mb-2 tracking-widest uppercase italic text-gray-400">Located at Kalyani, West Bengal</p>
   <p class="text-xs font-bold text-red-500 mb-6 tracking-widest italic">📞 +91 8100565299</p>
-  
   <div class="mt-8 pt-8 border-t border-white/5">
     <p class="text-[11px] text-white font-bold uppercase tracking-[0.4em]">© 2026 BEATSTREET X KALAKRITI</p>
     <p class="text-[10px] text-white mt-2 tracking-[0.2em] font-bold">Designed by <span class="text-red-500 underline decoration-red-500/50">ABHAY BASFORE</span></p>
@@ -267,5 +219,4 @@
 </section>
 
 </body>
-  </html>
-  
+</html>
