@@ -32,10 +32,6 @@
       100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
     }
     .wa-float { animation: pulse 2s infinite; }
-    
-    input[type="file"]::file-selector-button {
-      background: #ff2a2a; border: none; padding: 8px 16px; border-radius: 8px; color: white; cursor: pointer; font-size: 10px; font-weight: bold;
-    }
   </style>
 </head>
 
@@ -46,63 +42,52 @@
     <div class="heading text-lg font-bold tracking-tighter text-white">B-STREET<span class="text-red-500">.</span></div>
     <div class="hidden md:flex gap-6 text-[10px] tracking-[2px] font-bold text-white">
       <a href="#home" class="hover:text-red-500 transition">HOME</a>
-      <a href="#courses" class="hover:text-red-500 transition">COURSES</a>
-      <a href="#gallery" class="hover:text-red-500 transition">GALLERY</a>
       <a href="#teachers" class="hover:text-red-500 transition">TEACHERS</a>
-      <a href="#admission" class="hover:text-red-500 transition">ADMISSION</a>
+      <a href="#rating" class="hover:text-red-500 transition">REVIEWS</a>
     </div>
     <a href="#contact" class="bg-red-600 text-white text-[11px] font-bold px-5 py-2 rounded-full uppercase tracking-widest text-center">Contact</a>
   </div>
 </nav>
 
-<section id="home" class="relative h-[60vh] flex items-center justify-center text-center px-6 pt-16">
+<section id="home" class="relative h-[40vh] flex items-center justify-center text-center px-6 pt-16">
   <div class="absolute inset-0">
     <img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad" class="w-full h-full object-cover opacity-30">
     <div class="absolute inset-0 bg-gradient-to-b from-transparent to-[#0f0f0f]"></div>
   </div>
   <div class="relative z-10">
-    <h1 class="heading text-4xl md:text-6xl font-bold">BEATSTREET<br><span class="text-transparent" style="-webkit-text-stroke:1px white;">X KALAKRITI</span></h1>
-    <p class="text-red-500 tracking-[0.4em] mt-4 text-xs font-bold uppercase">Kalyani Creative Academy</p>
+    <h1 class="heading text-4xl font-bold uppercase tracking-widest">Beatstreet</h1>
+    <p class="text-red-500 tracking-[0.4em] mt-2 text-xs font-bold uppercase">Academy Reviews</p>
   </div>
 </section>
 
-<section id="teachers" class="py-16 px-6 max-w-5xl mx-auto">
-  <h2 class="heading text-2xl text-center mb-10 tracking-widest text-white">Our <span class="text-red-500">Mentors</span></h2>
-  <div class="space-y-6">
-    
-    <div class="box-gradient p-6 rounded-3xl flex flex-col md:flex-row gap-6 items-center">
-      <img src="https://i.ibb.co/3ykG4S3J/b9b597c4-0672-468f-9a9f-3d14690835ad.jpg" class="h-32 w-32 rounded-full object-cover border-2 border-red-600 shadow-lg shadow-red-600/20">
-      <div class="text-center md:text-left">
-        <h3 class="heading text-xl text-white font-bold">Aniket Prasad</h3>
-        <p class="text-[10px] text-red-500 font-bold mb-2 tracking-widest uppercase">Dance & Zumba Expert • 📞 +91 8100565299</p>
-        <p class="text-xs opacity-60">8+ Years experience in choreography and high-energy fitness sessions.</p>
-        
-        <div class="flex justify-center md:justify-start gap-4 mt-4">
-            <a href="https://www.instagram.com/a_ket_legacy_?igsh=cXVndjV3bTNlNms1" target="_blank" class="text-white hover:text-red-500 transition">
-              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.266.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-            </a>
-            <a href="#" class="text-white hover:text-red-500 transition"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
-        </div>
-      </div>
-    </div>
-
-    <div class="box-gradient p-6 rounded-3xl flex flex-col md:flex-row gap-6 items-center">
-      <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d" class="h-32 w-32 rounded-full object-cover border-2 border-red-600 shadow-lg shadow-red-600/20">
-      <div class="text-center md:text-left">
-        <h3 class="heading text-xl text-white font-bold">Amit Sen</h3>
-        <p class="text-[10px] text-red-500 font-bold mb-2 tracking-widest uppercase">Music Faculty • 📞 +91 8100565299</p>
-        <p class="text-xs opacity-60">Expert mentor for Vocals, Guitar and Keyboard training.</p>
-      </div>
+<section id="teachers" class="py-12 px-6 max-w-5xl mx-auto">
+  <div class="box-gradient p-6 rounded-3xl flex flex-col md:flex-row gap-6 items-center">
+    <img src="https://i.ibb.co/3ykG4S3J/b9b597c4-0672-468f-9a9f-3d14690835ad.jpg" class="h-32 w-32 rounded-full object-cover border-2 border-red-600">
+    <div class="text-center md:text-left">
+      <h3 class="heading text-xl text-white font-bold">Aniket Prasad</h3>
+      <p class="text-[10px] text-red-500 font-bold mb-2 uppercase tracking-widest">Dance & Zumba Expert</p>
+      <a href="https://www.instagram.com/a_ket_legacy_?igsh=cXVndjV3bTNlNms1" target="_blank" class="text-[10px] text-white border border-white/20 px-3 py-1 rounded-full hover:bg-red-600 transition uppercase">Instagram</a>
     </div>
   </div>
 </section>
 
 <section id="rating" class="py-16 px-6 text-center">
-  <div class="box-gradient max-w-sm mx-auto p-8 rounded-3xl" id="ratingBox">
-    <h3 class="heading text-sm mb-6 tracking-widest text-red-500">Academy Reviews</h3>
+  <div class="box-gradient max-w-sm mx-auto p-8 rounded-3xl">
+    <h3 class="heading text-sm mb-6 tracking-widest text-red-500 font-bold">Rate Our Academy</h3>
     
-    <div id="ratingMain">
-        <form onsubmit="event.preventDefault(); showRatingSuccess();">
+    <div id="rating-content">
+        <div class="flex items-center justify-center gap-6 mb-6 border-b border-white/5 pb-6">
+            <div>
+                <p class="text-4xl font-bold text-white leading-none">5.0</p>
+                <p class="text-[8px] opacity-40 uppercase tracking-tighter mt-1">Stars</p>
+            </div>
+            <div class="text-left flex-1">
+                <p class="text-[10px] opacity-50 uppercase mb-1">Total Reviews</p>
+                <p id="ratingCountDisplay" class="text-xl font-bold text-white">0</p>
+            </div>
+        </div>
+
+        <form id="reviewForm" onsubmit="submitReview(event)">
             <p class="text-[10px] opacity-50 mb-3 uppercase text-white font-bold">Tap stars to rate</p>
             <div class="star-rating mb-4">
               <input type="radio" name="stars" id="star-5" required><label for="star-5">★</label>
@@ -115,20 +100,41 @@
         </form>
     </div>
 
-    <div id="ratingSuccess" class="hidden py-8">
-        <div class="bg-red-600/20 text-red-500 p-4 rounded-xl border border-red-500/30">
-            <p class="heading text-xs mb-1">Rating Submitted!</p>
-            <p class="text-[9px] opacity-70 uppercase tracking-widest">Waha par rating ho gaya hain. Thank you!</p>
+    <div id="success-msg" class="hidden py-8">
+        <div class="bg-red-600/20 text-red-500 p-6 rounded-2xl border border-red-500/30">
+            <h3 class="heading text-xs mb-1 text-white">Rating Submitted Successfully!</h3>
+            <p class="text-[9px] opacity-70 uppercase tracking-widest">Thank you for your feedback.</p>
         </div>
     </div>
   </div>
 </section>
 
 <script>
-    function showRatingSuccess() {
-        document.getElementById('ratingMain').style.display = 'none';
-        document.getElementById('ratingSuccess').classList.remove('hidden');
+  // Page load hone par purana count check karo
+  window.onload = function() {
+    let savedCount = localStorage.getItem('academyRatingCount');
+    if (savedCount) {
+      document.getElementById('ratingCountDisplay').innerText = savedCount;
     }
+  };
+
+  function submitReview(event) {
+    event.preventDefault();
+    
+    // Get current count from storage or set to 0
+    let currentCount = parseInt(localStorage.getItem('academyRatingCount') || "0");
+    
+    // Increment and Save
+    let newCount = currentCount + 1;
+    localStorage.setItem('academyRatingCount', newCount);
+    
+    // Update display
+    document.getElementById('ratingCountDisplay').innerText = newCount;
+    
+    // Show success message
+    document.getElementById('reviewForm').classList.add('hidden');
+    document.getElementById('success-msg').classList.remove('hidden');
+  }
 </script>
 
 </body>
