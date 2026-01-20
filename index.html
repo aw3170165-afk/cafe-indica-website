@@ -21,13 +21,11 @@
     }
     .box-gradient:hover { border-color: #ff2a2a; transform: translateY(-5px); }
 
-    /* Rating Stars CSS */
     .star-rating { direction: rtl; display: inline-flex; }
     .star-rating input { display: none; }
     .star-rating label { color: #333; cursor: pointer; font-size: 32px; transition: 0.2s; padding: 0 4px; }
     .star-rating label:hover, .star-rating label:hover ~ label, .star-rating input:checked ~ label { color: #ff2a2a; }
 
-    /* WhatsApp Pulse Animation */
     @keyframes pulse {
       0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
       70% { transform: scale(1.1); box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
@@ -71,17 +69,76 @@
 <section id="events" class="py-12 px-6 max-w-4xl mx-auto">
   <div class="box-gradient p-6 rounded-3xl border-l-4 border-l-red-600">
     <h3 class="heading text-sm mb-4 text-red-500 tracking-widest">Upcoming Events</h3>
-    <div class="space-y-4 text-white">
+    <div class="space-y-4">
       <div class="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-white/5 pb-4 gap-4">
         <div>
-          <p class="text-sm font-semibold uppercase tracking-wider">Free Demo Class</p>
+          <p class="text-sm font-semibold text-white uppercase tracking-wider">Free Demo Class</p>
           <p class="text-[10px] opacity-50 italic">Try Dance, Music, Art or Yoga for free!</p>
         </div>
-        <a href="#admission" class="text-[9px] bg-white text-black px-4 py-2 rounded-full font-bold hover:bg-red-600 hover:text-white transition uppercase tracking-widest">Book Free Slot</a>
+        <a href="#admission" class="text-[9px] bg-white text-black px-4 py-2 rounded-full font-bold hover:bg-red-600 hover:text-white transition uppercase tracking-widest text-center">Book Free Slot</a>
       </div>
       <div class="flex justify-between items-center">
-        <p class="text-sm font-semibold">Annual Academy Fest 2026</p>
+        <p class="text-sm font-semibold text-white">Annual Academy Fest 2026</p>
         <span class="text-[9px] bg-red-600 px-2 py-0.5 rounded text-white font-bold">FEB 15</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="courses" class="py-16 px-6 max-w-7xl mx-auto">
+  <h2 class="heading text-2xl text-center mb-10 tracking-widest text-white">Our <span class="text-red-500">Programs</span></h2>
+  <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+    <div class="box-gradient p-4 rounded-2xl text-center"><h3 class="text-xs font-bold uppercase">Dance</h3></div>
+    <div class="box-gradient p-4 rounded-2xl text-center"><h3 class="text-xs font-bold uppercase">Music</h3></div>
+    <div class="box-gradient p-4 rounded-2xl text-center"><h3 class="text-xs font-bold uppercase">Arts</h3></div>
+    <div class="box-gradient p-4 rounded-2xl text-center"><h3 class="text-xs font-bold uppercase">Yoga</h3></div>
+    <div class="box-gradient p-4 rounded-2xl text-center"><h3 class="text-xs font-bold uppercase">Zumba</h3></div>
+  </div>
+</section>
+
+<section id="gallery" class="py-16 px-6 max-w-7xl mx-auto">
+  <h2 class="heading text-2xl text-center mb-10 tracking-widest text-white">Student <span class="text-red-500">Gallery</span></h2>
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+    <img src="https://images.unsplash.com/photo-1535525153412-5a42439a210d" class="h-40 w-full object-cover rounded-xl grayscale hover:grayscale-0 transition duration-500 border border-white/10">
+    <img src="https://images.unsplash.com/photo-1516062423079-7ca13cdc7f5a" class="h-40 w-full object-cover rounded-xl grayscale hover:grayscale-0 transition duration-500 border border-white/10">
+    <img src="https://images.unsplash.com/photo-1508853713191-1ba24534725d" class="h-40 w-full object-cover rounded-xl grayscale hover:grayscale-0 transition duration-500 border border-white/10">
+    <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b" class="h-40 w-full object-cover rounded-xl grayscale hover:grayscale-0 transition duration-500 border border-white/10">
+  </div>
+</section>
+
+<section id="teachers" class="py-16 px-6 max-w-5xl mx-auto">
+  <h2 class="heading text-2xl text-center mb-10 tracking-widest text-white">Our <span class="text-red-500">Mentors</span></h2>
+  <div class="space-y-6">
+    <div class="box-gradient p-6 rounded-3xl flex flex-col md:flex-row gap-6 items-center">
+      <img src="https://images.unsplash.com/photo-1547153760-18fc86324498" class="h-32 w-32 rounded-full object-cover border-2 border-red-600 shadow-lg shadow-red-600/20">
+      <div class="text-center md:text-left">
+        <h3 class="heading text-xl text-white font-bold">Rahul Das</h3>
+        <p class="text-[10px] text-red-500 font-bold mb-2 tracking-widest uppercase">Dance & Zumba Expert • 📞 +91 8100565299</p>
+        <p class="text-xs opacity-60">8+ Years experience in choreography and high-energy fitness sessions.</p>
+      </div>
+    </div>
+    <div class="box-gradient p-6 rounded-3xl flex flex-col md:flex-row gap-6 items-center">
+      <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d" class="h-32 w-32 rounded-full object-cover border-2 border-red-600 shadow-lg shadow-red-600/20">
+      <div class="text-center md:text-left">
+        <h3 class="heading text-xl text-white font-bold">Amit Sen</h3>
+        <p class="text-[10px] text-red-500 font-bold mb-2 tracking-widest uppercase">Music Faculty • 📞 +91 8100565299</p>
+        <p class="text-xs opacity-60">Expert mentor for Vocals, Guitar and Keyboard training.</p>
+      </div>
+    </div>
+    <div class="box-gradient p-6 rounded-3xl flex flex-col md:flex-row gap-6 items-center">
+      <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee" class="h-32 w-32 rounded-full object-cover border-2 border-red-600 shadow-lg shadow-red-600/20">
+      <div class="text-center md:text-left">
+        <h3 class="heading text-xl text-white font-bold">Sneha Paul</h3>
+        <p class="text-[10px] text-red-500 font-bold mb-2 tracking-widest uppercase">Fine Arts Mentor • 📞 +91 8100565299</p>
+        <p class="text-xs opacity-60">National level artist specializing in realistic sketching and painting.</p>
+      </div>
+    </div>
+    <div class="box-gradient p-6 rounded-3xl flex flex-col md:flex-row gap-6 items-center">
+      <img src="https://images.unsplash.com/photo-1594381898411-846e7d193883" class="h-32 w-32 rounded-full object-cover border-2 border-red-600 shadow-lg shadow-red-600/20">
+      <div class="text-center md:text-left">
+        <h3 class="heading text-xl text-white font-bold">Priya Sharma</h3>
+        <p class="text-[10px] text-red-500 font-bold mb-2 tracking-widest uppercase">Yoga Coach • 📞 +91 8100565299</p>
+        <p class="text-xs opacity-60">Certified Yoga practitioner focusing on wellness and flexibility.</p>
       </div>
     </div>
   </div>
@@ -109,7 +166,7 @@
       </div>
       <textarea placeholder="Full Address" rows="2" required class="w-full p-4 bg-black/40 border border-white/10 rounded-xl focus:border-red-500 outline-none text-white text-sm"></textarea>
       <div class="space-y-2">
-        <p class="text-[10px] uppercase opacity-50 ml-1 text-gray-400">Upload ID Document (Optional)</p>
+        <p class="text-[10px] uppercase opacity-50 ml-1 text-gray-400 font-bold">Upload ID Document (Optional)</p>
         <input type="file" class="w-full p-3 bg-black/40 border border-dashed border-white/20 rounded-xl text-xs text-gray-500">
       </div>
       <button class="w-full bg-red-600 hover:bg-red-700 py-4 font-bold rounded-xl transition-all uppercase tracking-widest text-xs mt-4 shadow-lg shadow-red-600/20 text-white">Submit Registration</button>
@@ -139,7 +196,7 @@
     </div>
 
     <form>
-        <p class="text-[10px] opacity-50 mb-3 uppercase text-white font-semibold">Tap stars to rate</p>
+        <p class="text-[10px] opacity-50 mb-3 uppercase text-white font-bold">Tap stars to rate</p>
         <div class="star-rating mb-4">
           <input type="radio" name="stars" id="star-5"><label for="star-5">★</label>
           <input type="radio" name="stars" id="star-4"><label for="star-4">★</label>
@@ -159,13 +216,13 @@
 
 <section id="contact" class="py-16 text-center border-t border-white/5">
   <p class="text-xs opacity-50 mb-2 tracking-widest uppercase italic text-gray-400">Located at Kalyani, West Bengal</p>
-  <p class="text-xs font-bold text-red-500 mb-6 tracking-widest">📞 +91 8100565299</p>
+  <p class="text-xs font-bold text-red-500 mb-6 tracking-widest italic">📞 +91 8100565299</p>
   
   <div class="mt-8 pt-8 border-t border-white/5">
-    <p class="text-[11px] text-white font-semibold uppercase tracking-[0.4em]">
+    <p class="text-[11px] text-white font-bold uppercase tracking-[0.4em]">
         © 2026 BEATSTREET X KALAKRITI
     </p>
-    <p class="text-[10px] text-white mt-2 tracking-[0.2em] font-medium">
+    <p class="text-[10px] text-white mt-2 tracking-[0.2em] font-bold">
         Designed by <span class="text-red-500 underline decoration-red-500/50">ABHAY BASFORE</span>
     </p>
   </div>
