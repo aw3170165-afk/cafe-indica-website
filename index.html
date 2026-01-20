@@ -1,199 +1,239 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beatstreet x Kalakriti | Kalyani</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    
-    <style>
-        :root { --accent: #ff0000; }
-        body { font-family: 'Inter', sans-serif; background: #000; color: #fff; overflow-x: hidden; scroll-behavior: smooth; }
-        .heading-font { font-family: 'Syncopate', sans-serif; text-transform: uppercase; }
-        
-        /* Cursor logic - Desktop Only */
-        @media (min-width: 1024px) {
-            body { cursor: none; }
-            .cursor-dot { width: 8px; height: 8px; background: var(--accent); position: fixed; border-radius: 50%; pointer-events: none; z-index: 10000; }
-            .cursor-outline { width: 35px; height: 35px; border: 1px solid rgba(255,255,255,0.5); position: fixed; border-radius: 50%; pointer-events: none; z-index: 9999; transition: transform 0.15s ease-out; }
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beatstreet x Kalakriti | Kalyani</title>
 
-        .section-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; z-index: -1; }
-        .section-bg img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.4) contrast(1.1); }
-        .overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.9)); }
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com"></script>
 
-        .teacher-box { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 20px; margin-top: 20px; max-width: 450px; }
-        .animate-title { font-size: clamp(2.2rem, 10vw, 6.5rem); line-height: 1.1; }
+<!-- GSAP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
-        /* Mobile Menu Overlay */
-        #mobile-menu-screen { display: none; position: fixed; inset: 0; background: black; z-index: 200; flex-direction: column; align-items: center; justify-content: center; gap: 30px; }
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
-        #success-msg { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 300; background: #ff0000; padding: 40px; border-radius: 20px; text-align: center; box-shadow: 0 0 50px rgba(255, 0, 0, 0.5); }
-    </style>
+<style>
+:root { --accent:#ff0000; }
+
+body{
+  font-family:'Inter',sans-serif;
+  background:#000;
+  color:#fff;
+  overflow-x:hidden;
+}
+
+.heading-font{
+  font-family:'Syncopate',sans-serif;
+  text-transform:uppercase;
+}
+
+.section-bg{
+  position:absolute;
+  inset:0;
+  z-index:-1;
+}
+
+.section-bg img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  filter:brightness(.4);
+}
+
+.overlay{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to bottom,rgba(0,0,0,.3),rgba(0,0,0,.95));
+}
+
+.teacher-box{
+  background:rgba(255,255,255,.05);
+  backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:20px;
+  padding:25px;
+  transition:.4s;
+}
+
+.teacher-box:hover{
+  transform:translateY(-8px) scale(1.03);
+  border-color:var(--accent);
+}
+
+.animate-title{
+  font-size:clamp(2.5rem,8vw,6rem);
+  line-height:1.1;
+}
+
+/* Custom Cursor Desktop */
+@media(min-width:1024px){
+  body{cursor:none}
+  .cursor-dot{
+    width:8px;height:8px;background:red;
+    position:fixed;border-radius:50%;
+    pointer-events:none;z-index:9999;
+  }
+  .cursor-outline{
+    width:35px;height:35px;
+    border:1px solid rgba(255,255,255,.5);
+    position:fixed;border-radius:50%;
+    pointer-events:none;z-index:9998;
+  }
+}
+
+/* Mobile menu */
+#mobile-menu{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:#000;
+  z-index:200;
+}
+</style>
 </head>
+
 <body>
 
-    <div class="cursor-dot"></div>
-    <div class="cursor-outline"></div>
+<!-- Cursor -->
+<div class="cursor-dot"></div>
+<div class="cursor-outline"></div>
 
-    <div id="success-msg">
-        <h3 class="heading-font text-2xl font-bold mb-2 text-white">Application Sent!</h3>
-        <p class="text-sm tracking-widest uppercase text-white font-bold">Connecting WhatsApp...</p>
+<!-- Mobile Menu -->
+<div id="mobile-menu" class="flex flex-col items-center justify-center gap-10 heading-font text-xl">
+  <button onclick="toggleMenu()" class="absolute top-10 right-10 text-red-600 text-4xl">&times;</button>
+  <a href="#dance" onclick="toggleMenu()">Dance</a>
+  <a href="#yoga" onclick="toggleMenu()">Yoga</a>
+  <a href="#music" onclick="toggleMenu()">Music</a>
+  <a href="#arts" onclick="toggleMenu()">Arts</a>
+  <a href="#admission" onclick="toggleMenu()" class="text-red-600">Join Now</a>
+</div>
+
+<!-- Navbar -->
+<nav class="fixed w-full z-50 bg-black/40 backdrop-blur border-b border-white/5">
+  <div class="flex justify-between items-center px-6 md:px-16 py-4">
+    <div class="heading-font text-xl">B-STREET<span class="text-red-600">.</span></div>
+    <div class="hidden md:flex gap-10 text-xs tracking-widest uppercase font-bold">
+      <a href="#dance">Dance</a>
+      <a href="#yoga">Yoga</a>
+      <a href="#music">Music</a>
+      <a href="#arts">Arts</a>
+      <a href="#admission" class="bg-red-600 px-6 py-3">Enroll</a>
     </div>
+    <button onclick="toggleMenu()" class="md:hidden">
+      <div class="w-6 h-0.5 bg-white mb-1"></div>
+      <div class="w-6 h-0.5 bg-white mb-1"></div>
+      <div class="w-6 h-0.5 bg-red-600"></div>
+    </button>
+  </div>
+</nav>
 
-    <div id="mobile-menu-screen" class="heading-font text-xl tracking-widest">
-        <button onclick="toggleMenu()" class="absolute top-10 right-10 text-red-600 text-3xl">&times;</button>
-        <a href="#dance" onclick="toggleMenu()">Dance</a>
-        <a href="#yoga" onclick="toggleMenu()">Yoga</a>
-        <a href="#music" onclick="toggleMenu()">Music</a>
-        <a href="#arts" onclick="toggleMenu()">Arts</a>
-        <a href="#admission" onclick="toggleMenu()" class="text-red-600">Join Now</a>
-    </div>
+<!-- HERO -->
+<section class="relative h-screen flex items-center px-6 md:px-24">
+  <div class="section-bg">
+    <img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad" loading="lazy">
+  </div>
+  <div class="overlay"></div>
+  <div>
+    <h1 class="heading-font animate-title mb-6">
+      BEATSTREET <br>
+      <span class="text-transparent" style="-webkit-text-stroke:1px white">x KALAKRITI</span>
+    </h1>
+    <p class="text-red-600 tracking-[0.4em] uppercase font-bold">
+      Kalyani’s Creative Powerhouse
+    </p>
+  </div>
+</section>
 
-    <nav class="fixed w-full z-[100] bg-black/40 backdrop-blur-lg border-b border-white/5">
-        <div class="px-5 py-4 lg:px-16 flex justify-between items-center w-full">
-            <div class="heading-font text-lg md:text-2xl font-bold">
-                B-STREET<span class="text-red-600">.</span>
-            </div>
-            
-            <div class="hidden md:flex items-center gap-10 text-[10px] uppercase tracking-[0.2em] font-bold">
-                <a href="#dance" class="hover:text-red-600">Dance</a>
-                <a href="#yoga" class="hover:text-red-600">Yoga</a>
-                <a href="#music" class="hover:text-red-600">Music</a>
-                <a href="#arts" class="hover:text-red-600">Arts</a>
-                <a href="#admission" class="bg-red-600 px-6 py-3 text-white">Enroll Now</a>
-            </div>
+<!-- DANCE -->
+<section id="dance" class="py-32 px-6 md:px-24">
+<h2 class="heading-font text-4xl mb-12">Dance Styles</h2>
+<div class="grid md:grid-cols-3 gap-8">
+  <div class="teacher-box">
+    <h3 class="heading-font text-xl">Hip Hop</h3>
+    <p class="opacity-70 mt-2">Street • Freestyle • Choreo</p>
+  </div>
+  <div class="teacher-box">
+    <h3 class="heading-font text-xl">Bollywood</h3>
+    <p class="opacity-70 mt-2">Filmy • Energetic • Fun</p>
+  </div>
+  <div class="teacher-box">
+    <h3 class="heading-font text-xl">Contemporary</h3>
+    <p class="opacity-70 mt-2">Expression • Flow</p>
+  </div>
+</div>
+</section>
 
-            <button onclick="toggleMenu()" class="md:hidden flex flex-col gap-1.5">
-                <div class="w-6 h-0.5 bg-white"></div>
-                <div class="w-6 h-0.5 bg-white"></div>
-                <div class="w-6 h-0.5 bg-red-600"></div>
-            </button>
-        </div>
-    </nav>
+<!-- YOGA -->
+<section id="yoga" class="py-32 px-6 md:px-24 bg-white/5">
+<h2 class="heading-font text-4xl mb-12">Yoga & Wellness</h2>
+<div class="grid md:grid-cols-2 gap-8">
+  <div class="teacher-box">Power Yoga</div>
+  <div class="teacher-box">Meditation & Flexibility</div>
+</div>
+</section>
 
-    <section id="home" class="relative h-screen flex items-center px-6 md:px-24">
-        <div class="section-bg"><img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&q=80&w=2000" alt="Home"></div>
-        <div class="overlay"></div>
-        <div class="z-10">
-            <h1 class="heading-font animate-title mb-4">BEATSTREET <br> <span class="text-transparent" style="-webkit-text-stroke: 1px white;">x KALAKRITI</span></h1>
-            <p class="text-red-600 tracking-[0.4em] uppercase font-bold">Kalyani's Creative Powerhouse</p>
-        </div>
-    </section>
+<!-- MUSIC -->
+<section id="music" class="py-32 px-6 md:px-24">
+<h2 class="heading-font text-4xl mb-12">Music</h2>
+<div class="grid md:grid-cols-3 gap-8">
+  <div class="teacher-box">Vocal Training</div>
+  <div class="teacher-box">Guitar</div>
+  <div class="teacher-box">Keyboard</div>
+</div>
+</section>
 
-    <section id="dance" class="relative h-screen flex items-center px-6 md:px-24 border-t border-white/5">
-        <div class="section-bg"><img src="https://images.unsplash.com/photo-1535525153412-5a42439a210d?auto=format&q=80&w=2000" alt="Dance"></div>
-        <div class="overlay"></div>
-        <div class="z-10">
-            <h2 class="heading-font text-3xl md:text-6xl mb-4">Dance <span class="text-red-600">Academy</span></h2>
-            <div class="teacher-box flex flex-col md:flex-row items-center gap-5">
-                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=150" class="w-24 h-24 rounded-full border-2 border-red-600 object-cover">
-                <div>
-                    <h4 class="heading-font text-sm text-red-600">Mentor: Rahul Das</h4>
-                    <p class="text-[11px] text-gray-300">Specialist in Hip-Hop & Contemporary. 10+ years of street dance experience.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- ARTS -->
+<section id="arts" class="py-32 px-6 md:px-24 bg-white/5">
+<h2 class="heading-font text-4xl mb-12">Fine Arts</h2>
+<div class="grid md:grid-cols-2 gap-8">
+  <div class="teacher-box">Sketching & Drawing</div>
+  <div class="teacher-box">Painting</div>
+</div>
+</section>
 
-    <section id="yoga" class="relative h-screen flex items-center px-6 md:px-24 border-t border-white/5">
-        <div class="section-bg"><img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&q=80&w=2000" alt="Yoga"></div>
-        <div class="overlay"></div>
-        <div class="z-10">
-            <h2 class="heading-font text-3xl md:text-6xl mb-4">Yoga & <span class="text-red-600">Zumba</span></h2>
-            <div class="teacher-box flex flex-col md:flex-row items-center gap-5">
-                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150" class="w-24 h-24 rounded-full border-2 border-red-600 object-cover">
-                <div>
-                    <h4 class="heading-font text-sm text-red-600">Mentor: Priya Roy</h4>
-                    <p class="text-[11px] text-gray-300">Certified Yoga trainer. Focus on mental peace and high-energy Zumba sessions.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- ADMISSION -->
+<section id="admission" class="py-32 px-6 md:px-24 text-center">
+<h2 class="heading-font text-4xl mb-8">Join Beatstreet</h2>
+<p class="mb-10 opacity-70">Train with professionals. Build confidence. Express yourself.</p>
+<button onclick="joinNow()" class="bg-red-600 px-10 py-5 tracking-widest uppercase font-bold">
+  Join via WhatsApp
+</button>
+</section>
 
-    <section id="music" class="relative h-screen flex items-center px-6 md:px-24 border-t border-white/5">
-        <div class="section-bg"><img src="https://images.unsplash.com/photo-1510915228340-29c85a43dcfe?auto=format&q=80&w=2000" alt="Guitar"></div>
-        <div class="overlay"></div>
-        <div class="z-10">
-            <h2 class="heading-font text-3xl md:text-6xl mb-4">Music <span class="text-red-600">& Guitar</span></h2>
-            <div class="teacher-box flex flex-col md:flex-row items-center gap-5">
-                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150" class="w-24 h-24 rounded-full border-2 border-red-600 object-cover">
-                <div>
-                    <h4 class="heading-font text-sm text-red-600">Mentor: Amit Roy</h4>
-                    <p class="text-[11px] text-gray-300">Classical & Electric Guitar master. Join to learn the rhythm of strings.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- FOOTER -->
+<footer class="py-10 text-center text-xs opacity-50">
+© 2026 Beatstreet x Kalakriti
+</footer>
 
-    <section id="arts" class="relative h-screen flex items-center px-6 md:px-24 border-t border-white/5">
-        <div class="section-bg"><img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&q=80&w=2000" alt="Arts"></div>
-        <div class="overlay"></div>
-        <div class="z-10">
-            <h2 class="heading-font text-3xl md:text-6xl mb-4">Fine <span class="text-red-600">Arts</span></h2>
-            <div class="teacher-box flex flex-col md:flex-row items-center gap-5">
-                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=150" class="w-24 h-24 rounded-full border-2 border-red-600 object-cover">
-                <div>
-                    <h4 class="heading-font text-sm text-red-600">Mentor: Sneha Paul</h4>
-                    <p class="text-[11px] text-gray-300">Visual Artist & Sketching expert. Turn your imagination into reality.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<script>
+// Cursor
+const dot=document.querySelector('.cursor-dot');
+const outline=document.querySelector('.cursor-outline');
+window.addEventListener('mousemove',e=>{
+  dot.style.left=e.clientX+'px';
+  dot.style.top=e.clientY+'px';
+  outline.style.left=e.clientX-15+'px';
+  outline.style.top=e.clientY-15+'px';
+});
 
-    <section id="admission" class="relative min-h-screen py-24 px-4 flex items-center justify-center bg-[#050505]">
-        <div class="teacher-box w-full max-w-2xl z-10 border-red-600/20">
-            <h2 class="heading-font text-xl md:text-3xl text-center mb-10">Enrollment Form</h2>
-            <form class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                <input type="text" id="stu_name" placeholder="Student Name" class="bg-white/5 border border-white/10 p-4 rounded-xl outline-none focus:border-red-600 text-sm">
-                <input type="text" id="parent_name" placeholder="Parent Name" class="bg-white/5 border border-white/10 p-4 rounded-xl outline-none focus:border-red-600 text-sm">
-                <input type="tel" id="mobile" placeholder="WhatsApp Number" class="bg-white/5 border border-white/10 p-4 rounded-xl outline-none focus:border-red-600 text-sm">
-                <select id="course_select" class="bg-black border border-white/10 p-4 rounded-xl outline-none focus:border-red-600 text-sm">
-                    <option>Dance Academy</option>
-                    <option>Yoga & Zumba</option>
-                    <option>Music/Guitar</option>
-                    <option>Fine Arts</option>
-                </select>
-                <button type="button" onclick="sendWhatsApp()" class="md:col-span-2 bg-red-600 py-5 rounded-xl heading-font text-[10px] font-bold">Submit via WhatsApp</button>
-            </form>
-        </div>
-    </section>
+// GSAP
+gsap.registerPlugin(ScrollTrigger);
+gsap.from(".animate-title",{y:100,opacity:0,duration:1.2});
 
-    <footer class="bg-black py-10 text-center border-t border-white/10">
-        <h3 class="heading-font text-lg text-red-600">Beatstreet x Kalakriti</h3>
-        <p class="text-[10px] text-gray-600 uppercase tracking-widest mt-2">Developed by Abhay Basfore</p>
-    </footer>
+// Menu
+function toggleMenu(){
+  const m=document.getElementById('mobile-menu');
+  m.style.display=m.style.display==='flex'?'none':'flex';
+}
 
-    <script>
-        function toggleMenu() {
-            const menu = document.getElementById('mobile-menu-screen');
-            menu.style.display = (menu.style.display === 'flex') ? 'none' : 'flex';
-        }
+// WhatsApp
+function joinNow(){
+  window.location.href="https://wa.me/91XXXXXXXXXX?text=I want to join Beatstreet Academy";
+}
+</script>
 
-        function sendWhatsApp() {
-            const name = document.getElementById('stu_name').value;
-            const course = document.getElementById('course_select').value;
-            const targetNumber = "918100565299"; 
-            if(name) {
-                const msg = document.getElementById('success-msg');
-                msg.style.display = 'block';
-                setTimeout(() => {
-                    window.open(`https://wa.me/${targetNumber}?text=Admission Request: ${name} for ${course}`, '_blank');
-                    msg.style.display = 'none';
-                }, 1500);
-            } else { alert("Detail bharein!"); }
-        }
-
-        const dot = document.querySelector('.cursor-dot');
-        const outline = document.querySelector('.cursor-outline');
-        if(window.innerWidth > 1024) {
-            window.addEventListener('mousemove', (e) => {
-                gsap.to(dot, { x: e.clientX, y: e.clientY, duration: 0 });
-                gsap.to(outline, { x: e.clientX - 14, y: e.clientY - 14, duration: 0.15 });
-            });
-        }
-    </script>
 </body>
 </html>
