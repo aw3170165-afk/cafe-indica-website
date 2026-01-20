@@ -66,6 +66,25 @@
   </div>
 </section>
 
+<section id="events" class="py-12 px-6 max-w-4xl mx-auto">
+  <div class="box-gradient p-6 rounded-3xl border-l-4 border-l-red-600">
+    <h3 class="heading text-sm mb-4 text-red-500 tracking-widest">Upcoming Events</h3>
+    <div class="space-y-4">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-white/5 pb-4 gap-4">
+        <div>
+          <p class="text-sm font-semibold text-white uppercase tracking-wider">Free Demo Class</p>
+          <p class="text-[10px] opacity-50 italic">Try Dance, Music, Art or Yoga for free!</p>
+        </div>
+        <a href="#admission" class="text-[9px] bg-white text-black px-4 py-2 rounded-full font-bold hover:bg-red-600 hover:text-white transition uppercase tracking-widest text-center">Book Free Slot</a>
+      </div>
+      <div class="flex justify-between items-center">
+        <p class="text-sm font-semibold text-white">Annual Academy Fest 2026</p>
+        <span class="text-[9px] bg-red-600 px-2 py-0.5 rounded text-white font-bold">FEB 15</span>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="courses" class="py-16 px-6 max-w-7xl mx-auto">
   <h2 class="heading text-2xl text-center mb-10 tracking-widest text-white">Our <span class="text-red-500">Programs</span></h2>
   <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
@@ -77,8 +96,18 @@
   </div>
 </section>
 
+<section id="gallery" class="py-16 px-6 max-w-7xl mx-auto">
+  <h2 class="heading text-2xl text-center mb-10 tracking-widest text-white">Student <span class="text-red-500">Gallery</span></h2>
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+    <img src="https://images.unsplash.com/photo-1535525153412-5a42439a210d" class="h-40 w-full object-cover rounded-xl grayscale hover:grayscale-0 transition duration-500 border border-white/10">
+    <img src="https://images.unsplash.com/photo-1516062423079-7ca13cdc7f5a" class="h-40 w-full object-cover rounded-xl grayscale hover:grayscale-0 transition duration-500 border border-white/10">
+    <img src="https://images.unsplash.com/photo-1508853713191-1ba24534725d" class="h-40 w-full object-cover rounded-xl grayscale hover:grayscale-0 transition duration-500 border border-white/10">
+    <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b" class="h-40 w-full object-cover rounded-xl grayscale hover:grayscale-0 transition duration-500 border border-white/10">
+  </div>
+</section>
+
 <section id="teachers" class="py-16 px-6 max-w-5xl mx-auto">
-  <h2 class="heading text-2xl text-center mb-10 tracking-widest text-white">Our <span class="text-red-500">Mentors</span></h2>
+  <h2 class="heading text-2xl text-center mb-10 tracking-widest text-white">Our <span class="text-red-500">Teachers</span></h2>
   <div class="space-y-6">
     <div class="box-gradient p-6 rounded-3xl flex flex-col md:flex-row gap-6 items-center">
       <div class="flex flex-col items-center">
@@ -89,6 +118,22 @@
         <h3 class="heading text-xl text-white font-bold">Aniket Prasad</h3>
         <p class="text-[10px] text-red-500 font-bold mb-2 tracking-widest uppercase">Dance & Zumba Expert • 📞 +91 8100565299</p>
         <p class="text-xs opacity-60">8+ Years experience in choreography and high-energy fitness sessions.</p>
+      </div>
+    </div>
+    <div class="box-gradient p-6 rounded-3xl flex flex-col md:flex-row gap-6 items-center">
+      <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d" class="h-32 w-32 rounded-full object-cover border-2 border-red-600 shadow-lg shadow-red-600/20">
+      <div class="text-center md:text-left">
+        <h3 class="heading text-xl text-white font-bold">Amit Sen</h3>
+        <p class="text-[10px] text-red-500 font-bold mb-2 tracking-widest uppercase">Music Faculty • 📞 +91 8100565299</p>
+        <p class="text-xs opacity-60">Expert mentor for Vocals, Guitar and Keyboard training.</p>
+      </div>
+    </div>
+    <div class="box-gradient p-6 rounded-3xl flex flex-col md:flex-row gap-6 items-center">
+      <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee" class="h-32 w-32 rounded-full object-cover border-2 border-red-600 shadow-lg shadow-red-600/20">
+      <div class="text-center md:text-left">
+        <h3 class="heading text-xl text-white font-bold">Sneha Paul</h3>
+        <p class="text-[10px] text-red-500 font-bold mb-2 tracking-widest uppercase">Fine Arts Mentor • 📞 +91 8100565299</p>
+        <p class="text-xs opacity-60">National level artist specializing in realistic sketching and painting.</p>
       </div>
     </div>
     <div class="box-gradient p-6 rounded-3xl flex flex-col md:flex-row gap-6 items-center">
@@ -134,7 +179,64 @@
   </div>
 </section>
 
+<section id="rating" class="py-16 px-6 text-center">
+  <div class="box-gradient max-w-sm mx-auto p-8 rounded-3xl">
+    <h3 class="heading text-sm mb-6 tracking-widest text-red-500">Academy Reviews</h3>
+    
+    <div class="flex items-center justify-center gap-6 mb-6 border-b border-white/5 pb-6">
+        <div>
+            <p id="avg-display" class="text-4xl font-bold text-white leading-none">0.0</p>
+            <p class="text-[8px] opacity-40 uppercase tracking-tighter mt-1"><span id="count-display">0</span> Ratings</p>
+        </div>
+    </div>
+
+    <div id="form-container">
+        <p class="text-[10px] opacity-50 mb-3 uppercase text-white font-bold">Tap stars to rate</p>
+        <div class="star-rating mb-4">
+          <input type="radio" name="stars" id="star-5" value="5"><label for="star-5">★</label>
+          <input type="radio" name="stars" id="star-4" value="4"><label for="star-4">★</label>
+          <input type="radio" name="stars" id="star-3" value="3"><label for="star-3">★</label>
+          <input type="radio" name="stars" id="star-2" value="2"><label for="star-2">★</label>
+          <input type="radio" name="stars" id="star-1" value="1"><label for="star-1">★</label>
+        </div>
+        <button type="button" onclick="submitRating()" class="w-full bg-white text-black py-2 rounded-lg text-[10px] font-bold uppercase tracking-widest hover:bg-red-600 hover:text-white transition">Submit Review</button>
+    </div>
+
+    <div id="success-message" class="hidden py-4">
+        <p class="text-red-500 font-bold uppercase tracking-widest text-[11px]">Thank you! Your rating is recorded.</p>
+    </div>
+  </div>
+</section>
+
 <script>
+  let tCount = parseInt(localStorage.getItem('bS_Count')) || 0;
+  let tSum = parseInt(localStorage.getItem('bS_Sum')) || 0;
+  let tRated = localStorage.getItem('bS_Rated') === 'true';
+
+  function updateDisplay() {
+    const avgDisplay = document.getElementById('avg-display');
+    const countDisplay = document.getElementById('count-display');
+    if(avgDisplay) avgDisplay.innerText = tCount > 0 ? (tSum / tCount).toFixed(1) : "0.0";
+    if(countDisplay) countDisplay.innerText = tCount;
+    if(tRated && document.getElementById('form-container')) {
+        document.getElementById('form-container').style.display = 'none';
+        document.getElementById('success-message').classList.remove('hidden');
+    }
+  }
+
+  function submitRating() {
+    const stars = document.getElementsByName('stars');
+    let val = 0;
+    for(let s of stars) { if(s.checked) { val = parseInt(s.value); break; } }
+    if(val > 0) {
+        tCount++; tSum += val; tRated = true;
+        localStorage.setItem('bS_Count', tCount);
+        localStorage.setItem('bS_Sum', tSum);
+        localStorage.setItem('bS_Rated', 'true');
+        updateDisplay();
+    } else { alert("Please select a star rating!"); }
+  }
+
   let fileUrl = ""; 
 
   async function uploadFileToLink() {
@@ -166,7 +268,7 @@
   function handleWhatsAppForm(e) {
       e.preventDefault();
       if (!fileUrl) {
-          alert("Document upload is mandatory. Please select a file and wait for completion.");
+          alert("Document upload is mandatory. Please wait for completion.");
           return;
       }
       const sName = document.getElementById('student_name').value;
@@ -185,13 +287,15 @@
 
       window.open(`https://wa.me/918100565299?text=${message}`, '_blank');
   }
+  window.onload = updateDisplay;
 </script>
 
 <footer class="py-16 text-center border-t border-white/5">
-  <p class="text-xs opacity-50 mb-2 tracking-widest uppercase italic">Kalyani, West Bengal | 📞 +91 8100565299</p>
+  <p class="text-xs opacity-50 mb-2 tracking-widest uppercase italic">Located at Kalyani, West Bengal</p>
+  <p class="text-xs font-bold text-red-500 mb-6 tracking-widest italic">📞 +91 8100565299</p>
   <div class="mt-8 pt-8 border-t border-white/5">
     <p class="text-[11px] text-white font-bold uppercase tracking-[0.4em]">© 2026 BEATSTREET X KALAKRITI</p>
-    <p class="text-[10px] text-white mt-2 tracking-[0.2em] font-bold">Designed by <span class="text-red-500 underline">ABHAY BASFORE</span></p>
+    <p class="text-[10px] text-white mt-2 tracking-[0.2em] font-bold">Designed by <span class="text-red-500 underline decoration-red-500/50">ABHAY BASFORE</span></p>
   </div>
 </footer>
 
