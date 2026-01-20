@@ -5,14 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Beatstreet x Kalakriti | Kalyani</title>
 
-<!-- Tailwind -->
 <script src="https://cdn.tailwindcss.com"></script>
-
-<!-- GSAP -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
-<!-- Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
@@ -22,67 +17,62 @@ body{font-family:Inter,sans-serif;background:#000;color:#fff;overflow-x:hidden}
 .section-bg{position:absolute;inset:0;z-index:-1}
 .section-bg img{width:100%;height:100%;object-fit:cover;filter:brightness(.4)}
 .overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.3),rgba(0,0,0,.95))}
-.box{background:rgba(255,255,255,.05);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:25px;transition:.4s}
-.box:hover{transform:translateY(-8px) scale(1.03);border-color:var(--accent)}
-.animate-title{font-size:clamp(2.5rem,8vw,6rem);line-height:1.1}
-@media(min-width:1024px){
-body{cursor:none}
-.cursor-dot{width:8px;height:8px;background:red;position:fixed;border-radius:50%;z-index:9999}
-.cursor-outline{width:35px;height:35px;border:1px solid rgba(255,255,255,.5);position:fixed;border-radius:50%;z-index:9998}
-}
-#mobile-menu{display:none;position:fixed;inset:0;background:#000;z-index:200}
-input,textarea,select{background:#000;border:1px solid rgba(255,255,255,.2);padding:14px;border-radius:10px}
+.box{background:rgba(255,255,255,.05);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:25px}
+input,textarea,select{background:#000;border:1px solid rgba(255,255,255,.3);padding:14px;border-radius:10px;color:white}
+#success{display:none;position:fixed;inset:0;z-index:999;background:rgba(0,0,0,.9);align-items:center;justify-content:center}
 </style>
 </head>
 
 <body>
 
-<div class="cursor-dot"></div>
-<div class="cursor-outline"></div>
-
-<!-- MOBILE MENU -->
-<div id="mobile-menu" class="flex flex-col items-center justify-center gap-8 heading-font text-xl">
-<button onclick="toggleMenu()" class="absolute top-8 right-8 text-red-600 text-4xl">&times;</button>
-<a href="#home" onclick="toggleMenu()">Home</a>
-<a href="#dance" onclick="toggleMenu()">Dance</a>
-<a href="#yoga" onclick="toggleMenu()">Yoga</a>
-<a href="#music" onclick="toggleMenu()">Music</a>
-<a href="#arts" onclick="toggleMenu()">Arts</a>
-<a href="#gallery" onclick="toggleMenu()">Gallery</a>
-<a href="#contact" onclick="toggleMenu()">Contact</a>
-<a href="#admission" onclick="toggleMenu()" class="text-red-600">Join Now</a>
+<!-- SUCCESS POPUP -->
+<div id="success" class="flex">
+  <div class="box text-center max-w-sm">
+    <h3 class="heading-font text-2xl mb-4">Form Submitted</h3>
+    <p class="opacity-80 mb-4">WhatsApp opening...</p>
+    <button onclick="document.getElementById('success').style.display='none'"
+      class="bg-red-600 px-6 py-3">Close</button>
+  </div>
 </div>
 
-<!-- NAVBAR -->
-<nav class="fixed w-full z-50 bg-black/40 backdrop-blur border-b border-white/5">
-<div class="flex justify-between items-center px-6 md:px-16 py-4">
-<div class="heading-font text-xl">B-STREET<span class="text-red-600">.</span></div>
-<div class="hidden md:flex gap-6 text-[11px] tracking-[0.25em] uppercase font-bold">
-<a href="#home">Home</a>
-<a href="#dance">Dance</a>
-<a href="#yoga">Yoga</a>
-<a href="#music">Music</a>
-<a href="#arts">Arts</a>
-<a href="#gallery">Gallery</a>
-<a href="#contact">Contact</a>
-<a href="#admission" class="bg-red-600 px-6 py-3">Join</a>
-</div>
-<button onclick="toggleMenu()" class="md:hidden">
-<div class="w-6 h-0.5 bg-white mb-1"></div>
-<div class="w-6 h-0.5 bg-white mb-1"></div>
-<div class="w-6 h-0.5 bg-red-600"></div>
-</button>
-</div>
+<!-- NAVBAR (NO HAMBURGER, ALL LINKS VISIBLE) -->
+<nav class="fixed w-full z-50 bg-black/70 backdrop-blur border-b border-white/5">
+  <div class="flex flex-wrap justify-between items-center px-4 md:px-12 py-4 gap-4">
+
+    <!-- Logo -->
+    <div class="heading-font text-lg md:text-xl font-bold">
+      B-STREET<span class="text-red-600">.</span>
+    </div>
+
+    <!-- Menu -->
+    <div class="flex flex-wrap justify-center gap-4 md:gap-6 text-[10px] md:text-xs uppercase tracking-widest font-bold">
+      <a href="#home" class="hover:text-red-600">Home</a>
+      <a href="#dance" class="hover:text-red-600">Dance</a>
+      <a href="#yoga" class="hover:text-red-600">Yoga</a>
+      <a href="#music" class="hover:text-red-600">Music</a>
+      <a href="#arts" class="hover:text-red-600">Arts</a>
+      <a href="#gallery" class="hover:text-red-600">Gallery</a>
+      <a href="#contact" class="hover:text-red-600">Contact</a>
+      <a href="#admission" class="bg-red-600 px-4 py-2">Join Now</a>
+    </div>
+
+  </div>
 </nav>
 
 <!-- HERO -->
 <section id="home" class="relative h-screen flex items-center px-6 md:px-24">
-<div class="section-bg"><img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad"></div>
+<div class="section-bg">
+<img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad">
+</div>
 <div class="overlay"></div>
 <div>
-<h1 class="heading-font animate-title mb-6">BEATSTREET<br>
-<span class="text-transparent" style="-webkit-text-stroke:1px white">x KALAKRITI</span></h1>
-<p class="text-red-600 tracking-[0.4em] uppercase font-bold">Kalyani Creative Academy</p>
+<h1 class="heading-font text-5xl md:text-6xl mb-6">
+BEATSTREET<br>
+<span class="text-transparent" style="-webkit-text-stroke:1px white">x KALAKRITI</span>
+</h1>
+<p class="text-red-600 tracking-[0.35em] uppercase font-bold">
+Kalyani Creative Academy
+</p>
 </div>
 </section>
 
@@ -150,51 +140,79 @@ input,textarea,select{background:#000;border:1px solid rgba(255,255,255,.2);padd
 </div>
 </section>
 
-<!-- ADMISSION FORM -->
+<!-- ADMISSION -->
 <section id="admission" class="py-32 px-6 md:px-24">
 <h2 class="heading-font text-4xl mb-10 text-center">Admission Form</h2>
+
 <form id="admissionForm" class="max-w-2xl mx-auto grid gap-6 box">
-<input id="name" placeholder="Student Name" required>
-<input id="parent" placeholder="Parent Name" required>
-<input id="phone" placeholder="Phone Number" required>
+
+<input id="studentName" placeholder="Student Name" required>
+<input id="parentName" placeholder="Parent Name" required>
+<input id="phone" placeholder="Phone Number" required pattern="[0-9]{10}">
 <textarea id="address" placeholder="Address" required></textarea>
-<select id="course">
-<option>Dance</option><option>Yoga</option><option>Music</option><option>Arts</option>
+
+<select id="course" required>
+<option value="">What do you want to learn?</option>
+<option>Dance</option><option>Yoga</option>
+<option>Music</option><option>Arts</option>
 </select>
+
 <label class="text-sm opacity-70">Upload ID Proof</label>
 <input type="file" id="doc">
-<button class="bg-red-600 py-4 font-bold uppercase">Submit & WhatsApp</button>
+
+<button class="bg-red-600 py-4 font-bold uppercase">
+Submit & Send on WhatsApp
+</button>
+
 </form>
 </section>
 
 <!-- CONTACT -->
 <section id="contact" class="py-32 px-6 md:px-24 text-center">
-<h2 class="heading-font text-4xl mb-8">Find Us</h2>
+<h2 class="heading-font text-4xl mb-6">Find Us</h2>
 <iframe class="w-full h-80 rounded-2xl"
 src="https://www.google.com/maps?q=kalyani&output=embed"></iframe>
 </section>
 
-<footer class="py-8 text-center opacity-50 text-xs">
-© 2026 Beatstreet x Kalakriti
+<!-- FOOTER WITH CREDIT -->
+<footer class="py-10 text-center text-xs opacity-60">
+<p>© 2026 Beatstreet x Kalakriti</p>
+<p class="mt-2">
+Website designed & developed by 
+<span class="text-red-600 font-bold">Abhay Basfore</span>
+</p>
 </footer>
 
 <script>
-const dot=document.querySelector('.cursor-dot');
-const outline=document.querySelector('.cursor-outline');
-window.addEventListener('mousemove',e=>{
-if(dot){dot.style.left=e.clientX+'px';dot.style.top=e.clientY+'px';
-outline.style.left=e.clientX-15+'px';outline.style.top=e.clientY-15+'px'}
-});
-function toggleMenu(){
-const m=document.getElementById('mobile-menu');
-m.style.display=m.style.display==='flex'?'none':'flex';
-}
 document.getElementById("admissionForm").addEventListener("submit",function(e){
 e.preventDefault();
-let msg=`New Admission%0AName:${name.value}%0AParent:${parent.value}%0APhone:${phone.value}%0AAddress:${address.value}%0ACourse:${course.value}%0ADocument:${doc.value?"Yes":"No"}`;
-window.open(`https://wa.me/918100565299?text=${msg}`,"_blank");
+
+const name=studentName.value.trim();
+const parent=parentName.value.trim();
+const phone=document.getElementById("phone").value.trim();
+const address=document.getElementById("address").value.trim();
+const course=document.getElementById("course").value;
+const doc=document.getElementById("doc").files.length?"Yes":"No";
+
+if(phone.length!==10){alert("Enter valid 10 digit phone number");return;}
+
+const message=
+`New Admission Request
+Student Name: ${name}
+Parent Name: ${parent}
+Phone: ${phone}
+Address: ${address}
+Course: ${course}
+Document Uploaded: ${doc}`;
+
+document.getElementById("success").style.display="flex";
+
+setTimeout(()=>{
+window.open(
+"https://wa.me/918100565299?text="+encodeURIComponent(message),
+"_blank");
+},1200);
 });
-gsap.from(".animate-title",{y:100,opacity:0,duration:1.2});
 </script>
 
 </body>
