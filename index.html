@@ -13,20 +13,26 @@
     body { background: #0f0f0f; color: #fff; font-family: 'Inter', sans-serif; margin: 0; }
     .heading { font-family: 'Syncopate', sans-serif; text-transform: uppercase; }
     
-    /* Custom Scrollbar for better looks */
-    ::-webkit-scrollbar { width: 5px; }
-    ::-webkit-scrollbar-track { background: #0f0f0f; }
-    ::-webkit-scrollbar-thumb { background: #ff2a2a; border-radius: 10px; }
-
     .box-gradient {
       background: rgba(255, 255, 255, 0.05);
       backdrop-filter: blur(10px);
       border: 1px solid rgba(255, 255, 255, 0.1);
       transition: all 0.3s ease;
     }
-    .box-gradient:hover {
-      border-color: #ff2a2a;
-      transform: translateY(-5px);
+    .box-gradient:hover { border-color: #ff2a2a; }
+
+    /* Custom File Input Styling */
+    input[type="file"]::file-selector-button {
+      background: #ff2a2a;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 8px;
+      color: white;
+      cursor: pointer;
+      margin-right: 15px;
+      font-size: 10px;
+      text-transform: uppercase;
+      font-weight: bold;
     }
   </style>
 </head>
@@ -35,122 +41,97 @@
 
 <nav class="fixed top-0 left-0 w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/10">
   <div class="max-w-7xl mx-auto flex justify-between items-center px-5 py-4">
-    <div class="heading text-lg font-bold tracking-tighter text-white">
-      B-STREET<span class="text-red-500">.</span>
-    </div>
-    <div class="flex items-center gap-4 md:gap-8">
+    <div class="heading text-lg font-bold tracking-tighter">B-STREET<span class="text-red-500">.</span></div>
+    <div class="flex items-center gap-6">
       <div class="hidden md:flex gap-6 text-[10px] tracking-[2px] font-bold">
         <a href="#home" class="hover:text-red-500 transition">HOME</a>
         <a href="#courses" class="hover:text-red-500 transition">COURSES</a>
-        <a href="#contact" class="hover:text-red-500 transition">CONTACT</a>
+        <a href="#admission" class="hover:text-red-500 transition">ADMISSION</a>
       </div>
-      <a href="#admission" class="bg-red-600 hover:bg-red-700 text-white text-[11px] font-bold px-6 py-2.5 rounded-full transition tracking-widest uppercase">
-        Join
-      </a>
+      <a href="#contact" class="bg-red-600 text-white text-[11px] font-bold px-5 py-2 rounded-full uppercase tracking-widest">Contact</a>
     </div>
   </div>
 </nav>
 
-<section id="home" class="relative h-screen flex items-center justify-center text-center px-6">
-  <div class="absolute inset-0 z-0">
-    <img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad" class="w-full h-full object-cover opacity-40">
-    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[#0f0f0f]/50 to-[#0f0f0f]"></div>
+<section id="home" class="relative h-[80vh] flex items-center justify-center text-center px-6">
+  <div class="absolute inset-0">
+    <img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad" class="w-full h-full object-cover opacity-30">
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-[#0f0f0f]"></div>
   </div>
-
   <div class="relative z-10">
-    <h1 class="heading text-4xl md:text-7xl font-bold leading-tight">
-      BEATSTREET<br>
-      <span class="text-transparent" style="-webkit-text-stroke:1px white;">X KALAKRITI</span>
-    </h1>
-    <p class="text-red-500 tracking-[0.4em] mt-6 text-xs md:text-sm font-bold uppercase">
-      Kalyani's Premier Creative Academy
-    </p>
-    <div class="mt-10">
-      <a href="#courses" class="px-8 py-3 border border-white/20 rounded-full text-[10px] tracking-[3px] font-bold hover:bg-white hover:text-black transition">EXPLORE NOW</a>
+    <h1 class="heading text-4xl md:text-6xl font-bold">BEATSTREET<br><span class="text-transparent" style="-webkit-text-stroke:1px white;">X KALAKRITI</span></h1>
+    <p class="text-red-500 tracking-[0.4em] mt-4 text-xs font-bold uppercase">Kalyani Creative Academy</p>
+  </div>
+</section>
+
+<section id="courses" class="py-20 px-6 max-w-6xl mx-auto">
+  <h2 class="heading text-3xl text-center mb-12">Our <span class="text-red-500">Courses</span></h2>
+  <div class="grid md:grid-cols-3 gap-6">
+    <div class="box-gradient p-6 rounded-2xl text-center">
+      <img src="https://images.unsplash.com/photo-1547153760-18fc86324498" class="rounded-xl h-48 w-full object-cover mb-4">
+      <h3 class="heading text-lg mb-2">Dance</h3>
+      <p class="text-sm opacity-60">Hip-Hop & Contemporary</p>
+    </div>
+    <div class="box-gradient p-6 rounded-2xl text-center">
+      <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d" class="rounded-xl h-48 w-full object-cover mb-4">
+      <h3 class="heading text-lg mb-2">Music</h3>
+      <p class="text-sm opacity-60">Vocal & Instruments</p>
+    </div>
+    <div class="box-gradient p-6 rounded-2xl text-center">
+      <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee" class="rounded-xl h-48 w-full object-cover mb-4">
+      <h3 class="heading text-lg mb-2">Fine Arts</h3>
+      <p class="text-sm opacity-60">Drawing & Sketching</p>
     </div>
   </div>
 </section>
 
-<section id="courses" class="py-24 px-6 max-w-6xl mx-auto">
-  <div class="text-center mb-16">
-    <h2 class="heading text-3xl md:text-4xl mb-2">Our <span class="text-red-500">Specializations</span></h2>
-    <div class="h-1 w-20 bg-red-600 mx-auto rounded-full"></div>
-  </div>
-
-  <div class="grid gap-10">
-    <div class="box-gradient rounded-3xl overflow-hidden p-8 grid md:grid-cols-2 gap-10 items-center">
-      <div class="order-2 md:order-1">
-        <h3 class="heading text-2xl text-red-500 mb-4">Dance</h3>
-        <p class="text-gray-400 leading-relaxed mb-6">Master the art of movement with our specialized courses in Hip-Hop, Bollywood, and Contemporary dance styles. Focus on posture, rhythm, and confidence.</p>
-        <div class="flex items-center gap-4">
-          <div class="h-12 w-12 rounded-full bg-red-600/20 flex items-center justify-center text-red-500 font-bold">RD</div>
-          <div>
-            <p class="font-bold">Rahul Das</p>
-            <p class="text-xs opacity-50">Head of Choreography</p>
-          </div>
-        </div>
-      </div>
-      <div class="order-1 md:order-2">
-        <img class="rounded-2xl w-full h-64 object-cover shadow-2xl" src="https://images.unsplash.com/photo-1547153760-18fc86324498" alt="Dance Instructor">
-      </div>
-    </div>
-
-    <div class="box-gradient rounded-3xl overflow-hidden p-8 grid md:grid-cols-2 gap-10 items-center">
-      <div class="order-1">
-        <img class="rounded-2xl w-full h-64 object-cover shadow-2xl" src="https://images.unsplash.com/photo-1511379938547-c1f69419868d" alt="Music Teacher">
-      </div>
-      <div class="order-2">
-        <h3 class="heading text-2xl text-red-500 mb-4">Music</h3>
-        <p class="text-gray-400 leading-relaxed mb-6">Comprehensive training in Vocal, Guitar, and Keyboard. We take you from the basic notes to advanced stage performances.</p>
-        <div class="flex items-center gap-4">
-          <div class="h-12 w-12 rounded-full bg-red-600/20 flex items-center justify-center text-red-500 font-bold">AS</div>
-          <div>
-            <p class="font-bold">Amit Sen</p>
-            <p class="text-xs opacity-50">Senior Music Faculty</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="admission" class="py-24 px-6 bg-white/[0.02]">
-  <div class="max-w-3xl mx-auto">
-    <div class="text-center mb-12">
-      <h2 class="heading text-3xl mb-4">Admission Open</h2>
-      <p class="text-gray-500 text-sm italic">Join the creative community in Kalyani today!</p>
-    </div>
-    <form class="box-gradient p-10 rounded-3xl grid gap-6 shadow-2xl">
+<section id="admission" class="py-20 px-6">
+  <div class="max-w-4xl mx-auto">
+    <h2 class="heading text-3xl text-center mb-10">Registration <span class="text-red-500">Form</span></h2>
+    
+    <form class="box-gradient p-8 md:p-12 rounded-3xl grid gap-6 shadow-2xl bg-white/[0.02]">
       <div class="grid md:grid-cols-2 gap-6">
         <div class="space-y-2">
-          <label class="text-[10px] uppercase tracking-widest text-gray-400 ml-1">Student Name</label>
-          <input type="text" placeholder="Full Name" required class="w-full p-4 bg-black/50 border border-white/10 rounded-xl focus:border-red-500 outline-none transition">
+          <label class="text-[10px] uppercase tracking-widest text-gray-400">Student Name</label>
+          <input type="text" placeholder="Enter Full Name" required class="w-full p-4 bg-black/40 border border-white/10 rounded-xl focus:border-red-500 outline-none transition">
         </div>
         <div class="space-y-2">
-          <label class="text-[10px] uppercase tracking-widest text-gray-400 ml-1">Phone Number</label>
-          <input type="tel" placeholder="+91" required class="w-full p-4 bg-black/50 border border-white/10 rounded-xl focus:border-red-500 outline-none transition">
+          <label class="text-[10px] uppercase tracking-widest text-gray-400">Parent/Guardian Name</label>
+          <input type="text" placeholder="Enter Parent Name" required class="w-full p-4 bg-black/40 border border-white/10 rounded-xl focus:border-red-500 outline-none transition">
         </div>
       </div>
-      <button class="w-full bg-red-600 hover:bg-red-700 py-4 font-bold rounded-xl transition-all shadow-lg shadow-red-600/20 uppercase tracking-widest text-sm">Submit Application</button>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="space-y-2">
+          <label class="text-[10px] uppercase tracking-widest text-gray-400">Phone Number</label>
+          <input type="tel" placeholder="+91" required class="w-full p-4 bg-black/40 border border-white/10 rounded-xl focus:border-red-500 outline-none transition">
+        </div>
+        <div class="space-y-2">
+          <label class="text-[10px] uppercase tracking-widest text-gray-400">Address</label>
+          <input type="text" placeholder="Kalyani, West Bengal" required class="w-full p-4 bg-black/40 border border-white/10 rounded-xl focus:border-red-500 outline-none transition">
+        </div>
+      </div>
+
+      <div class="space-y-2">
+        <label class="text-[10px] uppercase tracking-widest text-gray-400">Identify Document (Aadhar/ID)</label>
+        <div class="w-full p-4 bg-black/40 border border-dashed border-white/20 rounded-xl">
+          <input type="file" required class="w-full text-sm text-gray-400">
+        </div>
+        <p class="text-[9px] text-gray-500">*Upload PDF or Image (Max 2MB)</p>
+      </div>
+
+      <button class="w-full bg-red-600 hover:bg-red-700 py-4 font-bold rounded-xl transition-all uppercase tracking-widest text-sm mt-4">Submit Registration</button>
     </form>
   </div>
 </section>
 
-<section id="contact" class="py-24 text-center px-6">
-  <div class="box-gradient inline-block p-10 rounded-3xl max-w-xl w-full">
-    <h2 class="heading text-2xl mb-8">Get In Touch</h2>
-    <div class="space-y-4">
-      <p class="flex items-center justify-center gap-3">
-        <span class="text-red-500">📞</span> +91 8100565299
-      </p>
-      <p class="flex items-center justify-center gap-3 opacity-80">
-        <span class="text-red-500">📍</span> B-1, Kalyani, West Bengal
-      </p>
-    </div>
-  </div>
+<section id="contact" class="py-20 text-center border-t border-white/5">
+  <h2 class="heading text-2xl mb-6">Contact Us</h2>
+  <p class="opacity-70 mb-2">📞 +91 8100565299</p>
+  <p class="opacity-70">📍 Kalyani, West Bengal</p>
 </section>
 
-<footer class="py-10 text-center border-t border-white/5 text-[10px] opacity-40 uppercase tracking-[0.4em]">
+<footer class="py-10 text-center text-[10px] opacity-40 uppercase tracking-[0.4em]">
   © 2026 Beatstreet x Kalakriti | Designed by Abhay Basfore
 </footer>
 
