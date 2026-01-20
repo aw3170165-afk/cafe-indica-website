@@ -44,7 +44,7 @@
 <nav class="fixed top-0 left-0 w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/10 px-5 py-4">
   <div class="max-w-7xl mx-auto flex justify-between items-center">
     <div class="heading text-lg font-bold tracking-tighter text-white">B-STREET<span class="text-red-500">.</span></div>
-    <div class="hidden md:flex gap-6 text-[10px] tracking-[2px] font-bold text-white">
+    <div class="hidden md:flex gap-6 text-[10px] tracking-[2px] font-bold text-white uppercase">
       <a href="#home" class="hover:text-red-500 transition">HOME</a>
       <a href="#courses" class="hover:text-red-500 transition">COURSES</a>
       <a href="#gallery" class="hover:text-red-500 transition">GALLERY</a>
@@ -219,15 +219,11 @@
   function handleRating() {
     const stars = document.getElementsByName('stars');
     let selected = false;
-    for(let star of stars) {
-        if(star.checked) { selected = true; break; }
-    }
+    for(let star of stars) { if(star.checked) { selected = true; break; } }
     if(selected) {
-        document.getElementById('rating-form-area').classList.add('hidden');
+        document.getElementById('rating-form-area').style.display = 'none';
         document.getElementById('rating-success').classList.remove('hidden');
-    } else {
-        alert("Please select a star rating!");
-    }
+    } else { alert("Please select a star rating!"); }
   }
 </script>
 
@@ -240,12 +236,8 @@
   <p class="text-xs font-bold text-red-500 mb-6 tracking-widest italic">📞 +91 8100565299</p>
   
   <div class="mt-8 pt-8 border-t border-white/5">
-    <p class="text-[11px] text-white font-bold uppercase tracking-[0.4em]">
-        © 2026 BEATSTREET X KALAKRITI
-    </p>
-    <p class="text-[10px] text-white mt-2 tracking-[0.2em] font-bold">
-        Designed by <span class="text-red-500 underline decoration-red-500/50">ABHAY BASFORE</span>
-    </p>
+    <p class="text-[11px] text-white font-bold uppercase tracking-[0.4em]">© 2026 BEATSTREET X KALAKRITI</p>
+    <p class="text-[10px] text-white mt-2 tracking-[0.2em] font-bold">Designed by <span class="text-red-500 underline decoration-red-500/50">ABHAY BASFORE</span></p>
   </div>
 </section>
 
