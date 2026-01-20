@@ -21,17 +21,6 @@
     }
     .box-gradient:hover { border-color: #ff2a2a; transform: translateY(-5px); }
 
-    .form-input {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      transition: all 0.3s ease;
-    }
-    .form-input:focus {
-      border-color: #ff2a2a;
-      background: rgba(255, 255, 255, 0.07);
-      box-shadow: 0 0 15px rgba(255, 42, 42, 0.1);
-    }
-
     .star-rating { direction: rtl; display: inline-flex; }
     .star-rating input { display: none; }
     .star-rating label { color: #333; cursor: pointer; font-size: 32px; transition: 0.2s; padding: 0 4px; }
@@ -43,6 +32,10 @@
       100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
     }
     .wa-float { animation: pulse 2s infinite; }
+    
+    input[type="file"]::file-selector-button {
+      background: #ff2a2a; border: none; padding: 8px 16px; border-radius: 8px; color: white; cursor: pointer; font-size: 10px; font-weight: bold;
+    }
   </style>
 </head>
 
@@ -73,14 +66,54 @@
   </div>
 </section>
 
+<section id="events" class="py-12 px-6 max-w-4xl mx-auto">
+  <div class="box-gradient p-6 rounded-3xl border-l-4 border-l-red-600">
+    <h3 class="heading text-sm mb-4 text-red-500 tracking-widest">Upcoming Events</h3>
+    <div class="space-y-4">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-white/5 pb-4 gap-4">
+        <div>
+          <p class="text-sm font-semibold text-white uppercase tracking-wider">Free Demo Class</p>
+          <p class="text-[10px] opacity-50 italic">Try Dance, Music, Art or Yoga for free!</p>
+        </div>
+        <a href="#admission" class="text-[9px] bg-white text-black px-4 py-2 rounded-full font-bold hover:bg-red-600 hover:text-white transition uppercase tracking-widest text-center">Book Free Slot</a>
+      </div>
+      <div class="flex justify-between items-center">
+        <p class="text-sm font-semibold text-white">Annual Academy Fest 2026</p>
+        <span class="text-[9px] bg-red-600 px-2 py-0.5 rounded text-white font-bold">FEB 15</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="courses" class="py-16 px-6 max-w-7xl mx-auto">
+  <h2 class="heading text-2xl text-center mb-10 tracking-widest text-white">Our <span class="text-red-500">Programs</span></h2>
+  <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+    <div class="box-gradient p-4 rounded-2xl text-center"><h3 class="text-xs font-bold uppercase">Dance</h3></div>
+    <div class="box-gradient p-4 rounded-2xl text-center"><h3 class="text-xs font-bold uppercase">Music</h3></div>
+    <div class="box-gradient p-4 rounded-2xl text-center"><h3 class="text-xs font-bold uppercase">Arts</h3></div>
+    <div class="box-gradient p-4 rounded-2xl text-center"><h3 class="text-xs font-bold uppercase">Yoga</h3></div>
+    <div class="box-gradient p-4 rounded-2xl text-center"><h3 class="text-xs font-bold uppercase">Zumba</h3></div>
+  </div>
+</section>
+
+<section id="gallery" class="py-16 px-6 max-w-7xl mx-auto">
+  <h2 class="heading text-2xl text-center mb-10 tracking-widest text-white">Student <span class="text-red-500">Gallery</span></h2>
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+    <img src="https://images.unsplash.com/photo-1535525153412-5a42439a210d" class="h-40 w-full object-cover rounded-xl grayscale hover:grayscale-0 transition duration-500 border border-white/10">
+    <img src="https://images.unsplash.com/photo-1516062423079-7ca13cdc7f5a" class="h-40 w-full object-cover rounded-xl grayscale hover:grayscale-0 transition duration-500 border border-white/10">
+    <img src="https://images.unsplash.com/photo-1508853713191-1ba24534725d" class="h-40 w-full object-cover rounded-xl grayscale hover:grayscale-0 transition duration-500 border border-white/10">
+    <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b" class="h-40 w-full object-cover rounded-xl grayscale hover:grayscale-0 transition duration-500 border border-white/10">
+  </div>
+</section>
+
 <section id="teachers" class="py-16 px-6 max-w-5xl mx-auto">
   <h2 class="heading text-2xl text-center mb-10 tracking-widest text-white">Our <span class="text-red-500">Teachers</span></h2>
   <div class="space-y-6">
     <div class="box-gradient p-6 rounded-3xl flex flex-col md:flex-row gap-6 items-center">
       <div class="flex flex-col items-center">
         <img src="https://i.ibb.co/XxwtJzMs/IMG-20260118-WA0005.jpg" class="h-32 w-32 rounded-full object-cover border-2 border-red-600 shadow-lg shadow-red-600/20 mb-3">
-        <a href="https://www.instagram.com/a_ket_legacy_?igsh=cXVndjV3bTNlNms1" target="_blank" class="text-[9px] bg-red-600 text-white px-4 py-1.5 rounded-full font-bold hover:scale-105 transition uppercase tracking-tighter">
-          Instagram Profile
+        <a href="https://www.instagram.com/a_ket_legacy_?igsh=cXVndjV3bTNlNms1" target="_blank" class="text-[9px] bg-red-600 text-white px-3 py-1 rounded-full font-bold hover:scale-105 transition uppercase">
+          Instagram
         </a>
       </div>
       <div class="text-center md:text-left">
@@ -89,49 +122,40 @@
         <p class="text-xs opacity-60">8+ Years experience in choreography and high-energy fitness sessions.</p>
       </div>
     </div>
+    <div class="box-gradient p-6 rounded-3xl flex flex-col md:flex-row gap-6 items-center">
+        <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d" class="h-32 w-32 rounded-full object-cover border-2 border-red-600 shadow-lg shadow-red-600/20">
+        <div class="text-center md:text-left">
+          <h3 class="heading text-xl text-white font-bold">Amit Sen</h3>
+          <p class="text-[10px] text-red-500 font-bold mb-2 tracking-widest uppercase">Music Faculty • 📞 +91 8100565299</p>
+        </div>
+      </div>
   </div>
 </section>
 
 <section id="admission" class="py-20 px-6">
   <div class="max-w-4xl mx-auto">
-    <div class="text-center mb-12">
-        <h2 class="heading text-2xl tracking-widest text-white">Registration <span class="text-red-500">Form</span></h2>
-        <p class="text-[10px] text-gray-400 mt-2 uppercase tracking-[0.2em]">Join the elite creative community in Kalyani</p>
-    </div>
-    <form class="box-gradient p-10 rounded-[2rem] grid gap-6 border-t-2 border-t-red-600 shadow-2xl shadow-red-600/5">
-      <div class="grid md:grid-cols-2 gap-8">
-        <div class="space-y-1">
-            <label class="text-[9px] uppercase font-bold text-gray-500 ml-1">Student Full Name</label>
-            <input type="text" placeholder="e.g. Abhay Basfore" required class="w-full p-4 form-input rounded-2xl outline-none text-white text-sm">
-        </div>
-        <div class="space-y-1">
-            <label class="text-[9px] uppercase font-bold text-gray-500 ml-1">Parent/Guardian Name</label>
-            <input type="text" placeholder="Full Name" required class="w-full p-4 form-input rounded-2xl outline-none text-white text-sm">
-        </div>
+    <h2 class="heading text-2xl text-center mb-10 tracking-widest text-white">Registration <span class="text-red-500">Form</span></h2>
+    <form class="box-gradient p-8 rounded-3xl grid gap-6 max-w-4xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-6">
+        <input type="text" placeholder="Student Name" required class="w-full p-4 bg-black/40 border border-white/10 rounded-xl focus:border-red-500 outline-none text-white text-sm">
+        <input type="text" placeholder="Parent Name" required class="w-full p-4 bg-black/40 border border-white/10 rounded-xl focus:border-red-500 outline-none text-white text-sm">
       </div>
-      <div class="grid md:grid-cols-2 gap-8">
-        <div class="space-y-1">
-            <label class="text-[9px] uppercase font-bold text-gray-500 ml-1">Primary Contact Number</label>
-            <input type="tel" placeholder="+91 00000 00000" required class="w-full p-4 form-input rounded-2xl outline-none text-white text-sm">
-        </div>
-        <div class="space-y-1">
-            <label class="text-[9px] uppercase font-bold text-gray-500 ml-1">Choose Specialty</label>
-            <select required class="w-full p-4 bg-[#0f0f0f] border border-white/10 rounded-2xl outline-none text-white text-sm appearance-none">
-              <option value="" disabled selected>Select Course</option>
-              <option value="Dance">Dance Academy</option>
-              <option value="Music">Music Classes</option>
-              <option value="Fine Arts">Fine Arts</option>
-              <option value="Yoga">Yoga & Wellness</option>
-            </select>
-        </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        <input type="tel" placeholder="Phone Number" required class="w-full p-4 bg-black/40 border border-white/10 rounded-xl focus:border-red-500 outline-none text-white text-sm">
+        <select required class="w-full p-4 bg-black border border-white/10 rounded-xl focus:border-red-500 outline-none text-white text-sm appearance-none">
+          <option value="" disabled selected>Select Course / Purpose</option>
+          <option value="Dance">Dance Admission</option>
+          <option value="Music">Music Admission</option>
+          <option value="Fine Arts">Fine Arts Admission</option>
+          <option value="Yoga">Yoga Admission</option>
+        </select>
       </div>
-      <div class="space-y-1">
-          <label class="text-[9px] uppercase font-bold text-gray-500 ml-1">Residential Address</label>
-          <textarea placeholder="Enter your full address..." rows="2" required class="w-full p-4 form-input rounded-2xl outline-none text-white text-sm"></textarea>
+      <textarea placeholder="Full Address" rows="2" required class="w-full p-4 bg-black/40 border border-white/10 rounded-xl focus:border-red-500 outline-none text-white text-sm"></textarea>
+      <div class="space-y-2 text-left">
+        <p class="text-[10px] uppercase opacity-50 ml-1 text-gray-400 font-bold">Upload ID Document (Optional)</p>
+        <input type="file" class="w-full p-3 bg-black/40 border border-dashed border-white/20 rounded-xl text-xs text-gray-500">
       </div>
-      <button type="submit" class="w-full bg-red-600 hover:bg-red-700 py-5 font-bold rounded-2xl transition-all uppercase tracking-[0.3em] text-[10px] mt-4 shadow-xl shadow-red-600/20 text-white">
-        Confirm Registration
-      </button>
+      <button type="submit" class="w-full bg-red-600 hover:bg-red-700 py-4 font-bold rounded-xl transition-all uppercase tracking-widest text-xs mt-4 shadow-lg shadow-red-600/20 text-white">Submit Registration</button>
     </form>
   </div>
 </section>
@@ -148,6 +172,7 @@
     </div>
 
     <div id="form-container">
+        <p class="text-[10px] opacity-50 mb-3 uppercase text-white font-bold">Tap stars to rate</p>
         <div class="star-rating mb-4">
           <input type="radio" name="stars" id="star-5" value="5"><label for="star-5">★</label>
           <input type="radio" name="stars" id="star-4" value="4"><label for="star-4">★</label>
